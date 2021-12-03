@@ -202,8 +202,16 @@ void Output::CreateDesignModeToolBar() const
 	MenuItemImages[ITM_ADD_LADDER] = "images\\Ladder.jpg";	
 	MenuItemImages[ITM_ADD_SNAKE] = "images\\Menu_Snake.jpg";	
 	MenuItemImages[ITM_ADD_CARD] = "images\\Menu_Card.jpg";	
-	MenuItemImages[ITM_EXIT] = "images\\Menu_Exit.jpg";
+	MenuItemImages[ITM_EXIT_DESIGN_MODE] = "images\\Menu_Exit.jpg";
 	MenuItemImages[ITM_SWITCH_TO_PLAY_MODE] = "images\\Menu_SwitchToGame.jpg";
+	MenuItemImages[ITM_COPY_CARD] = "images\\card.jpg";
+	MenuItemImages[ITM_CUT_CARD] = "images\\scissors.jpg";
+	MenuItemImages[ITM_PASTE_CARD] = "images\\paste.jpg";
+	MenuItemImages[ITM_DELETE_GAME_OBJECT] = "images\\garbage.jpg";
+	MenuItemImages[ITM_SAVE_GRID] = "images\\save.jpg";
+	MenuItemImages[ITM_OPEN_GRID] = "images\\open-folder.jpg";
+	
+
 
 	///TODO: Prepare images for each menu item and add it to the list
 
@@ -234,6 +242,11 @@ void Output::CreatePlayModeToolBar() const
 	string MenuItemImages[PLAY_ITM_COUNT];
 	MenuItemImages[ITM_ROLL_DICE] = "images\\Menu_Dice.jpg";
 	MenuItemImages[ITM_SWITCH_TO_DESIGN_MODE] = "images\\Menu_SwitchToGrid.jpg";
+	MenuItemImages[ITM_NEW_GAME] = "images\\new game.jpg";
+	MenuItemImages[ITM_INPUT_DICE_VALUE] = "images\\input_value.jpg";
+	MenuItemImages[ITM_EXIT_PLAY_MODE] = "images\\Menu_Exit.jpg";
+
+
 
 	///TODO: Prepare images for each menu item and add it to the list
 

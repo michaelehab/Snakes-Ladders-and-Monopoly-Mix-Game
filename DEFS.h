@@ -11,16 +11,26 @@ enum ActionType // The actions supported (add more as needed)
 
 	ADD_LADDER,		// Add Ladder Action
 	ADD_SNAKE,		// Add Snake Action	
-	ADD_CARD,		// Add Card Action	
-	EXIT,			// Exit Application
+	ADD_CARD,       // Add Card Action
+	COPY_CARD,      // Copy Card Action /**/
+	CUT_CARD,       // Cut Card Action /**/
+	PASTE_CARD,     // Paste card Action /**/
+	DELETE_GAME_OBJECT,  //Delete game object Action /**/
+	SAVE_GRID,      // Save Grid Action /**/
+	OPEN_GRID,      // Open Grid Action  /**/
 	TO_PLAY_MODE,	// Go to Play Mode
+	EXIT,			// Exit Application
 
 	///TODO: Add more action types of Design Mode
 
 	//  [2] Actions of Play Mode
 
 	ROLL_DICE,		// Roll Dice Action
+	INPUT_DICE_VALUE,  //Input Dice Value Action /**/
+	NEW_GAME,        // New Game Action   /**/
 	TO_DESIGN_MODE,	// Go to Design Mode
+	EXIT_PLAY_MODE,            // Exit from Play Mode /**/
+	
 
 	///TODO: Add more action types of Play Mode
 
