@@ -100,8 +100,8 @@ Input* Output::CreateInput() const
 int Output::GetCellStartX(const CellPosition & cellPos) const
 {
 	///TODO: implement the following function as described in Output.h file
-
-	return 0; // this line should be changed with your implementation
+	int cellX=cellPos.HCell();
+	return cellX; // this line should be changed with your implementation
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -109,8 +109,8 @@ int Output::GetCellStartX(const CellPosition & cellPos) const
 int Output::GetCellStartY(const CellPosition & cellPos) const
 {
 	///TODO: implement the following function as described in Output.h file
-
-	return 0; // this line should be changed with your implementation
+	int cellY = cellPos.VCell();
+	return cellY; // this line should be changed with your implementation
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -130,8 +130,8 @@ void Output::DrawCardNumber(const CellPosition & cellPos, int cardNum) const
 
 	///TODO: Calculate the Width & Height of the integer "cardNum" if written using the Current Font
 	//       (Use GetIntegerSize() window function) and set the "w" and "h" variables with its width and height
-
-
+	
+	pWind->GetIntegerSize(w, h, cardNum);
 
 	// Calculate where to write the integer of the cardNum
 	int x = cellStartX + UI.CellWidth - UI.LadderXOffset - w - 5; // Before the End vertical line of a ladder 
@@ -141,7 +141,7 @@ void Output::DrawCardNumber(const CellPosition & cellPos, int cardNum) const
 
 	///TODO: Draw the Integer the representing the "cardNum" in the location (x,y)
 	
-
+	pWind->DrawInteger(x, y, cardNum);
 
 }
 
@@ -275,6 +275,7 @@ void Output::PrintMessage(string msg) const	//Prints a message on status bar
 void Output::PrintPlayersInfo(string info)
 {
 	///TODO: Clear what was written on the toolbar
+	CreatePlayModeToolBar();
 
 	// One of the correct ways to implement the above TODO is to call CreatePlayModeToolBar(); 
 	// to clear what was written in the player info (there are other ways too – You are free to use any)
@@ -287,7 +288,7 @@ void Output::PrintPlayersInfo(string info)
 
 	///TODO: Calculate the Width and Height of the string if drawn using the current font 
 	//       (Use GetStringSize() window function) and set the "w" and "h" variables with its width and height
-
+	pWind->GetStringSize(w, h, info);
 
 
 	// Set the start X & Y coordinate of drawing the string
@@ -296,7 +297,7 @@ void Output::PrintPlayersInfo(string info)
 	int y = (UI.ToolBarHeight - h) / 2; // in the Middle of the toolbar height
 
 	///TODO: Draw the string "info" in the specified location (x, y)
-
+	pWind->DrawString(x, y, info);
 
 
 }
@@ -320,7 +321,7 @@ void Output::DrawCell(const CellPosition & cellPos, int cardNum) const
 		pWind->SetBrush(UI.CellColor_HasCard);
 
 	///TODO: Draw the Cell Rectangle using the appropriate coordinates
-	
+	pWind->DrawRectangle(cellStartX, cellStartY, cellStartX + UI.CellWidth, cellStartY + UI.CellHeight);
 
 
 	// ----- 2- Draw the CELL number (the small number at the bottom right of the cell) -----
@@ -331,7 +332,7 @@ void Output::DrawCell(const CellPosition & cellPos, int cardNum) const
 
 	///TODO: Get the Width and Height of the Cell Number if written using the current font 
 	//       (Use GetIntegerSize() window function) and set the "w" and "h" variables with its width and height
-
+	pWind->GetIntegerSize(w, h, cardNum);
 
 
 	// Calculate X & Y coordinate of the start point of writing the card number (upper left point of the cell num)
@@ -342,7 +343,7 @@ void Output::DrawCell(const CellPosition & cellPos, int cardNum) const
 	
 	///TODO: Draw the cell number in the x and y location
 
-	
+	pWind->DrawInteger(x, y, cardNum);
 
 	// ----- 3- Draw card number (if any) -----
 	if (cardNum != -1) // Note: cardNum -1 means no card
@@ -355,7 +356,8 @@ void Output::DrawPlayer(const CellPosition & cellPos, int playerNum, color playe
 {
 
 	///TODO: Validate the playerNum, if not valid return
-
+	if (playerNum < 0 || playerNum>3)
+		return;
 	
 
 	// Get the X & Y coordinates of the start point of the cell (its upper left corner)
@@ -385,7 +387,7 @@ void Output::DrawPlayer(const CellPosition & cellPos, int playerNum, color playe
 		x += radius + 2 + radius; // because playerNum 1 and 3 are drawn in the second column of circles
 
 	///TODO: Draw the player circle in center(x,y) and filled with the playerColor passed to the function
-
+	pWind->DrawCircle(x, y, radius);
 
 	
 }
@@ -396,8 +398,8 @@ void Output::DrawLadder(const CellPosition & fromCell, const CellPosition & toCe
 {
 
 	///TODO: Validate the Cell Position (Must be Vertical Cells AND toCell above fromCell, otherwise, Do NOT draw)
-	
-
+	if (fromCell.HCell() != toCell.HCell() || fromCell.VCell() <= toCell.VCell());
+	return;
 	
 	// Get the start X and Y coordinates of the upper left corner of the fromCell
 	int cellStartX = GetCellStartX(fromCell);
@@ -412,11 +414,11 @@ void Output::DrawLadder(const CellPosition & fromCell, const CellPosition & toCe
 	int y2 = toStartY + UI.CellHeight - UI.LadderYOffset; // the coordinate y of the second point of the First Vertical line
 
 	///TODO: Set pen color and width using the appropriate parameters of UI_Info object (UI)
-
+	//pWind->SetPen()
 
 
 	///TODO: Draw The First Vertical Line (The Left Line) in the appropriate coordinates
-
+	pWind->DrawLine(x12, y1, x12, y1);
 
 
 	// ---- 2- Draw the Second Vertical Line ---- 
@@ -428,7 +430,7 @@ void Output::DrawLadder(const CellPosition & fromCell, const CellPosition & toCe
 
 
 	///TODO: Draw The Second Vertical Line (The Right Line) in the appropriate coordinates
-
+	pWind->DrawLine(x34, y1, x34, y1);
 
 
 	// ---- 3- Draw the Cross Horizontal Lines ---- 
@@ -437,8 +439,10 @@ void Output::DrawLadder(const CellPosition & fromCell, const CellPosition & toCe
 	// Check the drawn ladders in the project document and imitate it
 
 	///TODO: Draw the cross horizontal lines of the ladder using the appropriate coordinates
-
-
+	for (int i = y1; i <= y2; i++) 
+		pWind->DrawLine(x12, i, x34, i);
+	
+	
 	
 }
 
@@ -448,7 +452,8 @@ void Output::DrawSnake(const CellPosition & fromCell, const CellPosition & toCel
 {
 
 	///TODO: Validate the fromCell and toCell (Must be Vertical and toCell is below fromCell otherwise do NOT draw)
-	
+	if (fromCell.HCell() != toCell.HCell() || fromCell.VCell() >= toCell.VCell());
+	return;
 
 
 	// Get the upper left corner coordinates of the fromCell and toCell
@@ -467,8 +472,8 @@ void Output::DrawSnake(const CellPosition & fromCell, const CellPosition & toCel
 
 
 
-	///TODO: Draw the Line representing the Snake BOdy
-	
+	///TODO: Draw the Line representing the Snake Body
+	pWind->DrawLine(x12, y1, x12, y2);
 
 
 	// ---- 2- Draw Polygon with Diamond Shape representing the Snake Head ----
@@ -482,13 +487,14 @@ void Output::DrawSnake(const CellPosition & fromCell, const CellPosition & toCel
 
 	///TODO: Set the coordinates of the 4 points of the Polygon
 	//       Check the snakes drawn in the project document and draw it the same way
-
-
+	
+	int xPolygon[] = { x12,x12 + xChange,x12 + x12 +2* xChange };
+	int yPolygon[] = { y1,y1 + yChange,y1 + 2 * yChange };
 
 
 	///TODO: Draw the Polygon (diamond) representing the Snake's Head
 	//       Check the snakes drawn in the project document and draw it the same way
-
+	pWind->DrawPolygon(xPolygon, yPolygon, 4);
 
 
 }
