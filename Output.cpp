@@ -3,7 +3,7 @@
 #include "Input.h"
 
 ////////////////////////////////////////////////////////////////////////////////////////// 
-
+//Test
 Output::Output()
 {
 	// Initialize user interface parameters
@@ -278,7 +278,7 @@ void Output::PrintPlayersInfo(string info)
 	CreatePlayModeToolBar();
 
 	// One of the correct ways to implement the above TODO is to call CreatePlayModeToolBar(); 
-	// to clear what was written in the player info (there are other ways too – You are free to use any)
+	// to clear what was written in the player info (there are other ways too Â– You are free to use any)
 
 	// Set the pen and font before drawing the string on the window
 	pWind->SetPen(UI.PlayerInfoColor); 
