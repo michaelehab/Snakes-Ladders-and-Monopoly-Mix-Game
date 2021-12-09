@@ -136,7 +136,10 @@ int main()
 	///       a snake from start_98 to end_32 declared above
 	///       a snake from start_98 to end_2 declared above (invalid)
 	///       a snake from end_2 to start_24 declared above (invalid)
-
+	pOut->DrawSnake(start_24, end_2);
+	pOut->DrawSnake(start_98, end_32);
+	pOut->DrawSnake(start_98, end_2);
+	pOut->DrawSnake(end_2, start_24);
 
 
 	pOut->PrintMessage("FINISHED - Drawing (Snakes) Test,  Click to continue");

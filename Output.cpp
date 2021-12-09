@@ -418,13 +418,13 @@ void Output::DrawLadder(const CellPosition & fromCell, const CellPosition & toCe
 	int y2 = toStartY + UI.CellHeight - UI.LadderYOffset; // the coordinate y of the second point of the First Vertical line
 
 	///TODO: Set pen color and width using the appropriate parameters of UI_Info object (UI)
-	pWind->SetPen(UI.LadderColor);
-	pWind->SetFont(UI.LadderlineWidth + 10000, BOLD, BY_NAME, "Verdana");
+	pWind->SetBrush(UI.LadderColor);
+	pWind->SetFont(UI.LadderlineWidth, BOLD, BY_NAME, "Verdana");
 
 
 
 	///TODO: Draw The First Vertical Line (The Left Line) in the appropriate coordinates
-	pWind->DrawLine(x12, y1, x12, y2);
+	pWind->DrawLine(x12, y1, x12, y2, FRAME);
 
 
 	// ---- 2- Draw the Second Vertical Line ---- 
@@ -432,8 +432,8 @@ void Output::DrawLadder(const CellPosition & fromCell, const CellPosition & toCe
 	                                                        // the y coordinates is the same as the First Vertical Line
 
 	///TODO: Set pen color and width using the appropriate variables of UI_Info object (UI)
-	pWind->SetPen(UI.LadderColor);
-	pWind->SetFont(UI.LadderlineWidth + 100, BOLD, BY_NAME, "Verdana");
+	pWind->SetBrush(UI.LadderColor);
+	pWind->SetFont(UI.LadderlineWidth, BOLD, BY_NAME, "Verdana");
 
 
 	///TODO: Draw The Second Vertical Line (The Right Line) in the appropriate coordinates
@@ -496,8 +496,8 @@ void Output::DrawSnake(const CellPosition & fromCell, const CellPosition & toCel
 	///TODO: Set the coordinates of the 4 points of the Polygon
 	//       Check the snakes drawn in the project document and draw it the same way
 	
-	int xPolygon[] = { x12,x12 + xChange,x12 +xChange, x12 -xChange };
-	int yPolygon[] = { y1,y1 + yChange,y1 - 2 * yChange,y1+yChange };
+	int xPolygon[] = { x12,x12 + xChange,x12 , x12 -xChange };
+	int yPolygon[] = { y1+ 2*yChange,y1 + yChange,y1,y1+yChange };
 
 
 	///TODO: Draw the Polygon (diamond) representing the Snake's Head
