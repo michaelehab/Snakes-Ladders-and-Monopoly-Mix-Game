@@ -52,18 +52,10 @@ int Input::GetInteger(Output* pO) const
 	label = GetSrting(pO);
 	for (int i = 0; i < label.length(); i++)
 	{
-		if (isdigit(label[i]) == false)
-			return false;
-		else
-			count++;
+		if (!isdigit(label[i])) return 0;
 	}
-	if (count == label.length())
-		return stoi(label);
-		
-
-			// Note: stoi(s) converts string s into its equivalent integer (for example, "55" is converted to 55)
-
-			return 0; // this line should be changed with your implementation
+	// Note: stoi(s) converts string s into its equivalent integer (for example, "55" is converted to 55)
+	return stoi(label);
 }
 
 //======================================================================================//
