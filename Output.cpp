@@ -418,8 +418,7 @@ void Output::DrawLadder(const CellPosition & fromCell, const CellPosition & toCe
 	int y2 = toStartY + UI.CellHeight - UI.LadderYOffset; // the coordinate y of the second point of the First Vertical line
 
 	///TODO: Set pen color and width using the appropriate parameters of UI_Info object (UI)
-	pWind->SetBrush(UI.LadderColor);
-	pWind->SetFont(UI.LadderlineWidth, BOLD, BY_NAME, "Verdana");
+	pWind->SetPen(UI.LadderColor, UI.LadderlineWidth);
 
 
 
@@ -432,8 +431,7 @@ void Output::DrawLadder(const CellPosition & fromCell, const CellPosition & toCe
 	                                                        // the y coordinates is the same as the First Vertical Line
 
 	///TODO: Set pen color and width using the appropriate variables of UI_Info object (UI)
-	pWind->SetBrush(UI.LadderColor);
-	pWind->SetFont(UI.LadderlineWidth, BOLD, BY_NAME, "Verdana");
+	pWind->SetPen(UI.LadderColor, UI.LadderlineWidth);
 
 
 	///TODO: Draw The Second Vertical Line (The Right Line) in the appropriate coordinates
@@ -476,8 +474,7 @@ void Output::DrawSnake(const CellPosition & fromCell, const CellPosition & toCel
 	int y2 = toStartY + UI.CellHeight/2;
 
 	///TODO: Set pen color and width from the appropriate variables of the UI_Info object (UI)
-	pWind->SetPen(UI.SnakeColor);
-	pWind->SetFont(UI.SnakelineWidth, BOLD, BY_NAME, "Verdana");
+	pWind->SetPen(UI.SnakeColor, UI.SnakelineWidth);
 
 
 	///TODO: Draw the Line representing the Snake Body

@@ -163,7 +163,10 @@ int main()
 	// 2- Print it in the status bar in this format:   You Entered: 116
 	//    (assuming the entered number is 116)
 	// 3- Call GetPointClicked() function
-	pOut->PrintMessage("You Entered " + to_string(pIn->GetInteger(pOut)));
+	int getint=pIn->GetInteger(pOut);
+	
+	pOut->PrintMessage("You Entered: " + to_string(getint));
+
 	pIn->GetPointClicked(x, y);	//Wait for any click
 
 
