@@ -21,6 +21,7 @@ enum DESIGN_MODE_ITEMS // The items of the Design Mode (you should add more item
 {
 	// Note: Items MUST be ordered here as they appear in menu
 	// If you want to change the menu items order, change the order here
+	///TODO: Add more items names here
 
 	ITM_ADD_LADDER,
 	ITM_ADD_SNAKE,
@@ -36,8 +37,7 @@ enum DESIGN_MODE_ITEMS // The items of the Design Mode (you should add more item
 	
 	
 	
-	///TODO: Add more items names here
-
+	
 	DESIGN_ITM_COUNT	// no. of items ==> This should be the last line in this enum
 };
 
@@ -45,14 +45,14 @@ enum PLAY_MODE_ITEMS // The items of the Play Mode (you should add more items)
 {
 	// Note: Items are ordered here as they appear in menu
 	// If you want to change the menu items order, change the order here
-
+	///TODO: Add more items names here
 	ITM_ROLL_DICE,
 	ITM_INPUT_DICE_VALUE,        /**/
 	ITM_NEW_GAME,                 /**/
 	ITM_SWITCH_TO_DESIGN_MODE,
 	ITM_EXIT_PLAY_MODE,              /**/
 
-	///TODO: Add more items names here
+	
 
 	PLAY_ITM_COUNT		// no. of items ==> This should be the last line in this enum
 };

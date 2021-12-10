@@ -89,6 +89,8 @@ int main()
 	pOut->DrawPlayer(player_99, 5, UI.PlayerColors[1]);
 	pOut->DrawPlayer(player_99, -1, UI.PlayerColors[1]);
 
+	pOut->PrintPlayersInfo("P0(100,0), P1(100,0), P2(100,0), P3(100,0) | Curr=0");
+
 
 	pOut->PrintMessage("FINISHED - Drawing (Players) Test,  Click to continue");
 	pIn->GetPointClicked(x, y);	//Wait for any click
@@ -324,6 +326,8 @@ int main()
 			pOut->PrintMessage("Action: ADD_CARD , Click anywhere");
 			break;
 
+			///TODO:  ADD Cases similarly for ALL the remaining actions of DESIGN Mode
+
 		case COPY_CARD:
 			pOut->PrintMessage("Action: COPY_CARD , Click anywhere");
 			break;
@@ -359,13 +363,13 @@ int main()
 
 			///TODO:  Call Function (PrintPlayersInfo) of Class Output with a string similar to 
 			//        the one given in the screenshot of project document 
-
+			
 			break;
 
 
-			///TODO:  ADD Cases similarly for ALL the remaining actions of DESIGN Mode
+			
 
-
+			///TODO:  ADD Cases similarly for ALL the remaining actions of PLAY Mode
 		case ROLL_DICE:
 			pOut->PrintMessage("Action: ROLL_DICE , Click anywhere");
 			break;
@@ -388,7 +392,7 @@ int main()
 			break;
 
 
-			///TODO:  ADD Cases similarly for ALL the remaining actions of PLAY Mode
+			
 
 		}
 	} while (ActType != EXIT);
