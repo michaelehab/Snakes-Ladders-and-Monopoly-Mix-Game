@@ -81,8 +81,8 @@ int CellPosition::GetCellNumFromPosition(const CellPosition & cellPosition)
 CellPosition CellPosition::GetCellPositionFromNum(int cellNum)
 {
 	CellPosition position;
-	position.SetHCell(cellNum % 11 - 1);
-	position.SetVCell(8 - ((cellNum - (cellNum % 11)) / 11));
+	position.SetHCell((cellNum % 11 == 0)?(10):(cellNum % 11 - 1));
+	position.SetVCell((cellNum % 11 == 0)?(9 - cellNum/11):(8 - cellNum/11));
 
 	return position;
 }
