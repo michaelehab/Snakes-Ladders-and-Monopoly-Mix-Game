@@ -89,7 +89,6 @@ int main()
 	pOut->DrawPlayer(player_99, 5, UI.PlayerColors[1]);
 	pOut->DrawPlayer(player_99, -1, UI.PlayerColors[1]);
 
-	pOut->PrintPlayersInfo("P0(100,0), P1(100,0), P2(100,0), P3(100,0) | Curr=0");
 
 
 	pOut->PrintMessage("FINISHED - Drawing (Players) Test,  Click to continue");
@@ -363,6 +362,7 @@ int main()
 
 			///TODO:  Call Function (PrintPlayersInfo) of Class Output with a string similar to 
 			//        the one given in the screenshot of project document 
+			pOut->PrintPlayersInfo("P0(100,0), P1(100,0), P2(100,0), P3(100,0) | Curr=0");
 			
 			break;
 
