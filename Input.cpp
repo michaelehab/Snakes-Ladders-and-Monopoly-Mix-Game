@@ -50,8 +50,10 @@ int Input::GetInteger(Output* pO) const
 	string label;
 	int count = 0;         //counts the number of integers in the string
 	label = GetSrting(pO);
+	if (label == "\0") return 0;
 	for (int i = 0; i < label.length(); i++)
 	{
+		
 		if (!isdigit(label[i])) return 0;
 	}
 	// Note: stoi(s) converts string s into its equivalent integer (for example, "55" is converted to 55)
