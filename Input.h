@@ -23,7 +23,7 @@ public:
 
 	void GetPointClicked(int &x, int &y) const; // Wait for a Mouse Click and Gets the real coordinates (x,y) of it
 
-	string GetSrting(Output* pO) const;  // Returns a string entered by the user
+	string getString(Output* pO) const;  // Returns a string entered by the user
 
 	int GetInteger(Output* pO) const;    // Returns an integer entered by the user
 	

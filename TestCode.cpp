@@ -193,7 +193,7 @@ int main()
 
 	/// 3.3- Reading a String ///
 	/// =====================
-	pOut->PrintMessage("3.3- (GetSrting) Test, Click to continue");
+	pOut->PrintMessage("3.3- (getString) Test, Click to continue");
 	pIn->GetPointClicked(x, y);	//Wait for any click
 	pOut->PrintMessage("Please enter a string, then press ENTER");
 
@@ -201,14 +201,14 @@ int main()
 	// 2- After reading the string clear the status bar
 	// 3- print on the status bar "You Entered" then print the string
 	// NOTE: GetString() is already implemented. It is just required from you to call it
-	string input_1 = pIn->GetSrting(pOut);
+	string input_1 = pIn->getString(pOut);
 	pOut->ClearStatusBar();
 	pOut->PrintMessage("You Entered " + input_1 + ", Click to continue");
 	pIn->GetPointClicked(x, y);	//Wait for any click
 
 
 
-	pOut->PrintMessage("FINISHED - (GetSrting) Test, Click to continue");
+	pOut->PrintMessage("FINISHED - (getString) Test, Click to continue");
 	pIn->GetPointClicked(x, y);	//Wait for any click
 
 	///////////////////////////////////////////////////////////////////////////////////

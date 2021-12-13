@@ -20,7 +20,7 @@ void Input::GetPointClicked(int& x, int& y) const
 
 ////////////////////////////////////////////////////////////////////////////////////////// 
 
-string Input::GetSrting(Output* pO) const
+string Input::getString(Output* pO) const
 {
 	string Label;
 	char Key;
@@ -46,7 +46,7 @@ int Input::GetInteger(Output* pO) const
 {
 	string label;
 	int count = 0; //Counts the number of integers in the string
-	label = GetSrting(pO);
+	label = getString(pO);
 	if (!isdigit(label[0]) && label[0] != '-' && label[0] != '+') return 0;
 	for (int i = 1; i < label.length(); i++){
 		if (!isdigit(label[i])) return 0;
