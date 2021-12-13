@@ -44,17 +44,12 @@ string Input::GetSrting(Output* pO) const
 
 int Input::GetInteger(Output* pO) const
 {
-
-	///TODO: implement the GetInteger function as described in Input.h file 
-	//       using function GetString() defined above and function stoi()
 	string label;
-	int count = 0;         //counts the number of integers in the string
+	int count = 0; //Counts the number of integers in the string
 	label = GetSrting(pO);
-	for (int i = 0; i < label.length(); i++)
-	{
+	for (int i = 0; i < label.length(); i++){
 		if (!isdigit(label[i])) return 0;
 	}
-	// Note: stoi(s) converts string s into its equivalent integer (for example, "55" is converted to 55)
 	return stoi(label);
 }
 
@@ -95,8 +90,6 @@ ActionType Input::GetUserAction() const
 			case ITM_SWITCH_TO_PLAY_MODE: return TO_PLAY_MODE;
 			case ITM_EXIT_DESIGN_MODE: return EXIT;
 
-				///TODO: Add cases for the other items of Design Mode
-
 			default: return EMPTY;	// A click on empty place in toolbar
 			}
 		}
@@ -114,9 +107,6 @@ ActionType Input::GetUserAction() const
 	// ============ GUI in the Play mode ============
 	else
 	{
-		///TODO:
-		// perform checks similar to Design mode checks above for the Play Mode
-		// and return the corresponding ActionType
 		if (y >= 0 && y < UI.ToolBarHeight)
 		{
 			int ClickedItemOrder2 = (x / UI.MenuItemWidth);
@@ -141,10 +131,6 @@ ActionType Input::GetUserAction() const
 		return STATUS;
 
 		//return TO_DESIGN_MODE;	// just for now ==> This should be updated
-
-
-
-
 	}
 
 }
@@ -162,12 +148,10 @@ CellPosition Input::GetCellClicked() const
 	{
 		if (y >= UI.ToolBarHeight && y <= (UI.height - UI.StatusBarHeight))
 		{
-			///TODO: SetHCell and SetVCell of the object cellPost appropriately
-			//       using the coordinates x, y and the appropriate variables of the UI_Info Object (UI)
+			///SetHCell and SetVCell of the object cellPost appropriately
+			//using the coordinates x, y and the appropriate variables of the UI_Info Object (UI)
 			cellPos.SetHCell(x / UI.CellWidth);
 			cellPos.SetVCell((y - UI.ToolBarHeight) / UI.CellHeight);
-
-
 		}
 
 	}

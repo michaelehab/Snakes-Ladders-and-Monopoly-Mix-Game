@@ -8,7 +8,6 @@
 enum ActionType // The actions supported (add more as needed)
 {
 	//  [1] Actions of Design Mode
-	///TODO: Add more action types of Design Mode
 
 	ADD_LADDER,		// Add Ladder Action
 	ADD_SNAKE,		// Add Snake Action	
@@ -22,8 +21,6 @@ enum ActionType // The actions supported (add more as needed)
 	TO_PLAY_MODE,	// Go to Play Mode
 	EXIT,			// Exit Application
 
-	
-	///TODO: Add more action types of Play Mode
 	//  [2] Actions of Play Mode
 
 	ROLL_DICE,		// Roll Dice Action
@@ -32,9 +29,6 @@ enum ActionType // The actions supported (add more as needed)
 	TO_DESIGN_MODE,	// Go to Design Mode
 	EXIT_PLAY_MODE,            // Exit from Play Mode /**/
 	
-
-	
-
 	//  [3] Others
 
 	EMPTY,				// Empty Area in ToolBar (NOT inside any action icon)

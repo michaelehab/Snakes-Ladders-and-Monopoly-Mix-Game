@@ -25,15 +25,11 @@ public:
 
 	string GetSrting(Output* pO) const;  // Returns a string entered by the user
 
-	///TODO: IMPLEMENT THE FOLLOWING FUNCTION
 	int GetInteger(Output* pO) const;    // Returns an integer entered by the user
 	
-	// ========== Game Functions ==========
-	
-	///TODO: COMPLETE THE IMPLEMENTATIN OF THE FOLLOWING FUNCTION
+	// ========== Game Functions ==========	
 	ActionType GetUserAction() const;	 // Reads a user click and map it to its corresponding ActionType
 
-	///TODO: COMPLETE THE IMPLEMENTATIN OF THE FOLLOWING FUNCTION
 	CellPosition GetCellClicked() const; // Wait for a Mouse Click and Gets the CellPosition of it (VCell and HCell)
 										 // This function is needed only in Design Mode
 										 // If the click is NOT on a cellposition, (-1,-1) is returned

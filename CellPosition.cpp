@@ -73,24 +73,31 @@ int CellPosition::GetCellNum() const
 
 int CellPosition::GetCellNumFromPosition(const CellPosition & cellPosition)
 {
-	int pos = (cellPosition.HCell() + 1) + (8 - cellPosition.VCell())*11;
-	
-	return pos;
+	if (cellPosition.IsValidCell()) {
+		return (cellPosition.HCell() + 1) + (8 - cellPosition.VCell()) * NumHorizontalCells;
+	}
+	return 0; //Invalid CellPosition
 }
 
 CellPosition CellPosition::GetCellPositionFromNum(int cellNum)
 {
 	CellPosition position;
-	position.SetHCell((cellNum % 11 == 0)?(10):(cellNum % 11 - 1));
-	position.SetVCell((cellNum % 11 == 0)?(9 - cellNum/11):(8 - cellNum/11));
-
+	if (cellNum >= 1 && cellNum <= NumHorizontalCells * NumVerticalCells) {
+		position.SetHCell((cellNum % NumHorizontalCells == 0)?(NumHorizontalCells - 1):(cellNum % NumHorizontalCells - 1));
+		position.SetVCell((cellNum % NumHorizontalCells == 0)?(NumVerticalCells - cellNum/NumHorizontalCells):(NumVerticalCells - 1 - cellNum/NumHorizontalCells));
+	}
+	//If the function takes an invalid cellNum it uses Default Constructor, vCell = -1 and hCell = -1
 	return position;
 }
 
-void CellPosition::AddCellNum (int addedNum)
+void CellPosition::AddCellNum(int addedNum)
 {
-	int new_num = GetCellNum() + addedNum;
+	//Makes sure that it'll handle the case when the dice gives a value making the new cell num > 99
+	//For Example : Current Position = 98 and the dice gives us 5, the new num will be 103 which is invalid
+	//In this case the player already won because he reached the end of the grid (99)
+	int new_num = min(GetCellNum() + addedNum, NumHorizontalCells * NumVerticalCells);
 	CellPosition new_position = GetCellPositionFromNum(new_num);
+	//If the new position is invalid, the new vCell and hCell will be -1 (invalid cell)
 	SetVCell(new_position.VCell());
 	SetHCell(new_position.HCell());
 }

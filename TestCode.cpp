@@ -46,9 +46,9 @@ int main()
 	CellPosition card_10(4, 5); // assume card number is : 10
 
 
-	///TODO: Call Function DrawCell of Class Ouput Multiple Times
-	///       to draw cells in cell locations of: card_1, card_2, ..., card_10 declared above
-	///       with cardNum 1, 2, 3, 4 and 10 respectively
+	///Call Function DrawCell of Class Ouput Multiple Times
+	///to draw cells in cell locations of: card_1, card_2, ..., card_10 declared above
+	///with cardNum 1, 2, 3, 4 and 10 respectively
 	pOut->DrawCell(card_1, 1);
 	pOut->DrawCell(card_2, 2);
 	pOut->DrawCell(card_3, 3);
@@ -70,16 +70,16 @@ int main()
 	CellPosition player_99(2, 5);
 
 
-	///TODO: Call Function DrawPlayer of Class Ouput Multiple Times
-	///       to draw the following players:
-	///       playerNum (0) with color (PlayerColors[0] defined in UI object) in cell position (player_1 declared above) 
-	///       playerNum (1) with color (PlayerColors[1] defined in UI object) in cell position (player_1 declared above) 
-	///       playerNum (2) with color (PlayerColors[2] defined in UI object) in cell position (player_1 declared above) 
-	///       playerNum (3) with color (PlayerColors[3] defined in UI object) in cell position (player_1 declared above) 
-	///       playerNum (0) with color (PlayerColors[0] defined in UI object) in cell position (player_15 declared above) --> Invalid
-	///       playerNum (1) with color (PlayerColors[1] defined in UI object) in cell position (player_99 declared above) 
-	///       playerNum (5) with color (PlayerColors[1] defined in UI object) in cell position (player_99 declared above) --> Invalid
-	///       playerNum (-1) with color (PlayerColors[1] defined in UI object) in cell position (player_99 declared above) --> Invalid
+	///Call Function DrawPlayer of Class Ouput Multiple Times
+	///to draw the following players:
+	///playerNum (0) with color (PlayerColors[0] defined in UI object) in cell position (player_1 declared above) 
+	///playerNum (1) with color (PlayerColors[1] defined in UI object) in cell position (player_1 declared above) 
+	///playerNum (2) with color (PlayerColors[2] defined in UI object) in cell position (player_1 declared above) 
+	///playerNum (3) with color (PlayerColors[3] defined in UI object) in cell position (player_1 declared above) 
+	///playerNum (0) with color (PlayerColors[0] defined in UI object) in cell position (player_15 declared above) --> Invalid
+	///playerNum (1) with color (PlayerColors[1] defined in UI object) in cell position (player_99 declared above) 
+	///playerNum (5) with color (PlayerColors[1] defined in UI object) in cell position (player_99 declared above) --> Invalid
+	///playerNum (-1) with color (PlayerColors[1] defined in UI object) in cell position (player_99 declared above) --> Invalid
 	pOut->DrawPlayer(player_1, 0, UI.PlayerColors[0]);
 	pOut->DrawPlayer(player_1, 1, UI.PlayerColors[1]);
 	pOut->DrawPlayer(player_1, 2, UI.PlayerColors[2]);
@@ -105,12 +105,12 @@ int main()
 	CellPosition start_22(7, 10);
 	CellPosition end_99(0, 10);
 
-	///TODO: Call Function DrawLadder of Class Ouput Multiple Times
-	///       to draw the following ladders:
-	///       a ladder from start_89 to end_34 declared above --> INVALID because toCell is below
-	///       a ladder from start_22 to end_99 declared above --> valid
-	///       a ladder from start_89 to end_99 declared above --> INVALID because NOT vertical
-	///       a ladder from end_34 to start_89 declared above --> valid
+	///Call Function DrawLadder of Class Ouput Multiple Times
+	///to draw the following ladders:
+	///a ladder from start_89 to end_34 declared above --> INVALID because toCell is below
+	///a ladder from start_22 to end_99 declared above --> valid
+	///a ladder from start_89 to end_99 declared above --> INVALID because NOT vertical
+	///a ladder from end_34 to start_89 declared above --> valid
 	pOut->DrawLadder(start_89, end_34);
 	pOut->DrawLadder(start_22, end_99);
 	pOut->DrawLadder(start_89, end_99);
@@ -131,12 +131,12 @@ int main()
 	CellPosition start_98(0, 9);
 	CellPosition end_32(6, 9);
 
-	///TODO: Call Function DrawSnake of Class Ouput Multiple Times
-	///       to draw the following snakes:
-	///       a snake from start_24 to end_2 declared above
-	///       a snake from start_98 to end_32 declared above
-	///       a snake from start_98 to end_2 declared above (invalid)
-	///       a snake from end_2 to start_24 declared above (invalid)
+	///Call Function DrawSnake of Class Ouput Multiple Times
+	///to draw the following snakes:
+	///a snake from start_24 to end_2 declared above
+	///a snake from start_98 to end_32 declared above
+	///a snake from start_98 to end_2 declared above (invalid)
+	///a snake from end_2 to start_24 declared above (invalid)
 	pOut->DrawSnake(start_24, end_2);
 	pOut->DrawSnake(start_98, end_32);
 	pOut->DrawSnake(start_98, end_2);
@@ -159,7 +159,7 @@ int main()
 	pOut->PrintMessage("3.1- (GetInteger) Test, Click to continue");
 	pIn->GetPointClicked(x, y);	//Wait for any click
 	pOut->PrintMessage("Please enter an integer, then press ENTER");
-	///TODO: Add code here to 
+
 	// 1- Call GetInteger Function and receive its returned integer
 	// 2- Print it in the status bar in this format:   You Entered: 116
 	//    (assuming the entered number is 116)
@@ -178,8 +178,6 @@ int main()
 	/// =========================
 	pOut->PrintMessage("3.2- (GetCellClicked) Test, Click to continue");
 
-
-	///TODO: Add code here to 
 	// 1- Call function GetCellClicked
 	// 2- Print on the status bar the vCell and hCell of the clicked cell
 	// 3- Repeat Step 1 and 2 five times
@@ -199,8 +197,6 @@ int main()
 	pIn->GetPointClicked(x, y);	//Wait for any click
 	pOut->PrintMessage("Please enter a string, then press ENTER");
 
-
-	///TODO: Add code here to 
 	// 1- Read a string from the user on the status bar
 	// 2- After reading the string clear the status bar
 	// 3- print on the status bar "You Entered" then print the string
@@ -228,13 +224,13 @@ int main()
 
 	CellPosition cellpos_1(0, 0);
 
-	///TODO:
 	// 1- Ask user to enter an integer and read it using GetInteger()
 	// 2- Call SetVCell() of cellpos_1 with that integer
 	// 3- Print GetVCell() of cellpos_1 as follows: "Now the vCell = 5" (assuming the entered integer is 5)
 	// 4- Call GetPointClicked()
 	// 5- Repeat the above steps FIVE TIMES
 	// 6- Repeat all the above steps to test SetHCell() function instead with the needed modifications
+
 	for (int i = 1; i <= 5; i++) {
 		pOut->PrintMessage("Test " + to_string(i) + " : Please enter an integer, then press ENTER");
 		int getint_vcell_test = pIn->GetInteger(pOut);
@@ -257,7 +253,6 @@ int main()
 	pOut->PrintMessage("4.2- (GetCellNumFromPosition) Test, Click to continue");
 	pIn->GetPointClicked(x, y);	//Wait for any click
 
-	/// TODO:
 	// 1- Read from user two integers representing vCell and hCell
 	// 2- Creates a CellPosition object of them
 	// 3- Use the function GetCellNum() to get the corresponding Cell Number (it used function : GetCellNumFromPosition() inside it)
@@ -279,7 +274,6 @@ int main()
 	pOut->PrintMessage("4.3- (GetCellPositionFromNum) Test, Click to continue");
 	pIn->GetPointClicked(x, y);	//Wait for any click
 
-	/// TODO:
 	// 1- Read from user one integer representing cellNum
 	// 2- Creates a CellPosition object of that integer using that constructor: CellPosition (int cellNum);
 	//   --> it uses the function : GetCellPositionFromNum () inside it
@@ -303,97 +297,77 @@ int main()
 	pOut->PrintMessage("TEST5: Testing Input ability to detect User Action, click anywhere");
 
 	ActionType ActType;
-
-	///TODO:  
-	//You must add a case for EACH action (both Create-Grid mode and Game mode actions)
-	//Add cases for the missing actions below
 	do
 	{
 		ActType = pIn->GetUserAction();
 
-		switch (ActType)
-		{
-		case ADD_LADDER:
-			pOut->PrintMessage("Action: ADD_LADDER , Click anywhere");
-			break;
+		switch (ActType){
+			case ADD_LADDER:
+				pOut->PrintMessage("Action: ADD_LADDER , Click anywhere");
+				break;
 
-		case ADD_SNAKE:
-			pOut->PrintMessage("Action: ADD_SNAKE , Click anywhere");
-			break;
+			case ADD_SNAKE:
+				pOut->PrintMessage("Action: ADD_SNAKE , Click anywhere");
+				break;
 
-		case ADD_CARD:
-			pOut->PrintMessage("Action: ADD_CARD , Click anywhere");
-			break;
+			case ADD_CARD:
+				pOut->PrintMessage("Action: ADD_CARD , Click anywhere");
+				break;
 
-			///TODO:  ADD Cases similarly for ALL the remaining actions of DESIGN Mode
+			case COPY_CARD:
+				pOut->PrintMessage("Action: COPY_CARD , Click anywhere");
+				break;
 
-		case COPY_CARD:
-			pOut->PrintMessage("Action: COPY_CARD , Click anywhere");
-			break;
+			case CUT_CARD:
+				pOut->PrintMessage("Action: CUT_CARD , Click anywhere");
+				break;
 
-		case CUT_CARD:
-			pOut->PrintMessage("Action: CUT_CARD , Click anywhere");
-			break;
+			case PASTE_CARD:
+				pOut->PrintMessage("Action: PASTE_CARD , Click anywhere");
+				break;
 
-		case PASTE_CARD:
-			pOut->PrintMessage("Action: PASTE_CARD , Click anywhere");
-			break;
+			case DELETE_GAME_OBJECT:
+				pOut->PrintMessage("Action: DELETE_GAME_OBJECT , Click anywhere");
+				break;
 
-		case DELETE_GAME_OBJECT:
-			pOut->PrintMessage("Action: DELETE_GAME_OBJECT , Click anywhere");
-			break;
+			case SAVE_GRID:
+				pOut->PrintMessage("Action: SAVE_GRID , Click anywhere");
+				break;
 
-		case SAVE_GRID:
-			pOut->PrintMessage("Action: SAVE_GRID , Click anywhere");
-			break;
+			case OPEN_GRID:
+				pOut->PrintMessage("Action: OPEN_GRID , Click anywhere");
+				break;
 
-		case OPEN_GRID:
-			pOut->PrintMessage("Action: OPEN_GRID , Click anywhere");
-			break;
+			case EXIT:
+				break;
 
+			case TO_PLAY_MODE:
+				pOut->PrintMessage("Action: TO_PLAY_MODE , Click anywhere");
+				pOut->CreatePlayModeToolBar();
+				//Temp String
+				pOut->PrintPlayersInfo("P0(100,0), P1(100,0), P2(100,0), P3(100,0) | Curr=0");
+				break;
 
-		case EXIT:
-			break;
+			case ROLL_DICE:
+				pOut->PrintMessage("Action: ROLL_DICE , Click anywhere");
+				break;
 
-		case TO_PLAY_MODE:
+			case INPUT_DICE_VALUE:
+				pOut->PrintMessage("Action: INPUT_DICE_VALUE , Click anywhere");
+				break;
 
-			pOut->PrintMessage("Action: TO_PLAY_MODE , Click anywhere");
-			pOut->CreatePlayModeToolBar();
+			case NEW_GAME:
+				pOut->PrintMessage("Action: NEW_GAME , Click anywhere");
+				break;
 
-			///TODO:  Call Function (PrintPlayersInfo) of Class Output with a string similar to 
-			//        the one given in the screenshot of project document 
-			pOut->PrintPlayersInfo("P0(100,0), P1(100,0), P2(100,0), P3(100,0) | Curr=0");
-			
-			break;
+			case TO_DESIGN_MODE:
+				pOut->PrintMessage("Action: TO_DESIGN_MODE , Click anywhere");
+				pOut->CreateDesignModeToolBar();
+				break;
 
-
-			
-
-			///TODO:  ADD Cases similarly for ALL the remaining actions of PLAY Mode
-		case ROLL_DICE:
-			pOut->PrintMessage("Action: ROLL_DICE , Click anywhere");
-			break;
-
-		case INPUT_DICE_VALUE:
-			pOut->PrintMessage("Action: INPUT_DICE_VALUE , Click anywhere");
-			break;
-
-		case NEW_GAME:
-			pOut->PrintMessage("Action: NEW_GAME , Click anywhere");
-			break;
-
-		case TO_DESIGN_MODE:
-			pOut->PrintMessage("Action: TO_DESIGN_MODE , Click anywhere");
-			pOut->CreateDesignModeToolBar();
-			break;
-
-		case EXIT_PLAY_MODE:
-			ActType = EXIT;
-			break;
-
-
-			
-
+			case EXIT_PLAY_MODE:
+				ActType = EXIT;
+				break;
 		}
 	} while (ActType != EXIT);
 
