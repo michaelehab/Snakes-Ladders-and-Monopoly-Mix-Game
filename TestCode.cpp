@@ -264,8 +264,14 @@ int main()
 		pOut->PrintMessage("Test " + to_string(i) + " : Please enter an integer hCell, then press ENTER");
 		int getint_hcell_cellPos_test = pIn->GetInteger(pOut);
 		CellPosition pos(getint_vcell_cellPos_test, getint_hcell_cellPos_test);
-		pOut->PrintMessage("The Cell Position is : " + to_string(pos.GetCellNum()));
-		pIn->GetPointClicked(x, y);	//Wait for any click
+		if (!pos.GetCellNum()) {
+			pOut->PrintMessage("vCell and hCell are invalid (out of bounds)");
+			pIn->GetPointClicked(x, y);	//Wait for any click
+		}
+		else {
+			pOut->PrintMessage("The Cell Position is : " + to_string(pos.GetCellNum()));
+			pIn->GetPointClicked(x, y);	//Wait for any click
+		}
 	}
 
 	pOut->PrintMessage("FINISHED - (GetCellNumFromPosition) Test, Click to continue");
