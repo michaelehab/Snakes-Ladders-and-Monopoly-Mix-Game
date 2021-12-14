@@ -289,8 +289,14 @@ int main()
 		pOut->PrintMessage("Test " + to_string(i) + " : Please enter an integer cellNum, then press ENTER");
 		int getint_cellnum_test = pIn->GetInteger(pOut);
 		CellPosition pos(getint_cellnum_test);
-		pOut->PrintMessage("vCell : " + to_string(pos.VCell()) + ", hCell : " + to_string(pos.HCell()));
-		pIn->GetPointClicked(x, y);	//Wait for any click
+		if (pos.VCell() == -1 || pos.HCell() == -1) {
+			pOut->PrintMessage("The Cell Num you entered is invalid.");
+			pIn->GetPointClicked(x, y);	//Wait for any click
+		}
+		else {
+			pOut->PrintMessage("vCell : " + to_string(pos.VCell()) + ", hCell : " + to_string(pos.HCell()));
+			pIn->GetPointClicked(x, y);	//Wait for any click
+		}
 	}
 
 	pOut->PrintMessage("FINISHED - (GetCellPositionFromNum) Test, Click to continue");
