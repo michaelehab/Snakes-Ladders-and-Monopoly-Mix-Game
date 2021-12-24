@@ -28,12 +28,37 @@ void AddCardAction::ReadActionParameters()
 	// 2- Read the "cardNumber" parameter and set its data member
 	pOut->PrintMessage("Please enter a card number between 1 and 12 ");
 	cardNumber = pIn->GetInteger(pOut);
-	// 3- Read the "cardPosition" parameter (its cell position) and set its data member
-	pOut->PrintMessage("Please choose a cell to insert the card");
-	cardPosition = pIn->GetCellClicked();
-	// 4- Make the needed validations on the read parameters
-	if (cardNumber < 1 || cardNumber >12)
+	if (cardNumber > 0 && cardNumber <13)
+	{
+		CellPosition position;
+		// 3- Read the "cardPosition" parameter (its cell position) and set its data member
+		pOut->PrintMessage("Please choose a cell to insert the card");
+		position = pIn->GetCellClicked();
+		// 4- Make the needed validations on the read parameters
+		bool isValid = position.IsValidCell();
+		if (isValid)
+		{
+			cardPosition = position;     //if the card position is valid
+		}
+		else
+		{
+			//if the card position is not valid (by default the cardposition is constructed with hcell= -1 and vcell= -1)
+			int x, y;
+			pOut->PrintMessage("The clicked position is out of range, click to continue..");
+			pIn->GetPointClicked(x, y);
+
+		}
+	}
+	else
+	{
+		//if the user entered invalid card number
+		int x, y;
 		cardNumber = -1;
+		pOut->PrintMessage("You entered invalid card number, Click to continue..");
+		pIn->GetPointClicked(x, y);
+		
+
+	}
 		// 5- Clear status bar
 		pOut->ClearStatusBar();
 }
@@ -50,15 +75,18 @@ void AddCardAction::Execute()
 	// 1- The first line of any Action Execution is to read its parameter first
 	ReadActionParameters();
 	// 2- Switch case on cardNumber data member and create the appropriate card object type
-	Card* pCard = NULL; // will point to the card object type
-	switch (cardNumber)
+	Card* pCard = NULL;  // will point to the card object type
+	if ((cardPosition.HCell() != -1) && (cardPosition.VCell() != -1))   //if cardposition is valid position
 	{
-	case 1:
-		pCard = new CardOne(cardPosition);
-		break;
+		switch (cardNumber)
+		{
+		case 1:
+			pCard = new CardOne(cardPosition);
+			break;
 
-		// A- Add the remaining cases
+			// A- Add the remaining cases
 
+		}
 	}
 
 	// 3- if pCard is correctly set in the switch case (i.e. if pCard is pointing to an object -- NOT NULL)

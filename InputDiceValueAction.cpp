@@ -64,10 +64,6 @@ void InputDiceValueAction::Execute()
 		pGrid->AdvanceCurrentPlayer();
 	}
 
-	// if the game ended or the dice value is out of range (or both)
-	else
-		return;
-
 
 }
 

@@ -45,9 +45,8 @@ void RollDiceAction::Execute()
 		// 5- Advance the current player number of pGrid
 		pGrid->AdvanceCurrentPlayer();
 	}
-	// if game ended
-	else
-		return;
+	
+
 
 
 	// NOTE: the above guidelines are the main ones but not a complete set (You may need to add more steps).
