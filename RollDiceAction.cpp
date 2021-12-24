@@ -24,16 +24,20 @@ void RollDiceAction::Execute()
 
 	// 1- Check if the Game is ended (Use the GetEndGame() function of pGrid), if yes, make the appropriate action
 	Grid* pGrid = pManager->GetGrid();
+	Input* pIn = pGrid->GetInput();
 	Output* pOut = pGrid->GetOutput();
 	bool gameEnded = pGrid->GetEndGame();
 
 	// -- If not ended, do the following --:
 	if (!gameEnded)
 	{
+		int x, y;
 		// 2- Generate a random number from 1 to 6 --> This step is done for you
 		srand((int)time(NULL)); // time is for different seed each run
 		int diceNumber = 1 + rand() % 6; // from 1 to 6 --> should change seed
-		pOut->PrintMessage("The dicenumber is " + to_string(diceNumber));
+		pOut->PrintMessage("The dicenumber is " + to_string(diceNumber)+", Click to continue. ");
+		pIn->GetPointClicked(x, y);
+		pOut->ClearStatusBar();
 		// 3- Get the "current" player from pGrid
 		Player* currentPlayer = pGrid->GetCurrentPlayer();
 		// 4- Move the currentPlayer using function Move of class player
@@ -41,6 +45,10 @@ void RollDiceAction::Execute()
 		// 5- Advance the current player number of pGrid
 		pGrid->AdvanceCurrentPlayer();
 	}
+	// if game ended
+	else
+		return;
+
 
 	// NOTE: the above guidelines are the main ones but not a complete set (You may need to add more steps).
 
