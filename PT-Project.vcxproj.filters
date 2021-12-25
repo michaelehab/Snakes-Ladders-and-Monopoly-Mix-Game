@@ -187,6 +187,9 @@
     <ClCompile Include="InputDiceValueAction.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
+    <ClCompile Include="DeleteGameObjectAction.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -299,6 +302,9 @@
     </ClInclude>
     <ClInclude Include="DEFS.h" />
     <ClInclude Include="InputDiceValueAction.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="DeleteGameObjectAction.h">
       <Filter>Actions</Filter>
     </ClInclude>
   </ItemGroup>

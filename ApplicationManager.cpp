@@ -5,6 +5,7 @@
 #include "AddCardAction.h"
 #include "RollDiceAction.h"
 #include "InputDiceValueAction.h"
+#include "DeleteGameObjectAction.h"
 
 ///TODO: Add #include for all action types
 
@@ -80,6 +81,10 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 
 	case TO_DESIGN_MODE:
 		pOut->CreateDesignModeToolBar(); // temporary till you made its action class (CHANGE THIS LATTER)
+		break;
+
+	case DELETE_GAME_OBJECT:
+		pAct = new DeleteGameObjectAction(this);
 		break;
 
 		

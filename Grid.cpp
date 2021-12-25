@@ -58,14 +58,18 @@ bool Grid::AddObjectToCell(GameObject * pNewObject)  // think if any validation 
 
 
 // Note: You may need to change the return type of this function (Think)
-void Grid::RemoveObjectFromCell(const CellPosition & pos)
+bool Grid::RemoveObjectFromCell(const CellPosition & pos)
 {
 	if (pos.IsValidCell()) // Check if valid position
 	{
-		// Note: you can deallocate the object here before setting the pointer to null if it is needed
-
-		CellList[pos.VCell()][pos.HCell()]->SetGameObject(NULL);
+		// Note: you can deallocate the object here before setting the pointer to null if it is needed **
+		if (CellList[pos.VCell()][pos.HCell()]->GetGameObject() != NULL) {
+			delete CellList[pos.VCell()][pos.HCell()];
+			CellList[pos.VCell()][pos.HCell()]->SetGameObject(NULL);
+			return true; // indicating that removal is done
+		}
 	}
+	return false; // if not a valid position
 }
 
 void Grid::UpdatePlayerCell(Player * player, const CellPosition & newPosition)
