@@ -145,8 +145,9 @@ void Grid::AdvanceCurrentPlayer()
 }
 
 bool Grid::SetCurrentPlayer(int p) {
-	if (p < 0 || p >= MaxPlayerCount) return false;
+	if (p < 0 || p >= MaxPlayerCount) return false; // if the player number is invalid
 	else currPlayerNumber = p;
+	return true;
 }
 
 // ========= Other Getters =========

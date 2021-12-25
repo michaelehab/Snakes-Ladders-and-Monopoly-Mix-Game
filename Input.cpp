@@ -48,7 +48,7 @@ int Input::GetInteger(Output* pO) const
 	int count = 0; //Counts the number of integers in the string
 	label = getString(pO);
 	if (!isdigit(label[0]) && label[0] != '-' && label[0] != '+') return 0;
-	for (int i = 1; i < label.length(); i++){
+	for (size_t i = 1; i < label.length(); i++){
 		if (!isdigit(label[i])) return 0;
 	}
 	return stoi(label);
@@ -117,7 +117,7 @@ ActionType Input::GetUserAction() const
 			case ITM_INPUT_DICE_VALUE: return INPUT_DICE_VALUE;
 			case ITM_NEW_GAME: return NEW_GAME;
 			case ITM_SWITCH_TO_DESIGN_MODE: return TO_DESIGN_MODE;
-			case ITM_EXIT_PLAY_MODE: return EXIT_PLAY_MODE;
+			case ITM_EXIT_PLAY_MODE: return EXIT;
 
 			default: return EMPTY;
 			}
