@@ -76,7 +76,7 @@ void AddCardAction::Execute()
 	ReadActionParameters();
 	// 2- Switch case on cardNumber data member and create the appropriate card object type
 	Card* pCard = NULL;  // will point to the card object type
-	if ((cardPosition.HCell() != -1) && (cardPosition.VCell() != -1))   //if cardposition is valid position
+	if (cardPosition.IsValidCell())   //if cardposition is valid position
 	{
 		switch (cardNumber)
 		{

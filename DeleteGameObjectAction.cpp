@@ -28,6 +28,6 @@ void DeleteGameObjectAction::Execute()
 	ReadActionParameters();
 
 	Grid* pGrid = pManager->GetGrid();
-	bool added = pGrid->RemoveObjectFromCell(cellPosition);
-	if (!added) pGrid->PrintErrorMessage("Error: The cell you clicked is already empty ! Click to continue ...");
+	bool deleted = pGrid->RemoveObjectFromCell(cellPosition);
+	if (!deleted) pGrid->PrintErrorMessage("Error: The cell you clicked is already empty ! Click to continue ...");
 }
