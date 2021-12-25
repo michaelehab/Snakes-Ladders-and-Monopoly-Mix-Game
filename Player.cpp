@@ -50,7 +50,7 @@ void Player::ClearDrawing(Output* pOut) const
 {
 	color cellColor = pCell->HasCard() ? UI.CellColor_HasCard : UI.CellColor_NoCard;
 	///TODO: use the appropriate output function to draw the player with "cellColor" (to clear it) **
-	pOut->DrawPlayer(pCell->GetCellPosition(), 0, cellColor);
+	pOut->DrawPlayer(pCell->GetCellPosition(), playerNum, cellColor);
 }
 
 // ====== Game Functions ======
