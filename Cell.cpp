@@ -32,7 +32,6 @@ bool Cell::SetGameObject(GameObject * pGObj)
 	if (pGameObject != NULL && pGObj != NULL) // already contains one
 		return false; // do NOT add it and return false
 
-	// Personal Note : We Have to delete the previous game object before setting the pointer to null
 	pGameObject = pGObj;
 	return true;
 }

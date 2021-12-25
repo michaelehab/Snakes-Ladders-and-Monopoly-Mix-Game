@@ -64,7 +64,9 @@ bool Grid::RemoveObjectFromCell(const CellPosition & pos)
 	{
 		// Note: you can deallocate the object here before setting the pointer to null if it is needed **
 		if (CellList[pos.VCell()][pos.HCell()]->GetGameObject() != NULL) {
-			delete CellList[pos.VCell()][pos.HCell()];
+			// Delete the existing game object
+			delete CellList[pos.VCell()][pos.HCell()]->GetGameObject();
+			// Points to NULL to show that the cell is now empty
 			CellList[pos.VCell()][pos.HCell()]->SetGameObject(NULL);
 			return true; // indicating that removal is done
 		}
