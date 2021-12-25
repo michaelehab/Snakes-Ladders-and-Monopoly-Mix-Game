@@ -43,19 +43,14 @@ int Player::GetTurnCount() const
 void Player::Draw(Output* pOut) const
 {
 	color playerColor = UI.PlayerColors[playerNum];
-
-
-	///TODO: use the appropriate output function to draw the player with "playerColor"
-
+	pOut->DrawPlayer(pCell->GetCellPosition(), playerNum, playerColor);
 }
 
 void Player::ClearDrawing(Output* pOut) const
 {
 	color cellColor = pCell->HasCard() ? UI.CellColor_HasCard : UI.CellColor_NoCard;
-	
-	
-	///TODO: use the appropriate output function to draw the player with "cellColor" (to clear it)
-
+	///TODO: use the appropriate output function to draw the player with "cellColor" (to clear it) **
+	pOut->DrawPlayer(pCell->GetCellPosition(), 0, cellColor);
 }
 
 // ====== Game Functions ======
