@@ -49,9 +49,9 @@ Ladder * Cell::HasLadder() const
 Snake * Cell::HasSnake() const
 {
 
-	///TODO: Implement the following function like HasLadder() function
+	///TODO (Done): Implement the following function like HasLadder() function
 
-	return false; // THIS LINE SHOULD CHANGED WITH YOUR IMPLEMENTATION
+	return dynamic_cast<Snake*>(pGameObject); // THIS LINE SHOULD CHANGED WITH YOUR IMPLEMENTATION
 }
 
 Card * Cell::HasCard() const

@@ -30,8 +30,14 @@ void AddLadderAction::ReadActionParameters()
 
     
 
-	///TODO: Make the needed validations on the read parameters
+	///TODO (Done): Make the needed validations on the read parameters
 
+	if (startPos.HCell() != endPos.HCell())
+		pOut->PrintMessage("End cell and the Start cell must be in the same column!Click to continue ...");
+	else if (startPos.VCell() > endPos.VCell())
+		pOut->PrintMessage("End cell canbot be smaller than start cell!Click to continue ...");
+	else
+		Execute();
 	
 
 	// Clear messages
