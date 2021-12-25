@@ -6,6 +6,7 @@
 #include "RollDiceAction.h"
 #include "InputDiceValueAction.h"
 #include "DeleteGameObjectAction.h"
+#include "NewGameAction.h"
 
 ///TODO: Add #include for all action types
 
@@ -85,6 +86,10 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 
 	case DELETE_GAME_OBJECT:
 		pAct = new DeleteGameObjectAction(this);
+		break;
+
+	case NEW_GAME:
+		pAct = new NewGameAction(this);
 		break;
 
 		

@@ -49,6 +49,8 @@ public:
 	                                                                          // Clears the player's circle from the previous cell
 	    																	  // and  Draws it in the new cell
 
+	void StartNewGame(); // Restarts players' positions, wallets, and turn returns to player 0.
+
 	// ========= Setters and Getters Functions =========
 
 	Input * GetInput() const;	// Gets a Pointer to the Input
@@ -63,7 +65,7 @@ public:
 	void AdvanceCurrentPlayer();     // Increments the currPlayerNum and if reaches MaxPlayerCount reset to 0 (using %)
 
 	///TODO: add any needed setter/getter "EXCEPT" ANY setters or getters of "CellList" or "PlayerList" (Forbidden for class Responsibilities)
-
+	bool SetCurrentPlayer(int p);
 	// ========= Other Getters =========
 	
 	Player * GetCurrentPlayer() const;	// Gets a Pointer to the Current Player	                                    
