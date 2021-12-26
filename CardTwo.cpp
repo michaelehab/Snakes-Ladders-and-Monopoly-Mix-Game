@@ -19,6 +19,6 @@ void CardTwo::Apply(Grid* pGrid, Player* pPlayer)
 	Ladder * next_ladder = pGrid->GetNextLadder(pPlayer->GetCell()->GetCellPosition());
 	if (next_ladder != NULL) {
 		Cell next_ladder_cell(next_ladder->GetPosition());
-		pPlayer->SetCell(next_ladder_cell);
+		pPlayer->SetCell(&next_ladder_cell);
 	}
 }

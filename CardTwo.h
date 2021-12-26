@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Card.h"
-
+#include"Ladder.h"
 // [ CardTwo ] Summary:
 // Moves the player forward to the start of the next ladder in the grid.
 // If no ladders ahead, do nothing.
