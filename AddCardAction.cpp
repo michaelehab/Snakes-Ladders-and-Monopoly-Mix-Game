@@ -1,9 +1,9 @@
 #include "AddCardAction.h"
-
+#include "CardTwo.h"
 #include "Input.h"
 #include "Output.h"
 #include "CardOne.h"
-
+#include "CardSix.h"
 AddCardAction::AddCardAction(ApplicationManager* pApp) : Action(pApp)
 {
 	// Initializes the pManager pointer of Action with the passed pointer
@@ -28,7 +28,7 @@ void AddCardAction::ReadActionParameters()
 	// 2- Read the "cardNumber" parameter and set its data member
 	pOut->PrintMessage("Please enter a card number between 1 and 12 ");
 	cardNumber = pIn->GetInteger(pOut);
-	if (cardNumber > 0 && cardNumber <13)
+	if (cardNumber > 0 && cardNumber < 13)
 	{
 		CellPosition position;
 		// 3- Read the "cardPosition" parameter (its cell position) and set its data member
@@ -56,11 +56,11 @@ void AddCardAction::ReadActionParameters()
 		cardNumber = -1;
 		pOut->PrintMessage("You entered invalid card number, Click to continue..");
 		pIn->GetPointClicked(x, y);
-		
+
 
 	}
-		// 5- Clear status bar
-		pOut->ClearStatusBar();
+	// 5- Clear status bar
+	pOut->ClearStatusBar();
 }
 
 void AddCardAction::Execute()
@@ -83,7 +83,12 @@ void AddCardAction::Execute()
 		case 1:
 			pCard = new CardOne(cardPosition);
 			break;
-
+		case 2:
+			pCard = new CardTwo(cardPosition);
+			break;
+		case 6:
+			pCard = new CardSix(cardPosition);
+			break;
 			// A- Add the remaining cases
 
 		}
