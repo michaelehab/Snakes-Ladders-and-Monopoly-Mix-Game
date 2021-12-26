@@ -5,16 +5,16 @@
 
 class Player
 {
-	Cell * pCell;		   // pointer to the current Cell of the player
-	Grid* pGrid;
+	Cell * pCell;		   // pointer to the current Cell of the player.
+	Grid* pGrid;		   // 
 	GameObject *pGameObject;
-	const int playerNum;   // the player number (from 0 to MaxPlayerCount-1)
+	const int playerNum;   // the player number (from 0 to MaxPlayerCount-1) 
 	                       // player number does NOT change after construction (const.)
 
-	int stepCount;		   // step count which is the same as his cellNum: from 1 to NumVerticalCells*NumHorizontalCells
-	int wallet;		       // player's wallet (how many coins he has -- integer)
-	int justRolledDiceNum; // the current dice number which is just rolled by the player
-	int turnCount;         // a counter that starts with 0, is incremented with each dice roll
+	int stepCount;		   // step count which is the same as his cellNum: from 1 to NumVerticalCells*NumHorizontalCells 
+	int wallet;		       // player's wallet (how many coins he has -- integer) 
+	int justRolledDiceNum; // the current dice number which is just rolled by the player 
+	int turnCount;         // a counter that starts with 0, is incremented with each dice roll 
 	                       // and reset again when reached 3
 	                       // it is used to indicate when to move and when to add to your wallet
 	

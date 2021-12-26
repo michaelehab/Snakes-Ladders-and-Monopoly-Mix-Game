@@ -1,5 +1,4 @@
 #include "ApplicationManager.h"
-
 #include "Grid.h"
 #include "AddLadderAction.h"
 #include "AddCardAction.h"

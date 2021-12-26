@@ -32,12 +32,14 @@ void AddLadderAction::ReadActionParameters()
 
 	///TODO (Done): Make the needed validations on the read parameters
 
-	if (startPos.HCell() != endPos.HCell())
-		pOut->PrintMessage("End cell and the Start cell must be in the same column!Click to continue ...");
-	else if (startPos.VCell() > endPos.VCell())
-		pOut->PrintMessage("End cell canbot be smaller than start cell!Click to continue ...");
-	else
-		Execute();
+	if (startPos.HCell() != endPos.HCell()) {
+		pGrid->PrintErrorMessage("Error: End cell and the Start cell must be in the same column! Click to continue ...");
+		startPos = -1; endPos = -1;
+	}
+	else if (startPos.VCell() < endPos.VCell()){
+		pGrid->PrintErrorMessage("Error: End cell cannot be smaller than start cell! Click to continue ...");
+		startPos = -1; endPos = -1;
+		}
 	
 
 	// Clear messages

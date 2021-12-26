@@ -8,6 +8,10 @@ Player::Player(Cell * pCell, int playerNum) : stepCount(0), wallet(100), playerN
 	this->turnCount = 0;
 
 	// Make all the needed initialization or validations
+	
+	
+	
+	justRolledDiceNum = 0;
 }
 
 // ====== Setters and Getters ======
