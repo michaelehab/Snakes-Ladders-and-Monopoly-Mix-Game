@@ -14,7 +14,9 @@ public:
 
 	virtual void Draw(Output* pOut) const; // Draws a ladder from its start cell to its end cell
 
-	virtual void Apply(Grid* pGrid, Player* pPlayer); // Applys the effect of the ladder by moving player to ladder's end cell
+	virtual void Apply(Grid* pGrid, Player* pPlayer); // Applies the effect of the ladder by moving player to ladder's end cell
+
+	virtual void Save(ofstream& outFile, ObjectType ObjType); //Saves the start cell and the end cell of Ladder in a file
 
 	CellPosition GetEndPosition() const; // A getter for the endCellPos data member
 

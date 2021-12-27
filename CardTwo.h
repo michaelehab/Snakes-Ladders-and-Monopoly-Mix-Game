@@ -18,6 +18,8 @@ public:
 	virtual void Apply(Grid* pGrid, Player* pPlayer); // Applies the effect of CardTwo on the passed Player
 													  // by moving him/her to the next ladder in the grid;
 
+	void Save(ofstream& outFile, ObjectType ObjType); // Overriding the Card Save member function
+
 	virtual ~CardTwo(); // A Virtual Destructor
 };
 

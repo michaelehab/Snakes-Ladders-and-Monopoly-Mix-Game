@@ -53,3 +53,13 @@ void CardOne::Apply(Grid* pGrid, Player* pPlayer)
 	pPlayer->SetWallet(newWalletValue);      //sets the new value of the wallet after the decrement
 	
 }
+
+void CardOne::Save(ofstream& outFile, ObjectType ObjType)
+{
+	if (ObjType == Cards)
+	{
+		// Calling the parent class save function that saves the type and cell to the file
+		Card::Save(outFile, ObjType);
+		outFile << walletAmount << std::endl;
+	}
+}

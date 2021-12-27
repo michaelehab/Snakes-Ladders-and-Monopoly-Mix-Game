@@ -173,6 +173,30 @@ Ladder * Grid::GetNextLadder(const CellPosition & position)
 	return NULL; // not found
 }
 
+int Grid::GetNumberOfObjects(ObjectType ObjType) {
+	int count = 0;
+
+	for (int i = NumVerticalCells - 1; i >= 0; i--){
+		for (int j = 0; j < NumHorizontalCells; j++){
+			switch (ObjType){
+				case Ladders:
+					if (CellList[i][j]->HasLadder()) count++;
+					break;
+
+				case Snakes:
+					if (CellList[i][j]->HasSnake()) count++;
+					break;
+
+				case Cards:
+					if (CellList[i][j]->HasCard()) count++;
+					break;
+			}
+		}
+	}
+	// The total number of the passed object type
+	return count;
+}
+
 
 // ========= User Interface Functions =========
 
@@ -231,6 +255,17 @@ void Grid::PrintErrorMessage(string msg)
 	int x, y;
 	pIn->GetPointClicked(x, y);
 	pOut->ClearStatusBar();
+}
+
+void Grid::SaveAll(ofstream& outFile, ObjectType ObjType){
+	for (int i = NumVerticalCells - 1; i >= 0; i--)
+	{
+		for (int j = 0; j < NumHorizontalCells; j++)
+		{
+			if (CellList[i][j]->GetGameObject()) CellList[i][j]->GetGameObject()->Save(outFile, ObjType);
+		}
+	}
+
 }
 
 

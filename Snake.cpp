@@ -31,4 +31,12 @@ CellPosition Snake::GetEndPosition() const
 {
 	return endCellPos;
 }
+
+void Snake::Save(ofstream& outFile, ObjectType ObjType)
+{
+	if (ObjType == Snakes)
+	{
+		outFile << position.GetCellNum() << ' ' << endCellPos.GetCellNum() << std::endl;
+	}
+}
 Snake::~Snake() {};

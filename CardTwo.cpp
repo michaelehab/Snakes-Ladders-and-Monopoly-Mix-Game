@@ -22,3 +22,13 @@ void CardTwo::Apply(Grid* pGrid, Player* pPlayer)
 		pPlayer->SetCell(&next_ladder_cell);
 	}
 }
+
+void CardTwo::Save(ofstream& outFile, ObjectType ObjType)
+{
+	if (ObjType == Cards)
+	{
+		// Calling the parent class save function that saves the type and cell to the file
+		Card::Save(outFile, ObjType);
+		// No Card Parameters here
+	}
+}

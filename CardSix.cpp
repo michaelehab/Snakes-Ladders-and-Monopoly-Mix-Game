@@ -28,6 +28,17 @@ void CardSix::Apply(Grid* pGrid, Player* pPlayer)
 	Cell CellToMoveTo(CellPositionToMoveTo->GetCellPositionFromNum(CellNumToMoveTo));
 	pPlayer->SetCell(&CellToMoveTo);      //sets the pCell of the player with the new cell position
 }
+
+void CardSix::Save(ofstream& outFile, ObjectType ObjType)
+{
+	if (ObjType == Cards)
+	{
+		// Calling the parent class save function that saves the type and cell to the file
+		Card::Save(outFile, ObjType);
+		outFile << CellNumToMoveTo << std::endl;
+	}
+}
+
 CardSix:: ~CardSix()
 {
 

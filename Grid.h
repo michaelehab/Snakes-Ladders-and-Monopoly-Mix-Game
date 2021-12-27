@@ -70,6 +70,7 @@ public:
 	
 	Player * GetCurrentPlayer() const;	// Gets a Pointer to the Current Player	                                    
 	Ladder * GetNextLadder(const CellPosition & position);  // Gets a Pointer to the first Ladder after the passed "position"
+	int GetNumberOfObjects(ObjectType ObjType); // Gets the total number of a specific game object
 
 	// ========= User Interface Functions =========
 
@@ -81,6 +82,8 @@ public:
 
 	void PrintErrorMessage(string msg); // Prints an error message on statusbar, Waits for mouse click then clears statusbar
 									    // We added this function once here because it is used many times by other classes
+
+	void SaveAll(ofstream& outFile, ObjectType ObjType);
 
 	~Grid(); // A destructor for any needed deallcations
 };
