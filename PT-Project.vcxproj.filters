@@ -205,6 +205,9 @@
     <ClCompile Include="SaveGridAction.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
+    <ClCompile Include="OpenGridAction.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -335,6 +338,9 @@
       <Filter>GameObjects\Cards</Filter>
     </ClInclude>
     <ClInclude Include="SaveGridAction.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGridAction.h">
       <Filter>Actions</Filter>
     </ClInclude>
   </ItemGroup>

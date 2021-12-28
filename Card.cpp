@@ -45,6 +45,12 @@ void Card::Save(ofstream& outFile, ObjectType ObjType)
 	}
 }
 
+void Card::Load(ifstream& InFile) {
+	int cardPosition;
+	InFile >> cardPosition;
+	position = CellPosition(cardPosition);
+}
+
 Card::~Card()
 {
 }

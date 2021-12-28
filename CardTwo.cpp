@@ -32,3 +32,7 @@ void CardTwo::Save(ofstream& outFile, ObjectType ObjType)
 		// No Card Parameters here
 	}
 }
+
+void CardTwo::Load(ifstream& InFile) {
+	Card::Load(InFile);
+}

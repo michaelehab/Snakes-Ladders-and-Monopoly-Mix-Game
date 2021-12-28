@@ -40,6 +40,13 @@ void Ladder::Save(ofstream& outFile, ObjectType ObjType)
 	}
 }
 
+void Ladder::Load(ifstream& InFile){
+	int startCellNum, endCellNum;
+	InFile >> startCellNum >> endCellNum;
+	position = CellPosition(startCellNum);
+	endCellPos = CellPosition(endCellNum);
+}
+
 CellPosition Ladder::GetEndPosition() const
 {
 	return endCellPos;

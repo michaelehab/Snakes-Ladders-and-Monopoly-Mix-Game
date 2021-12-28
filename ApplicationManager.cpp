@@ -1,6 +1,7 @@
 #include "ApplicationManager.h"
 #include "Grid.h"
 #include "SaveGridAction.h"
+#include "OpenGridAction.h"
 #include "AddLadderAction.h"
 #include "AddCardAction.h"
 #include "RollDiceAction.h"
@@ -96,7 +97,10 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		pAct = new SaveGridAction(this);
 		break;
 
-		
+	case OPEN_GRID:
+		pAct = new OpenGridAction(this);
+		break;
+
 		///TODO: Add a case for EACH Action type in the Design mode or Play mode
 	case INPUT_DICE_VALUE:
 		pAct = new InputDiceValueAction(this);
