@@ -63,3 +63,10 @@ void CardOne::Save(ofstream& outFile, ObjectType ObjType)
 		outFile << walletAmount << std::endl;
 	}
 }
+
+void CardOne::Load(ifstream& InFile) {
+	Card::Load(InFile);
+	int wallet;
+	InFile >> wallet;
+	walletAmount = wallet;
+}

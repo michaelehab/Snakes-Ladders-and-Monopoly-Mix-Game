@@ -1,4 +1,5 @@
 #include "CardSix.h"
+
 CardSix::CardSix(const CellPosition& pos) : Card(pos) // set the cell position of the card
 {
 	cardNumber = 6; // set the inherited cardNumber data member with the card number (6 here)
@@ -37,6 +38,13 @@ void CardSix::Save(ofstream& outFile, ObjectType ObjType)
 		Card::Save(outFile, ObjType);
 		outFile << CellNumToMoveTo << std::endl;
 	}
+}
+
+void CardSix::Load(ifstream& InFile) {
+	Card::Load(InFile);
+	int CellNum;
+	InFile >> CellNum;
+	CellNumToMoveTo = CellNum;
 }
 
 CardSix:: ~CardSix()

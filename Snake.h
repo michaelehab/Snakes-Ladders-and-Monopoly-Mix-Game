@@ -12,7 +12,9 @@ public:
 
 	virtual void Apply(Grid* pGrid, Player* pPlayer); // Applies the effect of the Snake by moving player to the Snake's end cell
 
-	void Save(ofstream& outFile, ObjectType ObjType); //Saves the start cell and the end cell of Snake in a file
+	void Save(ofstream& outFile, ObjectType ObjType); // Saves the start cell and the end cell of Snake in a file
+
+	virtual void Load(ifstream& InFile); // Loads the start cell and the end cell of Snake from a file
 
 	CellPosition GetEndPosition()const;
 

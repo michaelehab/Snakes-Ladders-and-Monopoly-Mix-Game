@@ -28,6 +28,8 @@ public:
 
 	void Save(ofstream& outFile, ObjectType ObjType); // Saves the card type, cell and parameters (if any)
 
+	virtual void Load(ifstream& InFile); // Loads the data members of the card
+
 	virtual ~Card(); // A Virtual Destructor
 };
 
