@@ -13,7 +13,6 @@ class GameObject;
 class Ladder;
 class Card;
 class Player;
-
 class Grid
 {
 	Output * pOut;   // A pointer to the Output object

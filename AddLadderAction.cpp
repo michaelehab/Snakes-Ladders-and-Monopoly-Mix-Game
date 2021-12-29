@@ -29,17 +29,30 @@ void AddLadderAction::ReadActionParameters()
 	endPos = pIn->GetCellClicked();
 
     
-
-	///TODO (Done): Make the needed validations on the read parameters
-
+	
+	///TODO : Make the needed validations on the read parameters
 	if (startPos.HCell() != endPos.HCell()) {
 		pGrid->PrintErrorMessage("Error: End cell and the Start cell must be in the same column! Click to continue ...");
-		startPos = -1; endPos = -1;
+		startPos = CellPosition(-1,-1);
+		endPos = CellPosition(-1, -1);
 	}
 	else if (startPos.VCell() < endPos.VCell()){
 		pGrid->PrintErrorMessage("Error: End cell cannot be smaller than start cell! Click to continue ...");
-		startPos = -1; endPos = -1;
+		startPos = CellPosition(-1, -1);
+		endPos = CellPosition(-1, -1);
 		}
+	/*else {
+		for (;pCell.)
+		{
+			if (pCell.HasLadder())
+			{
+				pGrid->PrintErrorMessage("Error: The ladders cannot overlap! Click to continue ...");
+				startPos = CellPosition(-1, -1);
+				endPos = CellPosition(-1, -1);
+			}
+
+		}
+	}*/
 	
 
 	// Clear messages
@@ -53,13 +66,15 @@ void AddLadderAction::Execute()
 	// The first line of any Action Execution is to read its parameter first 
 	// and hence initializes its data members
 	ReadActionParameters();
+	if (startPos.HCell() == -1 || endPos.VCell() == -1)
+		return;
 
 	// Create a Ladder object with the parameters read from the user
 	Ladder * pLadder = new Ladder(startPos, endPos);
 
 	Grid * pGrid = pManager->GetGrid(); // We get a pointer to the Grid from the ApplicationManager
 
-	// Add the card object to the GameObject of its Cell:
+	// Add the Ladder object to the GameObject of its Cell:
 	bool added = pGrid->AddObjectToCell(pLadder);
 
 	// if the GameObject cannot be added

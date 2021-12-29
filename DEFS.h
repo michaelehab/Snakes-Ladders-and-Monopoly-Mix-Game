@@ -35,6 +35,6 @@ enum ActionType // The actions supported (add more as needed)
 	STATUS 				// Inside StatusBar Area
 };
 
-enum ObjectType { Ladders, Snakes, Cards , Player  };
+enum ObjectType { Ladders, Snakes, Cards  };
 
 #endif
