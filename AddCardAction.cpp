@@ -4,6 +4,7 @@
 #include "Output.h"
 #include "CardOne.h"
 #include "CardSix.h"
+#include "CardNine.h"
 AddCardAction::AddCardAction(ApplicationManager* pApp) : Action(pApp)
 {
 	// Initializes the pManager pointer of Action with the passed pointer
@@ -88,6 +89,9 @@ void AddCardAction::Execute()
 			break;
 		case 6:
 			pCard = new CardSix(cardPosition);
+			break;
+		case 9:
+			pCard = new CardNine(cardPosition);
 			break;
 			// A- Add the remaining cases
 

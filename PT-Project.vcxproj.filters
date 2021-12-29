@@ -208,6 +208,9 @@
     <ClCompile Include="OpenGridAction.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
+    <ClCompile Include="CardNine.cpp">
+      <Filter>GameObjects\Cards</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -342,6 +345,9 @@
     </ClInclude>
     <ClInclude Include="OpenGridAction.h">
       <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="CardNine.h">
+      <Filter>GameObjects\Cards</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -133,6 +133,7 @@
     <ClCompile Include="AddLadderAction.cpp" />
     <ClCompile Include="ApplicationManager.cpp" />
     <ClCompile Include="Card.cpp" />
+    <ClCompile Include="CardNine.cpp" />
     <ClCompile Include="CardOne.cpp" />
     <ClCompile Include="CardSix.cpp" />
     <ClCompile Include="CardTwo.cpp" />
@@ -195,6 +196,7 @@
     <ClInclude Include="AddLadderAction.h" />
     <ClInclude Include="ApplicationManager.h" />
     <ClInclude Include="Card.h" />
+    <ClInclude Include="CardNine.h" />
     <ClInclude Include="CardOne.h" />
     <ClInclude Include="CardSix.h" />
     <ClInclude Include="CardTwo.h" />
