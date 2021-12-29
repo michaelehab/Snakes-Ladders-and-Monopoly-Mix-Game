@@ -50,7 +50,7 @@ void CardNine::Apply(Grid* pGrid, Player* pPlayer)
 	//indicates whether a player bought the station or not
 	//if no player bought the station ,then it asks the player whether he would like to buy it or not
 
-	if (p != NULL)              
+	if (p == NULL)              
 	{
 		pOut->PrintMessage(" Press 1 if you want to buy this station and 0 if you don`t want. ");
 		//if the player wants to buy the station, then it sets the pointer(p) to the current player 
