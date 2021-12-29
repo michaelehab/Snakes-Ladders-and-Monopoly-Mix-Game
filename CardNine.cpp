@@ -67,7 +67,7 @@ void CardNine::Apply(Grid* pGrid, Player* pPlayer)
 
 	//if the current player is not the owner of the card then deduct the fees from the current player`s wallet
 	//and add the fees to the wallet of the the owner of the station
-	if (pPlayer != p)
+	if ((pPlayer != p)&&(p !=NULL))
 	{
 		int currentPlayerWallet = pPlayer->GetWallet();     
 		pPlayer->SetWallet(currentPlayerWallet - fees);
