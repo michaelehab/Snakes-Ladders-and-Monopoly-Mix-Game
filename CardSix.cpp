@@ -26,8 +26,9 @@ void CardSix::Apply(Grid* pGrid, Player* pPlayer)
 {
 	Card::Apply(pGrid, pPlayer); //Call Apply() of the base class Card to print the message that you reached this card number
 	CellPosition* CellPositionToMoveTo;
-	Cell CellToMoveTo(CellPositionToMoveTo->GetCellPositionFromNum(CellNumToMoveTo));
-	pPlayer->SetCell(&CellToMoveTo);      //sets the pCell of the player with the new cell position
+	//sets the new position of the player as the position of the cell number to move to
+	pGrid->UpdatePlayerCell(pPlayer, CellPositionToMoveTo->GetCellPositionFromNum(CellNumToMoveTo)); 
+
 }
 
 void CardSix::Save(ofstream& outFile, ObjectType ObjType)

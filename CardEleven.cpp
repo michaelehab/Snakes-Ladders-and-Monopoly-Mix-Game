@@ -1,19 +1,19 @@
-#include "CardNine.h"
-int CardNine::CardPrice = 0;
-int CardNine::fees = 0;
-Player* CardNine::p = NULL;
-bool CardNine::IsBought = 0;
-CardNine::CardNine(const CellPosition& pos) : Card(pos) // set the cell position of the card
+#include "CardEleven.h"
+int CardEleven::CardPrice = 0;
+int CardEleven::fees = 0;
+Player* CardEleven::p = NULL;
+bool CardEleven::IsBought = 0;
+CardEleven::CardEleven(const CellPosition& pos) : Card(pos) // set the cell position of the card
 {
-	cardNumber = 9; // set the inherited cardNumber data member with the card number (9 here)
-	
+	cardNumber = 11; // set the inherited cardNumber data member with the card number (11 here)
+
 }
 
-CardNine::~CardNine(void)
+CardEleven::~CardEleven(void)
 {
 }
 
-void CardNine::ReadCardParameters(Grid* pGrid)
+void CardEleven::ReadCardParameters(Grid* pGrid)
 {
 
 	//Get a Pointer to the Input / Output Interfaces from the Grid
@@ -23,7 +23,7 @@ void CardNine::ReadCardParameters(Grid* pGrid)
 	// Sets the price of this card
 	if ((CardPrice == 0) && (fees == 0))
 	{
-		pOut->PrintMessage("New CardNine: Enter the Card price. ");
+		pOut->PrintMessage("New CardEleven: Enter the Card price. ");
 		CardPrice = pIn->GetInteger(pOut);
 
 		// sets the fees that the player pays to the owner of the card
@@ -33,14 +33,14 @@ void CardNine::ReadCardParameters(Grid* pGrid)
 	else
 	{
 		int x, y;
-		pOut->PrintMessage("New CardNine, Click to continue.. ");
+		pOut->PrintMessage("New CardEleven, Click to continue.. ");
 		pIn->GetPointClicked(x, y);
 	}
 	// 3- Clear the status bar
 	pOut->ClearStatusBar();
 }
 
-void CardNine::Apply(Grid* pGrid, Player* pPlayer)
+void CardEleven::Apply(Grid* pGrid, Player* pPlayer)
 {
 	//Call Apply() of the base class Card to print the message that you reached this card number
 	Output* pOut = pGrid->GetOutput();
@@ -50,14 +50,14 @@ void CardNine::Apply(Grid* pGrid, Player* pPlayer)
 	//indicates whether a player bought the station or not
 	//if no player bought the station ,then it asks the player whether he would like to buy it or not
 
-	if (p == NULL)              
+	if (p == NULL)
 	{
 		pOut->PrintMessage(" Press 1 if you want to buy this station and 0 if you don`t want. ");
 		//if the player wants to buy the station, then it sets the pointer(p) to the current player 
 		IsBought = pIn->GetInteger(pOut);
 		if (IsBought)
 		{
-			p =pPlayer;
+			p = pPlayer;
 			int currentwallet = pPlayer->GetWallet();
 			pPlayer->SetWallet(currentwallet - CardPrice);          //Deduct the card price from the player`s wallet
 
@@ -67,9 +67,9 @@ void CardNine::Apply(Grid* pGrid, Player* pPlayer)
 
 	//if the current player is not the owner of the card then deduct the fees from the current player`s wallet
 	//and add the fees to the wallet of the the owner of the station
-	if ((pPlayer != p)&&(p !=NULL))
+	if ((pPlayer != p) && (p != NULL))
 	{
-		int currentPlayerWallet = pPlayer->GetWallet();     
+		int currentPlayerWallet = pPlayer->GetWallet();
 		pPlayer->SetWallet(currentPlayerWallet - fees);
 		int cardOwnerWallet = p->GetWallet();
 		p->SetWallet(cardOwnerWallet + fees);
@@ -77,7 +77,7 @@ void CardNine::Apply(Grid* pGrid, Player* pPlayer)
 
 }
 
-void CardNine::Save(ofstream& outFile, ObjectType ObjType)
+void CardEleven::Save(ofstream& outFile, ObjectType ObjType)
 {
 	if (ObjType == Cards)
 	{
@@ -85,12 +85,12 @@ void CardNine::Save(ofstream& outFile, ObjectType ObjType)
 		Card::Save(outFile, ObjType);
 		outFile << CardPrice << std::endl;
 		outFile << fees << std::endl;
-		
+
 
 	}
 }
 
-void CardNine::Load(ifstream& InFile) {
+void CardEleven::Load(ifstream& InFile) {
 	Card::Load(InFile);
 
 	int price;
