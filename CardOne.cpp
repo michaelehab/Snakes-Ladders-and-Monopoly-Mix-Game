@@ -28,6 +28,12 @@ void CardOne::ReadCardParameters(Grid* pGrid)
 	
 	pOut->PrintMessage("New CardOne: Enter the wallet amount to decrement ");
 	walletAmount = pIn->GetInteger(pOut);
+	if (walletAmount < 0)
+	{
+		int x, y;
+		pOut->PrintMessage("you entered invalid value, Click to continue.");
+		pIn->GetPointClicked(x, y);
+	}
 
 	// [ Note ]:
 	// In CardOne, the only parameter of CardOne is the "walletAmount" value to decrease from player
@@ -37,6 +43,13 @@ void CardOne::ReadCardParameters(Grid* pGrid)
 	// 3- Clear the status bar
 	pOut->ClearStatusBar();
 }
+bool CardOne::CheckInputValidity()
+{
+	if (walletAmount < 0)
+		return 0;
+	return 1;
+}
+
 
 void CardOne::Apply(Grid* pGrid, Player* pPlayer)
 {

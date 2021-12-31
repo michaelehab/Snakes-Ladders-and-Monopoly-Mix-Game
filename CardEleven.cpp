@@ -25,10 +25,28 @@ void CardEleven::ReadCardParameters(Grid* pGrid)
 	{
 		pOut->PrintMessage("New CardEleven: Enter the Card price. ");
 		CardPrice = pIn->GetInteger(pOut);
+		if (CardPrice < 0)
+		{
+
+			int x, y;
+			pOut->PrintMessage("you entered invalid value, Click to continue.");
+			pIn->GetPointClicked(x, y);
+			pOut->ClearStatusBar();
+			return;
+		}
 
 		// sets the fees that the player pays to the owner of the card
 		pOut->PrintMessage("Please enter the fees.");
 		fees = pIn->GetInteger(pOut);
+		if (fees < 0)
+		{
+
+			int x, y;
+			pOut->PrintMessage("you entered invalid value, Click to continue.");
+			pIn->GetPointClicked(x, y);
+			pOut->ClearStatusBar();
+			return;
+		}
 	}
 	else
 	{
@@ -38,6 +56,16 @@ void CardEleven::ReadCardParameters(Grid* pGrid)
 	}
 	// 3- Clear the status bar
 	pOut->ClearStatusBar();
+}
+bool CardEleven::CheckInputValidity()
+{
+	if (CardPrice < 0 || fees < 0)
+	{
+		CardPrice = 0;
+		fees = 0;
+		return 0;
+	}
+	return 1;
 }
 
 void CardEleven::Apply(Grid* pGrid, Player* pPlayer)

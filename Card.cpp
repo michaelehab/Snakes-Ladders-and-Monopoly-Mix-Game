@@ -28,6 +28,10 @@ void Card::ReadCardParameters(Grid * pGrid)
 	// we should not make it pure virtual because some Cards doesn't have parameters
 	// and if we make it pure virtual, that will make those Cards abstract classes
 }
+bool Card::CheckInputValidity()
+{
+	return 1;
+}
 
 void Card::Apply(Grid* pGrid, Player* pPlayer) 
 {

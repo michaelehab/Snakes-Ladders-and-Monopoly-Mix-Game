@@ -12,7 +12,9 @@ class CardEleven : public Card
 		virtual void ReadCardParameters(Grid* pGrid); // Reads the parameters of CardEleven
 
 		virtual void Apply(Grid* pGrid, Player* pPlayer); // Applies the effect of CardEleven on the passed Player
-														 
+		
+		virtual bool CheckInputValidity();
+
 		void Save(ofstream& outFile, ObjectType ObjType); // Overriding the Card Save member function
 
 		void Load(ifstream& InFile); // Overriding the Card Load member function

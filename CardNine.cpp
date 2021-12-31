@@ -25,10 +25,28 @@ void CardNine::ReadCardParameters(Grid* pGrid)
 	{
 		pOut->PrintMessage("New CardNine: Enter the Card price. ");
 		CardPrice = pIn->GetInteger(pOut);
+		if (CardPrice < 0)
+		{
+			
+			int x, y;
+			pOut->PrintMessage("you entered invalid value, Click to continue.");
+			pIn->GetPointClicked(x, y);
+			pOut->ClearStatusBar();
+			return;
+		}
 
 		// sets the fees that the player pays to the owner of the card
 		pOut->PrintMessage("Please enter the fees.");
 		fees = pIn->GetInteger(pOut);
+		if (fees < 0)
+		{
+			
+			int x, y;
+			pOut->PrintMessage("you entered invalid value, Click to continue.");
+			pIn->GetPointClicked(x, y);
+			pOut->ClearStatusBar();
+			return;
+		}
 	}
 	else
 	{
@@ -55,13 +73,15 @@ void CardNine::Apply(Grid* pGrid, Player* pPlayer)
 		pOut->PrintMessage(" Press 1 if you want to buy this station and 0 if you don`t want. ");
 		//if the player wants to buy the station, then it sets the pointer(p) to the current player 
 		IsBought = pIn->GetInteger(pOut);
-		if (IsBought)
-		{
-			p =pPlayer;
-			int currentwallet = pPlayer->GetWallet();
-			pPlayer->SetWallet(currentwallet - CardPrice);          //Deduct the card price from the player`s wallet
+		
+			if (IsBought)
+			{
+				p = pPlayer;
+				int currentwallet = pPlayer->GetWallet();
+				pPlayer->SetWallet(currentwallet - CardPrice);          //Deduct the card price from the player`s wallet
 
-		}
+			}
+		
 
 	}
 
@@ -88,6 +108,16 @@ void CardNine::Save(ofstream& outFile, ObjectType ObjType)
 		
 
 	}
+}
+bool CardNine::CheckInputValidity()
+{
+	if (CardPrice < 0 || fees < 0)
+	{
+		CardPrice = 0;
+		fees = 0;
+		return 0;
+	}
+	return 1;
 }
 
 void CardNine::Load(ifstream& InFile) {

@@ -16,12 +16,24 @@ void CardSix::ReadCardParameters(Grid* pGrid)
 
 	pOut->PrintMessage("New CardSix: Enter the cell to move to ");
 	CellNumToMoveTo = pIn->GetInteger(pOut);
+	if (CellNumToMoveTo <= 0 || CellNumToMoveTo > 99)
+	{
+		int x, y;
+		pOut->PrintMessage("you entered invalid value, Click to continue.");
+		pIn->GetPointClicked(x, y);
+
+	}
 	
 
 	// 3- Clear the status bar
 	pOut->ClearStatusBar();
 }
-
+bool CardSix::CheckInputValidity()
+{
+	if (CellNumToMoveTo <= 0 || CellNumToMoveTo > 99)
+		return 0;
+	return 1;
+}
 void CardSix::Apply(Grid* pGrid, Player* pPlayer)
 {
 	Card::Apply(pGrid, pPlayer); //Call Apply() of the base class Card to print the message that you reached this card number

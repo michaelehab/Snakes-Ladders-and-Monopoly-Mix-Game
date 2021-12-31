@@ -75,7 +75,7 @@ void AddCardAction::Execute()
 
 
 	// == Here are some guideline steps (numbered below) to implement this function ==
-
+	
 	// 1- The first line of any Action Execution is to read its parameter first
 	ReadActionParameters();
 	// 2- Switch case on cardNumber data member and create the appropriate card object type
@@ -106,10 +106,11 @@ void AddCardAction::Execute()
 		case 11:
 			pCard = new CardEleven(cardPosition);
 			break;
-			
+
 
 		}
 	}
+	
 
 	// 3- if pCard is correctly set in the switch case (i.e. if pCard is pointing to an object -- NOT NULL)
 	if (pCard)
@@ -118,14 +119,22 @@ void AddCardAction::Execute()
 		Grid* pGrid = pManager->GetGrid();
 		// B- Make the "pCard" reads its card parameters: ReadCardParameters(), It is virtual and depends on the card type
 		pCard->ReadCardParameters(pGrid);
-		// C- Add the card object to the GameObject of its Cell:
-		bool added = pGrid->AddObjectToCell(pCard);
-
-		// D- if the GameObject cannot be added in the Cell, Print the appropriate error message on statusbar
-		if (!added)
+		if (!(pCard->CheckInputValidity()))
 		{
-			// Print an appropriate message
-			pGrid->PrintErrorMessage("Error: Cell already has an object ! Click to continue ...");
+			delete pCard;
+			pCard = NULL;
+		}
+		if (pCard)
+		{
+			// C- Add the card object to the GameObject of its Cell:
+			bool added = pGrid->AddObjectToCell(pCard);
+
+			// D- if the GameObject cannot be added in the Cell, Print the appropriate error message on statusbar
+			if (!added)
+			{
+				// Print an appropriate message
+				pGrid->PrintErrorMessage("Error: Cell already has an object ! Click to continue ...");
+			}
 		}
 	}
 

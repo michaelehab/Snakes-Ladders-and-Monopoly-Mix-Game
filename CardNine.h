@@ -14,6 +14,7 @@ public:
 
 	virtual void Apply(Grid* pGrid, Player* pPlayer); // Applies the effect of CardNine on the passed Player
 													  
+	virtual bool CheckInputValidity();
 
 	void Save(ofstream& outFile, ObjectType ObjType); // Overriding the Card Save member function
 
