@@ -134,6 +134,7 @@
     <ClCompile Include="ApplicationManager.cpp" />
     <ClCompile Include="Card.cpp" />
     <ClCompile Include="CardEleven.cpp" />
+    <ClCompile Include="CardFive.cpp" />
     <ClCompile Include="CardFour.cpp" />
     <ClCompile Include="CardNine.cpp" />
     <ClCompile Include="CardOne.cpp" />
@@ -141,6 +142,7 @@
     <ClCompile Include="CardSix.cpp" />
     <ClCompile Include="CardTen.cpp" />
     <ClCompile Include="CardThree.cpp" />
+    <ClCompile Include="CardTwelve.cpp" />
     <ClCompile Include="CardTwo.cpp" />
     <ClCompile Include="Cell.cpp" />
     <ClCompile Include="CellPosition.cpp" />
@@ -202,6 +204,7 @@
     <ClInclude Include="ApplicationManager.h" />
     <ClInclude Include="Card.h" />
     <ClInclude Include="CardEleven.h" />
+    <ClInclude Include="CardFive.h" />
     <ClInclude Include="CardFour.h" />
     <ClInclude Include="CardNine.h" />
     <ClInclude Include="CardOne.h" />
@@ -209,6 +212,7 @@
     <ClInclude Include="CardSix.h" />
     <ClInclude Include="CardTen.h" />
     <ClInclude Include="CardThree.h" />
+    <ClInclude Include="CardTwelve.h" />
     <ClInclude Include="CardTwo.h" />
     <ClInclude Include="Cell.h" />
     <ClInclude Include="CellPosition.h" />

@@ -15,6 +15,12 @@ class CardEleven : public Card
 		
 		virtual bool CheckInputValidity();
 
+		static Player* GetPlayer();
+
+		static int GetCardPrice();
+
+		static void SetPlayer(Player* player);
+
 		void Save(ofstream& outFile, ObjectType ObjType); // Overriding the Card Save member function
 
 		void Load(ifstream& InFile); // Overriding the Card Load member function

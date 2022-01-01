@@ -135,6 +135,13 @@ bool Grid::SetCurrentPlayer(int p) {
 
 // ========= Other Getters =========
 
+Player* Grid::GetPlayerWithLeastCoins() const {
+	Player* playerminCoins = PlayerList[0];
+	for (int i = 1; i < MaxPlayerCount; i++)
+		if (PlayerList[i]->GetWallet() < playerminCoins->GetWallet())
+			playerminCoins = PlayerList[i];
+	return playerminCoins;
+}
 
 Player* Grid::GetCurrentPlayer() const
 {

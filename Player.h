@@ -54,6 +54,7 @@ public:
 	void AppendPlayerInfo(string & playersInfo) const; // Appends player's info to the input string, 
 	                                                   // for example: P0(wallet, turnCount)
 
+	int getJustRolledDiceNumber() const; //To get the justrolleddicenumber of the current player
 	void Reset(); // Resets the player data members to the default ones
 };
 

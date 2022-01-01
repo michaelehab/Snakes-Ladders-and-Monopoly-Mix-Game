@@ -71,6 +71,7 @@ public:
 	Player * GetCurrentPlayer() const;	// Gets a Pointer to the Current Player	                                    
 	Ladder * GetNextLadder(const CellPosition & position);  // Gets a Pointer to the first Ladder after the passed "position"
 	int GetNumberOfObjects(ObjectType ObjType); // Gets the total number of a specific game object
+	Player* GetPlayerWithLeastCoins() const; // Gets a pointer to the player with the least amount of coins in his wallet
 
 	// ========= User Interface Functions =========
 

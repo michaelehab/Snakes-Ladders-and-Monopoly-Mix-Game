@@ -13,6 +13,20 @@ CardEleven::~CardEleven(void)
 {
 }
 
+
+Player* CardEleven::GetPlayer() {
+	return p;
+}
+
+
+int CardEleven::GetCardPrice() {
+	return CardPrice;
+}
+
+void CardEleven::SetPlayer(Player* player) {
+	p = player;
+}
+
 void CardEleven::ReadCardParameters(Grid* pGrid)
 {
 

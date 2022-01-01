@@ -34,7 +34,7 @@ Output::Output()
 	UI.GridLineColor = WHITE;
 
 	// Cell Color if Empty & Cell Number Font & Color
-	UI.CellColor_NoCard = LIGHTSLATEBLUE;
+	UI.CellColor_NoCard = color(47,139,255);
 	UI.CellNumFont = 13;
 	UI.CellNumColor = UI.GridLineColor;
 
@@ -45,7 +45,7 @@ Output::Output()
 
 	// Ladder Line Width and Color
 	UI.LadderlineWidth = 6;
-	UI.LadderColor = DARKSLATEBLUE;
+	UI.LadderColor = color(139,0,0);
 
 	// The X and Y Offsets of the Space BEFORE Drawing the Ladder (offset from the start X and Y of the Cell)
 	UI.LadderXOffset = (UI.CellWidth  - 2 * UI.LadderlineWidth) / 5;
@@ -56,10 +56,10 @@ Output::Output()
 	UI.SnakeColor = FIREBRICK;
 
 	// Colors of the 4 Players
-	UI.PlayerColors[0] = GOLD;
-	UI.PlayerColors[1] = DARKSLATEBLUE;
-	UI.PlayerColors[2] = KHAKI;
-	UI.PlayerColors[3] = CHOCOLATE;
+	UI.PlayerColors[0] = BLACK;
+	UI.PlayerColors[1] = RED;
+	UI.PlayerColors[2] = GREEN;
+	UI.PlayerColors[3] = YELLOW;
 
 	// Create the output window
 	pWind = CreateWind(UI.width + 15, UI.height, UI.wx, UI.wy); 
@@ -193,7 +193,7 @@ void Output::CreateDesignModeToolBar() const
 	// ** MAKE SURE THAT THE IMAGES ARE .JPG FILES **
 	string MenuItemImages[DESIGN_ITM_COUNT];
 	///Preparing images for each menu item and add it to the list
-	MenuItemImages[ITM_ADD_LADDER] = "images\\Ladder.jpg";	
+	MenuItemImages[ITM_ADD_LADDER] = "images\\Menu_Ladder.jpg";	
 	MenuItemImages[ITM_ADD_SNAKE] = "images\\Menu_Snake.jpg";	
 	MenuItemImages[ITM_ADD_CARD] = "images\\Menu_Card.jpg";	
 	MenuItemImages[ITM_EXIT_DESIGN_MODE] = "images\\Menu_Exit.jpg";

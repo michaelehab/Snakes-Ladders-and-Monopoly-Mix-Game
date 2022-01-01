@@ -68,6 +68,19 @@ bool CardTen::CheckInputValidity()
 	return 1;
 }
 
+
+Player* CardTen::GetPlayer()  {
+	return p;
+}
+
+int CardTen::GetCardPrice() {
+	return CardPrice;
+}
+
+void CardTen::SetPlayer(Player* player) {
+	p = player;
+}
+
 void CardTen::Apply(Grid* pGrid, Player* pPlayer)
 {
 	//Call Apply() of the base class Card to print the message that you reached this card number

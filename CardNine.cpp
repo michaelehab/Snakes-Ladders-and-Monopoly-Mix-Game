@@ -97,6 +97,20 @@ void CardNine::Apply(Grid* pGrid, Player* pPlayer)
 
 }
 
+Player* CardNine::GetPlayer() {
+	return p;
+}
+
+
+int CardNine::GetCardPrice() {
+	return CardPrice;
+
+}
+
+void CardNine::SetPlayer(Player* player) {
+	p = player;
+}
+
 void CardNine::Save(ofstream& outFile, ObjectType ObjType)
 {
 	if (ObjType == Cards)

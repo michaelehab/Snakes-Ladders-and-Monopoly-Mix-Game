@@ -12,12 +12,9 @@ CardOne::~CardOne(void)
 void CardOne::ReadCardParameters(Grid* pGrid)
 {
 
-
 	///TODO: Implement this function as mentioned in the guideline steps (numbered below) below
 
-
 	// == Here are some guideline steps (numbered below) (numbered below) to implement this function ==
-
 
 	// 1- Get a Pointer to the Input / Output Interfaces from the Grid
 

@@ -102,7 +102,6 @@ void Player::Move(Grid * pGrid, int diceNumber)
 		CellPosition pos = pCell->GetCellPosition();
 		pos.AddCellNum(justRolledDiceNum);
 		pGrid->UpdatePlayerCell(this, pos);
-		pGrid->UpdatePlayerCell(this, pos);
 
 		pGameObject = pCell->GetGameObject();
 		if (pCell->HasCard() || pCell->HasLadder() || pCell->HasSnake())
@@ -119,6 +118,10 @@ void Player::AppendPlayerInfo(string & playersInfo) const
 	playersInfo += to_string(turnCount) + ")";
 }
 
+int Player::getJustRolledDiceNumber()const
+{
+	return justRolledDiceNum;
+}
 void Player::Reset()
 {
 	SetWallet(100);                     // Initial Values for turncount , wallet and Prevented
