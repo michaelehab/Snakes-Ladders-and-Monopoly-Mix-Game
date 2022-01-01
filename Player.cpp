@@ -92,7 +92,7 @@ void Player::Move(Grid * pGrid, int diceNumber)
 	}
 	// If it's recharge turn the player won't move
 	else if (turnCount == 3) {
-		pGrid->PrintErrorMessage("It's wallet recharge turn for player " + to_string(GetPlayerNum()));
+		pGrid->PrintErrorMessage("It's wallet recharge turn for player " + to_string(GetPlayerNum()) + ". Click to continue...");
 		turnCount = 0;
 		wallet = 10 * diceNumber+wallet;
 		return;
@@ -117,4 +117,11 @@ void Player::AppendPlayerInfo(string & playersInfo) const
 	playersInfo += "P" + to_string(playerNum) + "(" ;
 	playersInfo += to_string(wallet) + ", ";
 	playersInfo += to_string(turnCount) + ")";
+}
+
+void Player::Reset()
+{
+	SetWallet(100);                     // Initial Values for turncount , wallet and Prevented
+	this->turnCount = 0;
+	PreventNextTurn(false);
 }

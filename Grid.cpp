@@ -87,23 +87,6 @@ void Grid::UpdatePlayerCell(Player* player, const CellPosition& newPosition)
 	player->Draw(pOut);
 }
 
-void Grid::StartNewGame()
-{
-	for (int i = 0; i < MaxPlayerCount; i++)
-	{
-		// Deleting the previous players
-		delete PlayerList[i];
-	}
-	for (int i = 0; i < MaxPlayerCount; i++)
-	{
-		// Reset all the players
-		PlayerList[i] = new Player(CellList[NumVerticalCells - 1][0], i); // first cell
-		//PlayerList[i]->Draw(pOut); // initially draw players in the first cell
-	}
-	// Turn returns to player 0
-	SetCurrentPlayer(0);
-}
-
 
 // ========= Setters and Getters Functions =========
 

@@ -18,7 +18,7 @@ void CardFour::Apply(Grid* pGrid, Player* pPlayer)
 
 	int Player_Num = pPlayer->GetPlayerNum();		//Getting the number of the player ( 0 to 3 )
 
-	pGrid->PrintErrorMessage("This card prevents player " + to_string(Player_Num) + " from rolling next turn . Click to continue...");
+	pGrid->PrintErrorMessage("This card prevents player " + to_string(Player_Num) + " from rolling next turn. Click to continue...");
 
 	pPlayer->PreventNextTurn(true);
 }
