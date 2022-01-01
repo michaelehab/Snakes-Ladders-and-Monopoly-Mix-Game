@@ -2,13 +2,14 @@
 
 #include "Card.h"
 #include"Ladder.h"
-// [ CardTwo ] Summary:
+// CardTwo :
 // Moves the player forward to the start of the next ladder in the grid.
 // If no ladders ahead, do nothing.
 // Its Parameters: No Parameters
 
 class CardTwo : public Card
 {
+	//No card parameters
 
 public:
 	CardTwo(const CellPosition& pos); // A Constructor takes card position

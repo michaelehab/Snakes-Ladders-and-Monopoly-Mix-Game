@@ -5,12 +5,9 @@ CardTwo::CardTwo(const CellPosition& pos) : Card(pos) // set the cell position o
 	cardNumber = 2; // set the inherited cardNumber data member with the card number (2 here)
 }
 
-CardTwo::~CardTwo(void)
-{
-}
-
 void CardTwo::ReadCardParameters(Grid* pGrid)
 {
+	//No Parameters for CardTwo
 }
 
 void CardTwo::Apply(Grid* pGrid, Player* pPlayer)
@@ -35,4 +32,8 @@ void CardTwo::Save(ofstream& outFile, ObjectType ObjType)
 
 void CardTwo::Load(ifstream& InFile) {
 	Card::Load(InFile);
+}
+
+CardTwo::~CardTwo(void)
+{
 }
