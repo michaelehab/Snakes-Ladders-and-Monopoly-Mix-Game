@@ -11,8 +11,7 @@ Player::Player(Cell * pCell, int playerNum) : stepCount(0), wallet(100), playerN
 	this->justRolledDiceNum = 0;
 	this->pGrid = NULL;
 	this->pGameObject = NULL;
-
-	
+	this->prevented = false;
 }
 
 // ====== Setters and Getters ======
@@ -34,6 +33,16 @@ void Player::SetWallet(int wallet)
 	else
 		wallet = 0;
 
+}
+
+void Player::PreventNextTurn(bool choice)
+{
+	prevented = choice;
+}
+
+bool Player::IsPrevented() const
+{
+	return prevented;
 }
 
 int Player::GetWallet() const
@@ -70,39 +79,37 @@ void Player::ClearDrawing(Output* pOut) const
 
 void Player::Move(Grid * pGrid, int diceNumber)
 {
-
-	///TODO(Done): Implement this function as mentioned in the guideline steps (numbered below) below
-	// == Here are some guideline steps (numbered below) to implement this function ==
-	// 1- Increment the turnCount because calling Move() means that the player has rolled the dice once
 	turnCount++;
-	// 2- Check the turnCount to know if the wallet recharge turn comes (recharge wallet instead of move)
-	if (turnCount == 3) {
+	// If the player is prevented from moving he won't move this turn
+	if (IsPrevented()) {
+		pGrid->PrintErrorMessage("Player : " + to_string(GetPlayerNum()) + " is prevented from rolling this turn.");
+		this->PreventNextTurn(false);
+	}
+	// If the player has money less than 1 he can't move
+	else if (wallet < 1)
+	{
+		pGrid->PrintErrorMessage("Player: " + to_string(playerNum) + " Can't move for having money less than 1");
+	}
+	// If it's recharge turn the player won't move
+	else if (turnCount == 3) {
 		pGrid->PrintErrorMessage("It's wallet recharge turn for player " + to_string(GetPlayerNum()));
 		turnCount = 0;
 		wallet = 10 * diceNumber+wallet;
 		return;
-		}
-	//    If yes, recharge wallet and reset the turnCount and return from the function (do NOT move)
-	
-	// 3- Set the justRolledDiceNum with the passed diceNumber
+	}
+	else {
+		justRolledDiceNum = diceNumber;
+		CellPosition pos = pCell->GetCellPosition();
+		pos.AddCellNum(justRolledDiceNum);
+		pGrid->UpdatePlayerCell(this, pos);
+		pGrid->UpdatePlayerCell(this, pos);
 
-	justRolledDiceNum = diceNumber;
-	// 4- Get the player current cell position, say "pos", and add to it the diceNumber (update the position)
-	//    Using the appropriate function of CellPosition class to update "pos"
-	CellPosition pos = pCell->GetCellPosition();
-	pos.AddCellNum(justRolledDiceNum);
-	pGrid->UpdatePlayerCell(this, pos);
-	// 5- Use pGrid->UpdatePlayerCell() func to Update player's cell POINTER (pCell) with the cell in the passed position, "pos" (the updated one)
-	//    the importance of this function is that it Updates the pCell pointer of the player and Draws it in the new position
-	pGrid->UpdatePlayerCell(this,pos);
+		pGameObject = pCell->GetGameObject();
+		if (pCell->HasCard() || pCell->HasLadder() || pCell->HasSnake())
+			pGameObject->Apply(pGrid, this);
 
-	// 6- Apply() the game object of the reached cell (if any)
-	pGameObject=pCell->GetGameObject();
-	if(pCell->HasCard()||pCell->HasLadder()||pCell->HasSnake())
-	pGameObject->Apply(pGrid,this);
-	// 7- Check if the player reached the end cell of the whole game, and if yes, Set end game with true: pGrid->SetEndGame(true)
-	if (pos.HCell()==0&&pos.VCell()==0)
-		pGrid->SetEndGame(true);
+		if (CellPosition::GetCellNumFromPosition(pCell->GetCellPosition()) == NumHorizontalCells * NumVerticalCells) pGrid->SetEndGame(true);
+	}
 }
 
 void Player::AppendPlayerInfo(string & playersInfo) const

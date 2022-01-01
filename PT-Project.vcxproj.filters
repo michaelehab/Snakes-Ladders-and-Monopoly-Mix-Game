@@ -223,6 +223,9 @@
     <ClCompile Include="CardThree.cpp">
       <Filter>GameObjects\Cards</Filter>
     </ClCompile>
+    <ClCompile Include="CardFour.cpp">
+      <Filter>GameObjects\Cards</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -371,6 +374,9 @@
       <Filter>GameObjects\Cards</Filter>
     </ClInclude>
     <ClInclude Include="CardThree.h">
+      <Filter>GameObjects\Cards</Filter>
+    </ClInclude>
+    <ClInclude Include="CardFour.h">
       <Filter>GameObjects\Cards</Filter>
     </ClInclude>
   </ItemGroup>

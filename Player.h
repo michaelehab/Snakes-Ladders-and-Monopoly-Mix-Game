@@ -17,6 +17,7 @@ class Player
 	int turnCount;         // a counter that starts with 0, is incremented with each dice roll 
 	                       // and reset again when reached 3
 	                       // it is used to indicate when to move and when to add to your wallet
+	bool prevented;		   // indicates that the player is prevented from rolling the next turn.
 	
 public:
 
@@ -32,6 +33,9 @@ public:
 
 	int GetTurnCount() const;		// A getter for the turnCount
 	int GetPlayerNum() const;       // A getter for the playerNum
+
+	void PreventNextTurn(bool choice); // Prevents the player from rolling the next turn
+	bool IsPrevented() const; // Determines if the player is prevented
 
 	///TODO: You can add setters and getters for data members here (if needed)
 
