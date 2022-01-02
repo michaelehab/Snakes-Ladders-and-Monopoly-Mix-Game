@@ -39,7 +39,7 @@ Output::Output()
 	UI.CellNumColor = UI.GridLineColor;
 
 	// Cell Color if Has Card & CARD Number Font & Color
-	UI.CellColor_HasCard = SALMON;
+	UI.CellColor_HasCard = color(150,150,150);
 	UI.CardNumFont = 35;
 	UI.CardNumColor = WHITE;
 
@@ -53,7 +53,7 @@ Output::Output()
 
 	// Snake Line Width and Color
 	UI.SnakelineWidth = 6;
-	UI.SnakeColor = FIREBRICK;
+	UI.SnakeColor = color(0,150,0);
 
 	// Colors of the 4 Players
 	UI.PlayerColors[0] = BLACK;
@@ -65,7 +65,7 @@ Output::Output()
 	pWind = CreateWind(UI.width + 15, UI.height, UI.wx, UI.wy); 
 
 	// Change the title
-	pWind->ChangeTitle("Snakes & Ladders");
+	pWind->ChangeTitle("Snakes & Ladders and Monopoly Mix Game");
 
 	// Create the toolbar, grid area and status bar
 	CreateDesignModeToolBar();
@@ -443,12 +443,13 @@ void Output::DrawSnake(const CellPosition & fromCell, const CellPosition & toCel
 	int y1 = fromStartY + UI.CellHeight/2;
 	int y2 = toStartY + UI.CellHeight/2;
 
+	int snakeXoffset = (UI.CellWidth)/2 - UI.SnakelineWidth;
 	///Setting pen color and width from the appropriate variables of the UI_Info object (UI)
 	pWind->SetPen(UI.SnakeColor, UI.SnakelineWidth);
 
 
 	///Drawing the Line representing the Snake Body
-	pWind->DrawLine(x12, y1, x12, y2);
+	pWind->DrawLine(x12+snakeXoffset, y1, x12+snakeXoffset, y2);
 
 
 	// ---- 2- Draw Polygon with Diamond Shape representing the Snake Head ----
@@ -462,7 +463,7 @@ void Output::DrawSnake(const CellPosition & fromCell, const CellPosition & toCel
 
 	///Setting the coordinates of the 4 points of the Polygon
 	
-	int xPolygon[] = { x12, x12 + xChange, x12, x12 -xChange };
+	int xPolygon[] = { x12+snakeXoffset, x12 + xChange+snakeXoffset, x12+snakeXoffset, x12 -xChange +snakeXoffset};
 	int yPolygon[] = { y1 + 2 * yChange, y1 + yChange, y1, y1 + yChange };
 
 

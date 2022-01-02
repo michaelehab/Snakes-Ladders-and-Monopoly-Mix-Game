@@ -3,6 +3,7 @@
 #include "Cell.h"
 #include "GameObject.h"
 #include "Ladder.h"
+#include "Snake.h"
 #include "Card.h"
 #include "Player.h"
 
@@ -137,9 +138,13 @@ bool Grid::SetCurrentPlayer(int p) {
 
 Player* Grid::GetPlayerWithLeastCoins() const {
 	Player* playerminCoins = PlayerList[0];
+
 	for (int i = 1; i < MaxPlayerCount; i++)
+
 		if (PlayerList[i]->GetWallet() < playerminCoins->GetWallet())
+
 			playerminCoins = PlayerList[i];
+
 	return playerminCoins;
 }
 
@@ -224,6 +229,35 @@ int Grid::GetNumberOfObjects(ObjectType ObjType) {
 	return count;
 }
 
+Cell* Grid::GetCellFromCellPosition(const CellPosition& position) const {
+	Cell cell(position);
+	for (int i = 0; i < NumVerticalCells; i++) {
+		for (int j = 0; j < NumHorizontalCells; j++) {
+			if (CellList[i][j]->GetCellPosition().HCell() == cell.GetCellPosition().HCell() && CellList[i][j]->GetCellPosition().VCell() == cell.GetCellPosition().VCell())
+			{
+				return CellList[i][j];
+			}
+		}
+	}
+	return NULL;
+}
+
+bool Grid::thisColumnHasLadder(const CellPosition& startPos,const CellPosition & endPos) const {
+	for (int i = startPos.VCell() ; i >endPos.VCell(); i--) {
+		if (dynamic_cast<Ladder*>(CellList[i][startPos.HCell()]->GetGameObject()) != NULL)
+			return true;
+	}
+	return false;
+}
+
+
+bool Grid::thisColumnHasSnake(const CellPosition& startPos, const CellPosition& endPos) const {
+	for (int i = startPos.VCell() ; i < endPos.VCell(); i++) {
+		if (dynamic_cast<Snake*>(CellList[i][startPos.HCell()]->GetGameObject()) != NULL)
+			return true;
+	}
+	return false;
+}
 
 // ========= User Interface Functions =========
 

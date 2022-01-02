@@ -3,6 +3,7 @@
 #include "SaveGridAction.h"
 #include "OpenGridAction.h"
 #include "AddLadderAction.h"
+#include "AddSnakeAction.h"
 #include "AddCardAction.h"
 #include "RollDiceAction.h"
 #include "InputDiceValueAction.h"
@@ -64,6 +65,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		pAct = new AddLadderAction(this);
 		break;
 
+	case ADD_SNAKE:
+		pAct = new AddSnakeAction(this);
+		break;
 	case ADD_CARD:
 		// create an object of AddCardAction here
 		pAct = new AddCardAction(this);

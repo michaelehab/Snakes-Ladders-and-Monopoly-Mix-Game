@@ -23,6 +23,7 @@ class Grid
 															// there are NO default constructor for class Cell
 
 	Player* PlayerList[MaxPlayerCount]; // An array of "Pointers" to the Players of the Game (MaxPlayerCount Players)
+
 	int currPlayerNumber;   // The player number that has the turn to play 
 							// currPlayerNumber is: from 0 to MaxPlayerCount - 1
 
@@ -72,6 +73,9 @@ public:
 	Ladder * GetNextLadder(const CellPosition & position);  // Gets a Pointer to the first Ladder after the passed "position"
 	int GetNumberOfObjects(ObjectType ObjType); // Gets the total number of a specific game object
 	Player* GetPlayerWithLeastCoins() const; // Gets a pointer to the player with the least amount of coins in his wallet
+	Cell* GetCellFromCellPosition(const CellPosition& position) const;
+	bool thisColumnHasLadder(const CellPosition& startPos,const CellPosition & endPos) const;
+	bool thisColumnHasSnake(const CellPosition& startPos, const CellPosition& endPos) const;
 
 	// ========= User Interface Functions =========
 

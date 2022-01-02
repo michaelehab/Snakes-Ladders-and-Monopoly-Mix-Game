@@ -3,6 +3,7 @@
 #include "Grid.h"
 #include "GameObject.h"
 #include "Ladder.h"
+#include "Snake.h"
 #include "Card.h"
 #include "Player.h"
 
@@ -48,11 +49,9 @@ Ladder * Cell::HasLadder() const
 
 Snake * Cell::HasSnake() const
 {
-
-	///TODO (Done): Implement the following function like HasLadder() function
-
-	return false; // THIS LINE SHOULD CHANGED WITH YOUR IMPLEMENTATION
+	return dynamic_cast<Snake*>(pGameObject);
 }
+
 
 Card * Cell::HasCard() const
 {
