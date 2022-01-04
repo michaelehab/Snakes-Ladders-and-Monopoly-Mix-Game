@@ -14,7 +14,7 @@ void CardFour::ReadCardParameters(Grid* pGrid)
 
 void CardFour::Apply(Grid* pGrid, Player* pPlayer)
 {
-	Card::Apply(pGrid, pPlayer);		//printing a statement that tells the player he/she stands on card Seven
+	Card::Apply(pGrid, pPlayer);		//printing a statement that tells the player he/she stands on card Four
 
 	int Player_Num = pPlayer->GetPlayerNum();		//Getting the number of the player ( 0 to 3 )
 

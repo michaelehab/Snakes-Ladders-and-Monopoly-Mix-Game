@@ -18,6 +18,7 @@ class Player
 	                       // and reset again when reached 3
 	                       // it is used to indicate when to move and when to add to your wallet
 	bool prevented;		   // indicates that the player is prevented from rolling the next turn.
+	int turnsInPrison;	   // the number of turns the player spent in prison
 	
 public:
 
@@ -36,8 +37,11 @@ public:
 
 	void PreventNextTurn(bool choice); // Prevents the player from rolling the next turn
 	bool IsPrevented() const; // Determines if the player is prevented
+	void PutInPrison(); // Puts the player in prison for 3 turns
+	bool IsInPrison() const; // Checks if the player is already in prison
+	void GetOutOfPrison(); // Gets the player out of prison
 
-	///TODO: You can add setters and getters for data members here (if needed)
+	bool Pay(int amount); // Makes the player pay an amount of money
 
 	// ====== Drawing Functions ======
 
