@@ -105,6 +105,7 @@ void Player::ClearDrawing(Output* pOut) const
 
 void Player::Move(Grid * pGrid, int diceNumber)
 {
+	if(!IsInPrison()) turnCount++;
 	if (IsInPrison()) {
 		pGrid->PrintErrorMessage("Player : " + to_string(GetPlayerNum()) + " is in prison.");
 		turnsInPrison++;
@@ -117,32 +118,30 @@ void Player::Move(Grid * pGrid, int diceNumber)
 	else if (IsPrevented()) {
 		pGrid->PrintErrorMessage("Player : " + to_string(GetPlayerNum()) + " is prevented from rolling this turn.");
 		this->PreventNextTurn(false);
-		turnCount++;
 	}
 	// If the player has money less than 1 he can't move
-	else if (wallet < 1)
-	{
+	else if (wallet < 1) {
 		pGrid->PrintErrorMessage("Player: " + to_string(playerNum) + " Can't move for having money less than 1");
-		turnCount++;
 	}
 	// If it's recharge turn the player won't move
-	else if (turnCount == 3) {
+	else if (turnCount % 3 == 0 && turnCount != 0) {
 		pGrid->PrintErrorMessage("It's wallet recharge turn for player " + to_string(GetPlayerNum()) + ". Click to continue...");
-		turnCount = 0;
 		wallet = 10 * diceNumber+wallet;
 	}
 	else {
-		turnCount++;
 		justRolledDiceNum = diceNumber;
 		CellPosition pos = pCell->GetCellPosition();
 		pos.AddCellNum(justRolledDiceNum);
 		pGrid->UpdatePlayerCell(this, pos);
 
 		pGameObject = pCell->GetGameObject();
-		if (pCell->HasCard() || pCell->HasLadder() || pCell->HasSnake())
+		if (pCell->HasCard() || pCell->HasLadder() || pCell->HasSnake()) 
 			pGameObject->Apply(pGrid, this);
 
-		if (CellPosition::GetCellNumFromPosition(pCell->GetCellPosition()) == NumHorizontalCells * NumVerticalCells) pGrid->SetEndGame(true);
+		if (CellPosition::GetCellNumFromPosition(pCell->GetCellPosition()) == NumHorizontalCells * NumVerticalCells) {
+			pGrid->SetEndGame(true);
+			pGrid->PrintErrorMessage("Game Over! Player : " + to_string(GetPlayerNum()) + " Won!");
+		}
 	}
 }
 
