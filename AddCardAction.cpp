@@ -81,7 +81,7 @@ void AddCardAction::Execute()
 
 
 	// == Here are some guideline steps (numbered below) to implement this function ==
-	
+
 	// 1- The first line of any Action Execution is to read its parameter first
 	ReadActionParameters();
 	// 2- Switch case on cardNumber data member and create the appropriate card object type
@@ -129,7 +129,7 @@ void AddCardAction::Execute()
 
 		}
 	}
-	
+
 
 	// 3- if pCard is correctly set in the switch case (i.e. if pCard is pointing to an object -- NOT NULL)
 	if (pCard)

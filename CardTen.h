@@ -1,6 +1,6 @@
 #pragma once
-#include "Card.h"
-class CardTen : public Card
+#include "Cards_9_11.h"
+class CardTen : public Cards_9_11
 {
 	static int CardPrice;            //the price of the card
 	static int fees;                 // the fees that the player pay  
@@ -9,21 +9,23 @@ class CardTen : public Card
 public:
 	CardTen(const CellPosition& pos); // A Constructor takes card position
 
-	virtual void ReadCardParameters(Grid* pGrid); // Reads the parameters of CardTen
+	void ReadCardParameters(Grid* pGrid); // Reads the parameters of CardTen
 
-	virtual void Apply(Grid* pGrid, Player* pPlayer); // Applies the effect of CardTen on the passed Player
-													
-	virtual bool CheckInputValidity();
+	void Apply(Grid* pGrid, Player* pPlayer); // Applies the effect of CardTen on the passed Player
 
-	static Player* GetPlayer() ;
+	bool CheckInputValidity();
 
-	static int GetCardPrice();
-
-	static void SetPlayer(Player* player);
 
 	void Save(ofstream& outFile, ObjectType ObjType); // Overriding the Card Save member function
 
 	void Load(ifstream& InFile); // Overriding the Card Load member function
+
+
+	static Player* GetPlayer();
+
+	static int GetCardPrice();
+
+	static void SetPlayer(Player* player);
 
 	virtual ~CardTen(); // A Virtual Destructor
 };
