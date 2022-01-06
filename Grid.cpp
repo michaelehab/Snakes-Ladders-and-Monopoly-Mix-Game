@@ -201,9 +201,10 @@ Player* Grid::GetNextPlayer(Player* currentPlayer)
 		return PlayerList[NextPlayerIndex]; 
 	else
 		return NULL;    //return NULL if there is no player in front of the current player
-
 }
-
+Player* Grid::GetPlayerByPlayerNum(int num) {
+	return PlayerList[num];
+}
 
 int Grid::GetNumberOfObjects(ObjectType ObjType) {
 	int count = 0;
@@ -300,7 +301,7 @@ void Grid::UpdateInterface() const
 			if (i < MaxPlayerCount - 1) // except the last player
 				playersInfo += ", ";
 		}
-		playersInfo += " | Curr = " + to_string(currPlayerNumber);
+		playersInfo += " | P" + to_string(currPlayerNumber) + "'s Turn";
 
 		pOut->PrintPlayersInfo(playersInfo);
 

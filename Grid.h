@@ -49,8 +49,6 @@ public:
 	                                                                          // Clears the player's circle from the previous cell
 	    																	  // and  Draws it in the new cell
 
-	void StartNewGame(); // Restarts players' positions, wallets, and turn returns to player 0.
-
 	// ========= Setters and Getters Functions =========
 
 	Input * GetInput() const;	// Gets a Pointer to the Input
@@ -72,7 +70,8 @@ public:
 	Player * GetCurrentPlayer() const;	// Gets a Pointer to the Current Player	                                    
 	Ladder * GetNextLadder(const CellPosition & position);  // Gets a Pointer to the first Ladder after the passed "position"
 	int GetNumberOfObjects(ObjectType ObjType); // Gets the total number of a specific game object
-	Player* GetPlayerWithLeastCoins() const; // Gets a pointer to the player with the least amount of coins in his wallet
+	Player * GetPlayerWithLeastCoins() const; // Gets a pointer to the player with the least amount of coins in his wallet
+	Player * GetPlayerByPlayerNum(int num);  // Gets a pointer to the player with a specific playerNum
 	Cell* GetCellFromCellPosition(const CellPosition& position) const;
 	bool thisColumnHasLadder(const CellPosition& startPos,const CellPosition & endPos) const;
 	bool thisColumnHasSnake(const CellPosition& startPos, const CellPosition& endPos) const;

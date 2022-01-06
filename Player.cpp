@@ -1,4 +1,4 @@
-#include "Player.h"
+﻿#include "Player.h"
 
 #include "GameObject.h"
 
@@ -13,6 +13,15 @@ Player::Player(Cell * pCell, int playerNum) : stepCount(0), wallet(100), playerN
 	this->pGameObject = NULL;
 	this->prevented = false;
 	this->turnsInPrison = -1;
+	this->specialAttacksUsed = 0;
+	this->burned = false;
+	this->burnedTurns = 0;
+	this->poisoned = false;
+	this->poisonedTurns = 0;
+	this->usedFire = false;
+	this->usedIce = false;
+	this->usedPoison = false;
+	this->usedLightning = false;
 }
 
 // ====== Setters and Getters ======
@@ -105,28 +114,76 @@ void Player::ClearDrawing(Output* pOut) const
 
 void Player::Move(Grid * pGrid, int diceNumber)
 {
+	Output* pOut = pGrid->GetOutput();
+	Input* pIn = pGrid->GetInput();
+
 	if(!IsInPrison()) turnCount++;
+	if (this->burned) {
+		this->Pay(20);
+		burnedTurns++;
+		if (burnedTurns == 3)
+		{
+			burned = false;
+			burnedTurns = 0;
+		}
+	}
+	if (this->poisoned) {
+		diceNumber--;
+		poisonedTurns++;
+		if (poisonedTurns == 5)
+		{
+			poisoned = false;
+			poisonedTurns = 0;
+		}
+	}
 	if (IsInPrison()) {
-		pGrid->PrintErrorMessage("Player : " + to_string(GetPlayerNum()) + " is in prison.");
+		pOut->PrintMessage("Player : " + to_string(GetPlayerNum()) + " is in prison.");
 		turnsInPrison++;
 		if (turnsInPrison == 4) {
-			pGrid->PrintErrorMessage("Player : " + to_string(GetPlayerNum()) + " is now out of prison.");
+			pOut->PrintMessage("Player : " + to_string(GetPlayerNum()) + " is now out of prison.");
 			this->GetOutOfPrison();
 		}
 	}
 	// If the player is prevented from moving he won't move this turn
 	else if (IsPrevented()) {
-		pGrid->PrintErrorMessage("Player : " + to_string(GetPlayerNum()) + " is prevented from rolling this turn.");
+		pOut->PrintMessage("Player : " + to_string(GetPlayerNum()) + " is prevented from rolling this turn.");
 		this->PreventNextTurn(false);
 	}
 	// If the player has money less than 1 he can't move
 	else if (wallet < 1) {
-		pGrid->PrintErrorMessage("Player: " + to_string(playerNum) + " Can't move for having money less than 1");
+		pGrid->PrintErrorMessage("Player: " + to_string(playerNum) + " Can't move for having money less than 1, Click to continue...");
 	}
 	// If it's recharge turn the player won't move
 	else if (turnCount % 3 == 0 && turnCount != 0) {
 		pGrid->PrintErrorMessage("It's wallet recharge turn for player " + to_string(GetPlayerNum()) + ". Click to continue...");
-		wallet = 10 * diceNumber+wallet;
+		if (specialAttacksUsed < 3) {
+			pOut->PrintMessage("Do You Wish To Launch A Special Attack Instead Of Recharging ? y/n");
+			string choice = pIn->getString(pOut);
+
+			if (tolower(choice[0]) == 'y'){
+				string msg = "Choose one of the following available attacks : ";
+
+				if (!usedIce) msg += "  1-Ice";
+				if (!usedFire) msg += "  2-Fire";
+				if (!usedPoison) msg += "  3-Poison";
+				if (!usedLightning) msg += "  4-Lightning";
+
+				pOut->PrintMessage(msg);
+				int attack = pIn->GetInteger(pOut);
+				while (attack < 0 || attack > 5) {
+					pOut->PrintMessage(msg);
+				}
+				LaunchSpecialAttack(attack, pGrid);
+			}
+			else {
+				wallet = 10 * diceNumber + wallet;
+				pOut->PrintMessage("Player: " + to_string(playerNum) + " Increased Money By: " + to_string(diceNumber * 10));
+			}
+		}
+		else {
+			wallet = 10 * diceNumber + wallet;
+			pOut->PrintMessage("Player: " + to_string(playerNum) + " Increased Money By: " + to_string(diceNumber * 10));
+		}
 	}
 	else {
 		justRolledDiceNum = diceNumber;
@@ -140,7 +197,7 @@ void Player::Move(Grid * pGrid, int diceNumber)
 
 		if (CellPosition::GetCellNumFromPosition(pCell->GetCellPosition()) == NumHorizontalCells * NumVerticalCells) {
 			pGrid->SetEndGame(true);
-			pGrid->PrintErrorMessage("Game Over! Player : " + to_string(GetPlayerNum()) + " Won!");
+			pOut->PrintMessage("Game Over! Player : " + to_string(GetPlayerNum()) + " Won!");
 		}
 	}
 }
@@ -148,8 +205,13 @@ void Player::Move(Grid * pGrid, int diceNumber)
 void Player::AppendPlayerInfo(string & playersInfo) const
 {
 	playersInfo += "P" + to_string(playerNum) + "(" ;
-	playersInfo += to_string(wallet) + ", ";
-	playersInfo += to_string(turnCount) + ")";
+	playersInfo += to_string(wallet) + "$, ";
+	playersInfo += to_string(turnCount) + ", ";
+	if(this->IsInPrison()) playersInfo += "Prison, ";
+	if(this->IsPrevented() && !this->IsInPrison()) playersInfo += "Prevented, ";
+	if(this->burned) playersInfo += "Fire, ";
+	if (this->poisoned) playersInfo += "Poison, ";
+	playersInfo += to_string(2 - specialAttacksUsed) + ")";
 }
 
 int Player::getJustRolledDiceNumber()const
@@ -161,4 +223,103 @@ void Player::Reset()
 	SetWallet(100);                     // Initial Values for turncount , wallet and Prevented
 	this->turnCount = 0;
 	PreventNextTurn(false);
+}
+
+void Player::UseIceSpecialAttack(Player * p, Output * pOut)
+{
+	if (specialAttacksUsed < 2 && !usedIce) {
+		p->prevented = true;
+		pOut->PrintMessage("Player: " + to_string(p->GetPlayerNum()) + " is now Frozen by player : " + to_string(this->GetPlayerNum()));
+		usedIce = true;
+		specialAttacksUsed++;
+	}
+	else {
+		pOut->PrintMessage("Player : " + to_string(this->GetPlayerNum()) + " used all his special attacks!");
+	}
+}
+
+void Player::UseFireSpecialAttack(Player* p, Output* pOut)
+{
+	if (specialAttacksUsed < 2 && !usedFire) {
+		p->burned = true;
+		pOut->PrintMessage("Player: " + to_string(p->GetPlayerNum()) + " is now burned by player : " + to_string(this->GetPlayerNum()));
+		usedFire = true;
+		specialAttacksUsed++;
+	}
+	else {
+		pOut->PrintMessage("Player : " + to_string(this->GetPlayerNum()) + " used all his special attacks, Click to continue...");
+	}
+}
+
+void Player::UsePoisonSpecialAttack(Player* p, Output* pOut)
+{
+	if (specialAttacksUsed < 2 && !usedPoison) {
+		p->poisoned = true;
+		pOut->PrintMessage("Player: " + to_string(p->GetPlayerNum()) + " is now poisoned by player : " + to_string(this->GetPlayerNum()));
+		usedPoison = true;
+		specialAttacksUsed++;
+	}
+	else {
+		pOut->PrintMessage("Player : " + to_string(this->GetPlayerNum()) + " used all his special attacks, Click to continue...");
+	}
+}
+
+void Player::UseLightningSpecialAttack(Output* pOut, Grid * pGrid)
+{
+	if (specialAttacksUsed < 2 && !usedLightning) {
+		string msg = "Players : ";
+		for (int i = 0; i < MaxPlayerCount; i++) {
+			if (i != playerNum) {
+				pGrid->GetPlayerByPlayerNum(i)->Pay(20);
+				msg += to_string(i) + ", ";
+			}
+		}
+		pOut->PrintMessage(msg + "lost 20 coins!");
+		specialAttacksUsed++;
+	}
+	else {
+		pOut->PrintMessage("Player : " + to_string(this->GetPlayerNum()) + " used all his special attacks, Click to continue...");
+	}
+
+}
+
+void Player::LaunchSpecialAttack(int type, Grid* pGrid) {
+	Output* pOut = pGrid->GetOutput();
+	Input* pIn = pGrid->GetInput();
+	if (type == 4) {
+		UseLightningSpecialAttack(pOut, pGrid);
+	}
+	else {
+		string msg = "Choose one of the following players to attack : ";
+		for (int i = 0; i < MaxPlayerCount; i++) {
+			if (i != playerNum) msg += to_string(i);
+		}
+		pOut->PrintMessage(msg);
+		int num = pIn->GetInteger(pOut);
+		while (num < 0 || num > 3 || num == playerNum)
+		{
+			pOut->PrintMessage(msg);
+			num = pIn->GetInteger(pOut);
+		}
+		Player* p = pGrid->GetPlayerByPlayerNum(num);
+		if (type == 1) {
+			// Getting a valid player number
+			num = pIn->GetInteger(pOut);
+			while (num < 0 || num > 3 || num == playerNum)
+			{
+				pOut->PrintMessage(msg);
+				num = pIn->GetInteger(pOut);
+			}
+			// Making sure that the player is not already frozen
+			while (p->IsPrevented()) {
+				p = pGrid->GetPlayerByPlayerNum(num);
+				pOut->PrintMessage("Player: " + to_string(p->GetPlayerNum()) + " Is Already Frozen! Try another player");
+				num = pIn->GetInteger(pOut);
+			}
+			UseIceSpecialAttack(p, pOut);
+		}
+		else if (type == 2) UseFireSpecialAttack(p, pOut);
+		else if (type == 3) UsePoisonSpecialAttack(p, pOut);
+		else pOut->PrintMessage("The Attack type is invalid!");
+	}
 }
