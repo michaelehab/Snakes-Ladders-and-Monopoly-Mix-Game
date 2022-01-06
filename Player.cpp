@@ -222,7 +222,10 @@ void Player::Reset()
 {
 	SetWallet(100);                     // Initial Values for turncount , wallet and Prevented
 	this->turnCount = 0;
-	PreventNextTurn(false);
+	prevented = false;
+	specialAttacksUsed = 0;
+	burned = false;
+	poisoned = false;
 }
 
 void Player::UseIceSpecialAttack(Player * p, Output * pOut)
