@@ -79,17 +79,15 @@ void Cards_9_11::Apply(Grid* pGrid, Player* pPlayer,int& CardPrice, int& fees, P
 
 	if (p == NULL)
 	{
-		pOut->PrintMessage(" Press 1 if you want to buy this station and 0 if you don`t want. ");
+		pOut->PrintMessage("Do you want to buy this station? y/n");
+		string choice = pIn->getString(pOut);
 		//if the player wants to buy the station, then it sets the pointer(p) to the current player 
-		IsBought = pIn->GetInteger(pOut);
-		if (IsBought)
-		{
+		if (tolower(choice[0]) == 'y') {
+			IsBought = true;
 			p = pPlayer;
 			int currentwallet = pPlayer->GetWallet();
 			pPlayer->SetWallet(currentwallet - CardPrice);          //Deduct the card price from the player`s wallet
-
 		}
-
 	}
 
 	//if the current player is not the owner of the card then deduct the fees from the current player`s wallet
