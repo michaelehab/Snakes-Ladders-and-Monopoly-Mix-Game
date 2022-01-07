@@ -244,6 +244,9 @@
     <ClCompile Include="SwitchToDesignModeAction.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
+    <ClCompile Include="SwitchToPlayModeAction.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -413,6 +416,9 @@
       <Filter>GameObjects\Cards</Filter>
     </ClInclude>
     <ClInclude Include="SwitchToDesignModeAction.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="SwitchToPlayModeAction.h">
       <Filter>Actions</Filter>
     </ClInclude>
   </ItemGroup>

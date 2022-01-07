@@ -10,6 +10,7 @@
 #include "DeleteGameObjectAction.h"
 #include "NewGameAction.h"
 #include "SwitchToDesignModeAction.h"
+#include "SwitchToPlayModeAction.h"
 
 ///TODO: Add #include for all action types
 
@@ -78,7 +79,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		break;
 
 	case TO_PLAY_MODE:
-		pOut->CreatePlayModeToolBar(); // temporary till you made its action class (CHANGE THIS LATTER)
+		pAct = new SwitchToPlayModeAction(this);
 		break;
 
 	case ROLL_DICE:
