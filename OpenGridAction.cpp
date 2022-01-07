@@ -7,7 +7,16 @@
 #include "Card.h"
 #include "CardOne.h"
 #include "CardTwo.h"
+#include "CardThree.h"
+#include "CardFour.h"
+#include"CardFive.h"
 #include "CardSix.h"
+#include "CardSeven.h"
+#include "CardEight.h"
+#include "CardNine.h"
+#include "CardTen.h"
+#include "CardEleven.h"
+#include "CardTwelve.h"
 #include <fstream>
 
 OpenGridAction::OpenGridAction(ApplicationManager* pApp) : Action(pApp)
@@ -84,7 +93,7 @@ void OpenGridAction::Execute()
 			pNewObject->Load(InFile);
 			pGrid->AddObjectToCell(pNewObject);
 			break;
-		/*case 3:
+		case 3:
 			pNewObject = new CardThree(0); // The Card Position will be changed with each card in the file
 			pNewObject->Load(InFile);
 			pGrid->AddObjectToCell(pNewObject);
@@ -98,13 +107,12 @@ void OpenGridAction::Execute()
 			pNewObject = new CardFive(0); // The Card Position will be changed with each card in the file
 			pNewObject->Load(InFile);
 			pGrid->AddObjectToCell(pNewObject);
-			break;*/
+			break;
 		case 6:
 			pNewObject = new CardSix(0); // The Card Position will be changed with each card in the file
 			pNewObject->Load(InFile);
 			pGrid->AddObjectToCell(pNewObject);
 			break;
-		/*
 		case 7:
 			pNewObject = new CardSeven(0); // The Card Position will be changed with each card in the file
 			pNewObject->Load(InFile);
@@ -134,7 +142,7 @@ void OpenGridAction::Execute()
 			pNewObject = new CardTwelve(0); // The Card Position will be changed with each card in the file
 			pNewObject->Load(InFile);
 			pGrid->AddObjectToCell(pNewObject);
-			break;*/
+			break;
 		}
 	}
 
