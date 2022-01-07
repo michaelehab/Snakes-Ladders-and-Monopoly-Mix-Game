@@ -38,6 +38,4 @@ void NewGameAction::Execute()
 	pGrid->SetCurrentPlayer(0);                       // start with the first player
 	pGrid->SetClipboard(NULL);                  	  // Initialize Clipboard with NULL
 	pGrid->SetEndGame(false);                   	  // Initialize endGame with false
-
-	pOut->PrintMessage("New Game!");
 }

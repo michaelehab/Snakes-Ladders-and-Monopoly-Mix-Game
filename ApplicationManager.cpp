@@ -9,6 +9,7 @@
 #include "InputDiceValueAction.h"
 #include "DeleteGameObjectAction.h"
 #include "NewGameAction.h"
+#include "SwitchToDesignModeAction.h"
 
 ///TODO: Add #include for all action types
 
@@ -86,7 +87,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		break;
 
 	case TO_DESIGN_MODE:
-		pOut->CreateDesignModeToolBar(); // temporary till you made its action class (CHANGE THIS LATTER)
+		pAct = new SwitchToDesignModeAction(this);
 		break;
 
 	case DELETE_GAME_OBJECT:
