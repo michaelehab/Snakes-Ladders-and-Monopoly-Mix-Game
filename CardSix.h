@@ -2,7 +2,7 @@
 #include "Card.h"
 class CardSix : public Card
 {
-	int CellNumToMoveTo;
+	CellPosition CellToMoveTo;
 public:
 	CardSix(const CellPosition& pos); // A Constructor takes card position
 
@@ -10,7 +10,6 @@ public:
 
 	virtual void Apply(Grid* pGrid, Player* pPlayer); // Applies the effect of CardSix on the passed Player
 													  //by instructing the player to move to a specific cell
-	virtual bool CheckInputValidity();
 
 	void Save(ofstream& outFile, ObjectType ObjType); // Overriding the Card Save member function
 
