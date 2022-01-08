@@ -174,31 +174,14 @@ Player* Grid::GetNextPlayer(Player* currentPlayer)
 	int currentCellNum = currentCellPosition->GetCellNumFromPosition((currentPlayer->GetCell())->GetCellPosition());
 	int NextPlayerIndex = -1;
 	int MinCellNum = 1000;
-	CellPosition* cellPosition;
-	int cellNum;
-	for (int i = 0; i < MaxPlayerCount; i++)
-	{
-		if (currentPlayer != PlayerList[i])      
+	for(int i=0;i<MaxPlayerCount;i++)
+		if (currentPlayer != PlayerList[i])
 		{
-			//Gets the cell number of each of the rest players 
-			cellNum = cellPosition->GetCellNumFromPosition((PlayerList[i]->GetCell())->GetCellPosition());
-			if (cellNum > currentCellNum)
-			{
-				//if cell number of the player(i) is greater than the cell number of the current player
-				//and if the minimum cell number is graeter than the cell number of the player(i)
-				//then set the index of the first next player with the index number of player(i)
-				//and set the minimum cell number with the cell number of the player(i)
-				if (MinCellNum > cellNum)
-				{
-					NextPlayerIndex = i;
-					MinCellNum = cellNum;
-				}
-			}
+			NextPlayerIndex = PlayerList[i]->GetNextPlayer(MinCellNum,currentCellNum,i,NextPlayerIndex);
 		}
-	}
 	if (NextPlayerIndex != -1)
 		//returns a pointer to the first player whose cell is after the current player in the grid
-		return PlayerList[NextPlayerIndex]; 
+		return PlayerList[NextPlayerIndex];
 	else
 		return NULL;    //return NULL if there is no player in front of the current player
 }

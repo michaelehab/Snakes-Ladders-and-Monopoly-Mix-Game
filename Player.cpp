@@ -2,7 +2,7 @@
 
 #include "GameObject.h"
 
-Player::Player(Cell * pCell, int playerNum) : stepCount(0), wallet(100), playerNum(playerNum)
+Player::Player(Cell* pCell, int playerNum) : stepCount(0), wallet(100), playerNum(playerNum)
 {
 	this->pCell = pCell;
 	this->turnCount = 0;
@@ -26,7 +26,7 @@ Player::Player(Cell * pCell, int playerNum) : stepCount(0), wallet(100), playerN
 
 // ====== Setters and Getters ======
 
-void Player::SetCell(Cell * cell)
+void Player::SetCell(Cell* cell)
 {
 	pCell = cell;
 }
@@ -112,12 +112,12 @@ void Player::ClearDrawing(Output* pOut) const
 
 // ====== Game Functions ======
 
-void Player::Move(Grid * pGrid, int diceNumber)
+void Player::Move(Grid* pGrid, int diceNumber)
 {
 	Output* pOut = pGrid->GetOutput();
 	Input* pIn = pGrid->GetInput();
 
-	if(!IsInPrison()) turnCount++;
+	if (!IsInPrison()) turnCount++;
 	if (this->burned) {
 		this->Pay(20);
 		burnedTurns++;
@@ -160,7 +160,7 @@ void Player::Move(Grid * pGrid, int diceNumber)
 			pOut->PrintMessage("Do You Wish To Launch A Special Attack Instead Of Recharging ? y/n");
 			string choice = pIn->getString(pOut);
 
-			if (tolower(choice[0]) == 'y'){
+			if (tolower(choice[0]) == 'y') {
 				string msg = "Choose one of the following available attacks : ";
 
 				if (!usedIce) msg += "  1-Ice";
@@ -192,7 +192,7 @@ void Player::Move(Grid * pGrid, int diceNumber)
 		pGrid->UpdatePlayerCell(this, pos);
 
 		pGameObject = pCell->GetGameObject();
-		if (pCell->HasCard() || pCell->HasLadder() || pCell->HasSnake()) 
+		if (pCell->HasCard() || pCell->HasLadder() || pCell->HasSnake())
 			pGameObject->Apply(pGrid, this);
 
 		if (CellPosition::GetCellNumFromPosition(pCell->GetCellPosition()) == NumHorizontalCells * NumVerticalCells) {
@@ -202,14 +202,14 @@ void Player::Move(Grid * pGrid, int diceNumber)
 	}
 }
 
-void Player::AppendPlayerInfo(string & playersInfo) const
+void Player::AppendPlayerInfo(string& playersInfo) const
 {
-	playersInfo += "P" + to_string(playerNum) + "(" ;
+	playersInfo += "P" + to_string(playerNum) + "(";
 	playersInfo += to_string(wallet) + "$, ";
 	playersInfo += to_string(turnCount) + ", ";
-	if(this->IsInPrison()) playersInfo += "Prison, ";
-	if(this->IsPrevented() && !this->IsInPrison()) playersInfo += "Prevented, ";
-	if(this->burned) playersInfo += "Fire, ";
+	if (this->IsInPrison()) playersInfo += "Prison, ";
+	if (this->IsPrevented() && !this->IsInPrison()) playersInfo += "Prevented, ";
+	if (this->burned) playersInfo += "Fire, ";
 	if (this->poisoned) playersInfo += "Poison, ";
 	playersInfo += to_string(2 - specialAttacksUsed) + ")";
 }
@@ -228,7 +228,7 @@ void Player::Reset()
 	poisoned = false;
 }
 
-void Player::UseIceSpecialAttack(Player * p, Output * pOut)
+void Player::UseIceSpecialAttack(Player* p, Output* pOut)
 {
 	if (specialAttacksUsed < 2 && !usedIce) {
 		p->prevented = true;
@@ -267,7 +267,7 @@ void Player::UsePoisonSpecialAttack(Player* p, Output* pOut)
 	}
 }
 
-void Player::UseLightningSpecialAttack(Output* pOut, Grid * pGrid)
+void Player::UseLightningSpecialAttack(Output* pOut, Grid* pGrid)
 {
 	if (specialAttacksUsed < 2 && !usedLightning) {
 		string msg = "Players : ";
@@ -325,4 +325,28 @@ void Player::LaunchSpecialAttack(int type, Grid* pGrid) {
 		else if (type == 3) UsePoisonSpecialAttack(p, pOut);
 		else pOut->PrintMessage("The Attack type is invalid!");
 	}
+}
+int Player:: GetNextPlayer(int &MinCellNum, int currentCellNum, int i, int NextPlayerIndex)
+{
+
+	CellPosition* cellPosition;
+	int cellNum;
+
+	//Gets the cell number of each of the rest players 
+	cellNum = cellPosition->GetCellNumFromPosition((this->GetCell())->GetCellPosition());
+	if (cellNum > currentCellNum)
+	{
+		//if cell number of the player(i) is greater than the cell number of the current player
+		//and if the minimum cell number is graeter than the cell number of the player(i)
+		//then set the index of the first next player with the index number of player(i)
+		//and set the minimum cell number with the cell number of the player(i)
+		if (MinCellNum > cellNum)
+		{
+			NextPlayerIndex = i;
+			MinCellNum = cellNum;
+		}
+	}
+	return NextPlayerIndex;
+
+	
 }
