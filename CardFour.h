@@ -17,6 +17,8 @@ public:
 	virtual void Apply(Grid*, Player*); //Applies the effect of CardFour on passed player
 										//by preventing the player from rolling next turn 
 
+	virtual Card* GetCopy(const CellPosition&);
+
 	virtual void Save(ofstream& outFile, ObjectType ObjType); // Overriding the Card Save member function 
 
 	virtual void Load(ifstream& InFile); // Overriding the Card Load member function

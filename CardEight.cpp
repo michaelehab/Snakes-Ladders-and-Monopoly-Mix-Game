@@ -7,6 +7,12 @@ CardEight::CardEight(const CellPosition& pos) : Card(pos) // set the cell positi
 	this->amount = 0;
 }
 
+Card* CardEight::GetCopy(const CellPosition& pos)
+{
+	Card* pCard = new CardEight(pos); // Create a new CardOne in the CellPosition passed to the function 
+	((CardEight*)pCard)->amount = this->amount; // Copy the card data mamber to the new one
+	return pCard; // Returning the new card 
+}
 
 void CardEight::ReadCardParameters(Grid* pGrid)
 {

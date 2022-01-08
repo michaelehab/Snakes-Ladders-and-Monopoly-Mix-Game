@@ -4,6 +4,11 @@ CardTwelve::CardTwelve(const CellPosition& pos): Card(pos) {
 	cardNumber = 12;
 }
 
+Card* CardTwelve::GetCopy(const CellPosition& pos)
+{
+	return new CardTwelve(pos);
+}
+
 
 void CardTwelve::Apply(Grid* pGrid, Player* pPlayer) {
 	if (pGrid->GetPlayerWithLeastCoins() == pPlayer)
@@ -34,6 +39,8 @@ void CardTwelve::Save(ofstream& outFile, ObjectType ObjType) {
 	{
 		// Calling the parent class save function that saves the type and cell to the file
 		Card::Save(outFile, ObjType);
+		// No Card Parameters here
+		outFile << std::endl;
 	}
 }
 

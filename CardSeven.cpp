@@ -4,9 +4,11 @@ CardSeven::CardSeven(const CellPosition& pos) : Card(pos) // set the cell positi
 	cardNumber = 7; // set the inherited cardNumber data member with the card number (7 here)
 }
 
-CardSeven::~CardSeven(void)
+Card* CardSeven::GetCopy(const CellPosition& pos)
 {
+	return new CardSeven(pos);
 }
+
 
 void CardSeven::ReadCardParameters(Grid* pGrid)
 {
@@ -42,11 +44,15 @@ void CardSeven::Save(ofstream& outFile, ObjectType ObjType)
 	{
 		// Calling the parent class save function that saves the type and cell to the file
 		Card::Save(outFile, ObjType);
-
+		// No Card Parameters here
+		outFile << std::endl;
 	}
 }
 
 void CardSeven::Load(ifstream& InFile) {
 	Card::Load(InFile);
+}
 
+CardSeven::~CardSeven(void)
+{
 }

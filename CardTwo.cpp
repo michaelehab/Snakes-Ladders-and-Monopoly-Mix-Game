@@ -5,6 +5,11 @@ CardTwo::CardTwo(const CellPosition& pos) : Card(pos) // set the cell position o
 	cardNumber = 2; // set the inherited cardNumber data member with the card number (2 here)
 }
 
+Card* CardTwo::GetCopy(const CellPosition& pos)
+{
+	return new CardTwo(pos);
+}
+
 void CardTwo::ReadCardParameters(Grid* pGrid)
 {
 	//No Parameters for CardTwo

@@ -78,7 +78,6 @@ bool Player::Pay(int amount) {
 	return true;
 }
 
-
 bool Player::IsPrevented() const
 {
 	return prevented;
@@ -121,7 +120,9 @@ void Player::Move(Grid* pGrid, int diceNumber)
 	Output* pOut = pGrid->GetOutput();
 	Input* pIn = pGrid->GetInput();
 
-	if (!IsInPrison()) turnCount++;
+	turnCount++;
+
+	// If the player is burned he/she will lose 20 coins for 3 games
 	if (this->burned) {
 		this->Pay(20);
 		burnedTurns++;
@@ -131,6 +132,8 @@ void Player::Move(Grid* pGrid, int diceNumber)
 			burnedTurns = 0;
 		}
 	}
+
+	// If the player is poisoned he/she will have a dicenumber-1 for 5 games
 	if (this->poisoned) {
 		diceNumber--;
 		poisonedTurns++;
@@ -140,6 +143,8 @@ void Player::Move(Grid* pGrid, int diceNumber)
 			poisonedTurns = 0;
 		}
 	}
+
+	// If the player is prisoned he/she should spend 3 games in prison
 	if (IsInPrison()) {
 		pOut->PrintMessage("Player : " + to_string(GetPlayerNum()) + " is in prison.");
 		turnsInPrison++;
@@ -234,6 +239,7 @@ void Player::Reset()
 
 void Player::UseIceSpecialAttack(Player* p, Output* pOut)
 {
+	// Checking if the player didn't use his ice special attack before and if he didn't play all his available attacks
 	if (specialAttacksUsed < 2 && !usedIce) {
 		p->prevented = true;
 		pOut->PrintMessage("Player: " + to_string(p->GetPlayerNum()) + " is now Frozen by player : " + to_string(this->GetPlayerNum()));
@@ -247,6 +253,7 @@ void Player::UseIceSpecialAttack(Player* p, Output* pOut)
 
 void Player::UseFireSpecialAttack(Player* p, Output* pOut)
 {
+	// Checking if the player didn't use his fire special attack before and if he didn't play all his available attacks
 	if (specialAttacksUsed < 2 && !usedFire) {
 		p->burned = true;
 		pOut->PrintMessage("Player: " + to_string(p->GetPlayerNum()) + " is now burned by player : " + to_string(this->GetPlayerNum()));
@@ -260,6 +267,7 @@ void Player::UseFireSpecialAttack(Player* p, Output* pOut)
 
 void Player::UsePoisonSpecialAttack(Player* p, Output* pOut)
 {
+	// Checking if the player didn't use his poison special attack before and if he didn't play all his available attacks
 	if (specialAttacksUsed < 2 && !usedPoison) {
 		p->poisoned = true;
 		pOut->PrintMessage("Player: " + to_string(p->GetPlayerNum()) + " is now poisoned by player : " + to_string(this->GetPlayerNum()));
@@ -273,6 +281,7 @@ void Player::UsePoisonSpecialAttack(Player* p, Output* pOut)
 
 void Player::UseLightningSpecialAttack(Output* pOut, Grid* pGrid)
 {
+	// Checking if the player didn't use his ice special lightning before and if he didn't play all his available attacks
 	if (specialAttacksUsed < 2 && !usedLightning) {
 		string msg = "Players : ";
 		for (int i = 0; i < MaxPlayerCount; i++) {
@@ -293,6 +302,8 @@ void Player::UseLightningSpecialAttack(Output* pOut, Grid* pGrid)
 void Player::LaunchSpecialAttack(int type, Grid* pGrid) {
 	Output* pOut = pGrid->GetOutput();
 	Input* pIn = pGrid->GetInput();
+
+	// If it's a lightning attack there is no target player
 	if (type == 4) {
 		UseLightningSpecialAttack(pOut, pGrid);
 	}

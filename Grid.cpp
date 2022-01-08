@@ -57,13 +57,10 @@ bool Grid::AddObjectToCell(GameObject* pNewObject)  // think if any validation i
 	return false; // if not a valid position
 }
 
-
-// Note: You may need to change the return type of this function (Think)
 bool Grid::RemoveObjectFromCell(const CellPosition& pos)
 {
 	if (pos.IsValidCell()) // Check if valid position
 	{
-		// Note: you can deallocate the object here before setting the pointer to null if it is needed **
 		if (CellList[pos.VCell()][pos.HCell()]->GetGameObject() != NULL) {
 			// Delete the existing game object
 			delete CellList[pos.VCell()][pos.HCell()]->GetGameObject();
@@ -104,7 +101,6 @@ Output* Grid::GetOutput() const
 
 void Grid::SetClipboard(Card* pCard) // to be used in copy/cut
 {
-	// you may update slightly in implementation if you want (but without breaking responsibilities)
 	Clipboard = pCard;
 }
 
@@ -134,6 +130,7 @@ bool Grid::SetCurrentPlayer(int p) {
 	return true;
 }
 
+
 // ========= Other Getters =========
 
 Player* Grid::GetPlayerWithLeastCoins() const {
@@ -151,6 +148,13 @@ Player* Grid::GetPlayerWithLeastCoins() const {
 Player* Grid::GetCurrentPlayer() const
 {
 	return PlayerList[currPlayerNumber];
+}
+
+Card* Grid::GetCardFromPosition(const CellPosition& position)
+{
+	if (CellList[position.VCell()][position.HCell()]->HasCard())
+		return CellList[position.VCell()][position.HCell()]->HasCard();
+	return NULL;
 }
 
 Ladder* Grid::GetNextLadder(const CellPosition& position)

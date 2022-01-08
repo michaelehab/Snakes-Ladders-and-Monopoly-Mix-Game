@@ -48,7 +48,7 @@ public:
 	int GetPlayerNum() const;       // A getter for the playerNum
 
 	int getJustRolledDiceNumber() const; //To get the justrolleddicenumber of the current player
-	int GetNextPlayer(int &MinCellNum, int currentCellNum,int i,int NextPlayerIndex);//gets the next player index and sends it back to the grid
+	int GetNextPlayer(int &MinCellNum, int currentCellNum,int i,int NextPlayerIndex); //gets the next player index and sends it back to the grid
 
 
 	void PreventNextTurn(bool choice); // Prevents the player from rolling the next turn
@@ -73,7 +73,8 @@ public:
 	
 	void AppendPlayerInfo(string & playersInfo) const; // Appends player's info to the input string, 
 	                                                   // for example: P0(wallet, turnCount)
-
+													   
+	// ====== Special Attack Functions =====
 	void UseIceSpecialAttack(Player* p, Output* pOut);		// Makes the player use his ice special attack (if possible)
 	void UseFireSpecialAttack(Player* p, Output* pOut);	// Makes the player use his fire special attack (if possible)
 	void UsePoisonSpecialAttack(Player* p, Output* pOut);	// Makes the player use his poison special attack (if possible)

@@ -108,10 +108,7 @@ void Cards_9_11::Save(ofstream& outFile, ObjectType ObjType, int& CardPrice, int
 	{
 		// Calling the parent class save function that saves the type and cell to the file
 		Card::Save(outFile, ObjType);
-		outFile << CardPrice << std::endl;
-		outFile << fees << std::endl;
-
-
+		outFile << CardPrice << ' ' <<  fees << std::endl;
 	}
 }
 

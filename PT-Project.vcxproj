@@ -185,6 +185,8 @@
     <ClCompile Include="CMUgraphicsLib\jpeg\jquant1.c" />
     <ClCompile Include="CMUgraphicsLib\jpeg\jquant2.c" />
     <ClCompile Include="CMUgraphicsLib\jpeg\jutils.c" />
+    <ClCompile Include="CopyCardAction.cpp" />
+    <ClCompile Include="CutCardAction.cpp" />
     <ClCompile Include="DeleteGameObjectAction.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Grid.cpp" />
@@ -194,6 +196,7 @@
     <ClCompile Include="NewGameAction.cpp" />
     <ClCompile Include="OpenGridAction.cpp" />
     <ClCompile Include="Output.cpp" />
+    <ClCompile Include="PasteCardAction.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="RollDiceAction.cpp" />
@@ -244,6 +247,8 @@
     <ClInclude Include="CMUgraphicsLib\jpeg\jpegint.h" />
     <ClInclude Include="CMUgraphicsLib\jpeg\jpeglib.h" />
     <ClInclude Include="CMUgraphicsLib\jpeg\jversion.h" />
+    <ClInclude Include="CopyCardAction.h" />
+    <ClInclude Include="CutCardAction.h" />
     <ClInclude Include="DEFS.h" />
     <ClInclude Include="DeleteGameObjectAction.h" />
     <ClInclude Include="GameObject.h" />
@@ -254,6 +259,7 @@
     <ClInclude Include="NewGameAction.h" />
     <ClInclude Include="OpenGridAction.h" />
     <ClInclude Include="Output.h" />
+    <ClInclude Include="PasteCardAction.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="RollDiceAction.h" />
     <ClInclude Include="SaveGridAction.h" />
