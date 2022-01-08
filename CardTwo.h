@@ -19,6 +19,8 @@ public:
 	virtual void Apply(Grid* pGrid, Player* pPlayer); // Applies the effect of CardTwo on the passed Player
 													  // by moving him/her to the next ladder in the grid;
 
+	virtual Card* GetCopy(const CellPosition&);
+
 	void Save(ofstream& outFile, ObjectType ObjType); // Overriding the Card Save member function
 
 	void Load(ifstream& InFile); // Overriding the Card Load member function

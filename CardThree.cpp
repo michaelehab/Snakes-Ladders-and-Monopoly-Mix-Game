@@ -6,6 +6,11 @@ CardThree::CardThree(const CellPosition& pos) : Card(pos) // set the cell positi
 	cardNumber = 3; //sets the inherited cardNumber data member with the card number
 }
 
+Card* CardThree::GetCopy(const CellPosition& pos)
+{
+	return new CardThree(pos);
+}
+
 
 void CardThree::ReadCardParameters(Grid* pGrid)
 {

@@ -9,6 +9,13 @@ CardOne::~CardOne(void)
 {
 }
 
+Card* CardOne::GetCopy(const CellPosition& pos)
+{
+	Card* pCard = new CardOne(pos); // Create a new CardOne in the CellPosition passed to the function 
+	((CardOne*)pCard)->walletAmount = this->walletAmount; // Copy the card data mamber to the new one
+	return pCard; // Returning the new card 
+}
+
 void CardOne::ReadCardParameters(Grid* pGrid)
 {
 

@@ -134,6 +134,7 @@ bool Grid::SetCurrentPlayer(int p) {
 	return true;
 }
 
+
 // ========= Other Getters =========
 
 Player* Grid::GetPlayerWithLeastCoins() const {
@@ -151,6 +152,13 @@ Player* Grid::GetPlayerWithLeastCoins() const {
 Player* Grid::GetCurrentPlayer() const
 {
 	return PlayerList[currPlayerNumber];
+}
+
+Card* Grid::GetCardFromPosition(const CellPosition& position)
+{
+	if (CellList[position.VCell()][position.HCell()]->HasCard())
+		return CellList[position.VCell()][position.HCell()]->HasCard();
+	return NULL;
 }
 
 Ladder* Grid::GetNextLadder(const CellPosition& position)

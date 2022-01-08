@@ -13,6 +13,8 @@ public:
 
 	bool CheckInputValidity();
 
+	virtual Card* GetCopy(const CellPosition&);
+
 	void Save(ofstream& outFile, ObjectType ObjType); // Overriding the Card Save member function
 
 	void Load(ifstream& InFile); // Overriding the Card Load member function

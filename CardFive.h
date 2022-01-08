@@ -7,6 +7,8 @@ public:
 
 	virtual void Apply(Grid* pGrid, Player* pPlayer);
 
+	virtual Card* GetCopy(const CellPosition&);
+
 	void Save(ofstream& outFile, ObjectType ObjType);
 
 	void Load(ifstream& InFile);

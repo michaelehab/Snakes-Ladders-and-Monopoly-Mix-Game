@@ -4,6 +4,11 @@ CardTwelve::CardTwelve(const CellPosition& pos): Card(pos) {
 	cardNumber = 12;
 }
 
+Card* CardTwelve::GetCopy(const CellPosition& pos)
+{
+	return new CardTwelve(pos);
+}
+
 
 void CardTwelve::Apply(Grid* pGrid, Player* pPlayer) {
 	if (pGrid->GetPlayerWithLeastCoins() == pPlayer)

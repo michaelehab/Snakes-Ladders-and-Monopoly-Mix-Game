@@ -1,17 +1,20 @@
 #include "CardNine.h"
+
 int CardNine::CardPrice = 0;
 int CardNine::fees = 0;
 Player* CardNine::p = NULL;
 bool CardNine::IsBought = 0;
+
 CardNine::CardNine(const CellPosition& pos) : Cards_9_11(pos) // set the cell position of the card
 {
 	cardNumber = 9; // set the inherited cardNumber data member with the card number (9 here)
-
 }
 
-CardNine::~CardNine(void)
+Card* CardNine::GetCopy(const CellPosition& pos)
 {
+	return new CardNine(pos);
 }
+
 Player* CardNine::GetPlayer() {
 	return p;
 }
@@ -50,3 +53,6 @@ void CardNine::Load(ifstream& InFile)
 	Cards_9_11::Load(InFile, CardPrice, fees);
 }
 
+CardNine::~CardNine(void)
+{
+}

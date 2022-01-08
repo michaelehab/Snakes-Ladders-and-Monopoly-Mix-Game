@@ -11,6 +11,9 @@
 #include "NewGameAction.h"
 #include "SwitchToDesignModeAction.h"
 #include "SwitchToPlayModeAction.h"
+#include "CopyCardAction.h"
+#include "CutCardAction.h"
+#include "PasteCardAction.h"
 
 ///TODO: Add #include for all action types
 
@@ -106,8 +109,19 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case OPEN_GRID:
 		pAct = new OpenGridAction(this);
 		break;
+		
+	case COPY_CARD:
+		pAct = new CopyCardAction(this);
+		break;
 
-		///TODO: Add a case for EACH Action type in the Design mode or Play mode
+	case CUT_CARD:
+		pAct = new CutCardAction(this);
+		break;
+
+	case PASTE_CARD:
+		pAct = new PasteCardAction(this);
+		break;
+
 	case INPUT_DICE_VALUE:
 		pAct = new InputDiceValueAction(this);
 		break;

@@ -1,17 +1,20 @@
 #include "CardEleven.h"
+
 int CardEleven::CardPrice = 0;
 int CardEleven::fees = 0;
 Player* CardEleven::p = NULL;
 bool CardEleven::IsBought = 0;
+
 CardEleven::CardEleven(const CellPosition& pos) : Cards_9_11(pos) // set the cell position of the card
 {
 	cardNumber = 11; // set the inherited cardNumber data member with the card number (9 here)
-
 }
 
-CardEleven::~CardEleven(void)
+Card* CardEleven::GetCopy(const CellPosition& pos)
 {
+	return new CardEleven(pos);
 }
+
 Player* CardEleven::GetPlayer() {
 	return p;
 }
@@ -50,3 +53,6 @@ void CardEleven::Load(ifstream& InFile)
 	Cards_9_11::Load(InFile, CardPrice, fees);
 }
 
+CardEleven::~CardEleven(void)
+{
+}

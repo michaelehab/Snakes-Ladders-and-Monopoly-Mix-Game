@@ -70,7 +70,8 @@ public:
 	void ResetGrid(); // Resets the grid to its initial state
 	// ========= Other Getters =========
 	
-	Player * GetCurrentPlayer() const;	// Gets a Pointer to the Current Player	                                    
+	Player * GetCurrentPlayer() const;	// Gets a Pointer to the Current Player
+	Card* GetCardFromPosition(const CellPosition& position);
 	Ladder * GetNextLadder(const CellPosition & position);  // Gets a Pointer to the first Ladder after the passed "position"
 	int GetNumberOfObjects(ObjectType ObjType); // Gets the total number of a specific game object
 	Player * GetPlayerWithLeastCoins() const; // Gets a pointer to the player with the least amount of coins in his wallet
