@@ -20,9 +20,10 @@ void CardSix::ReadCardParameters(Grid* pGrid)
 	// 3- Validation to click inside the grid area
 	if (!CellToMoveTo.IsValidCell() || CellToMoveTo.GetCellNum() == this->GetPosition().GetCellNum())
 	{
-		pOut->PrintMessage("Please click on a valid cell!");
+		int x, y;
+		pOut->PrintMessage("You clicked on an invalid cell, Click to continue.");
+		pIn->GetPointClicked(x, y);
 
-		CellToMoveTo = pIn->GetCellClicked();
 	}
 
 	// 3- Clear the status bar
@@ -32,12 +33,14 @@ void CardSix::ReadCardParameters(Grid* pGrid)
 void CardSix::Apply(Grid* pGrid, Player* pPlayer)
 {
 	Card::Apply(pGrid, pPlayer); //Call Apply() of the base class Card to print the message that you reached this card number
+	if (!(!CellToMoveTo.IsValidCell() || CellToMoveTo.GetCellNum() == this->GetPosition().GetCellNum()))
+	{
+		int newposition = CellToMoveTo.GetCellNum() - (pPlayer->GetCell()->GetCellPosition().GetCellNum());
 
-	int newposition = CellToMoveTo.GetCellNum() - (pPlayer->GetCell()->GetCellPosition().GetCellNum());
+		pPlayer->Move(pGrid, newposition);
 
-	pPlayer->Move(pGrid, newposition);
-
-	pPlayer->SetTurnCount(pPlayer->GetTurnCount() - 1);
+		pPlayer->SetTurnCount(pPlayer->GetTurnCount() - 1);
+	}
 }
 
 void CardSix::Save(ofstream& outFile, ObjectType ObjType)
@@ -61,4 +64,9 @@ CardSix:: ~CardSix()
 {
 
 }
-
+bool CardSix::CheckInputValidity()
+{
+	if (!CellToMoveTo.IsValidCell() || CellToMoveTo.GetCellNum() == this->GetPosition().GetCellNum())
+		return 0;
+	return 1;
+}
