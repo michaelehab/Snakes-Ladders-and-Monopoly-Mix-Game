@@ -6,6 +6,11 @@ CardSix::CardSix(const CellPosition& pos) : Card(pos) // set the cell position o
 
 }
 
+
+CardSix::CardSix(int cardNumber, int CellNummToMoveTo):Card(NULL) {
+	this->cardNumber = cardNumber;
+	this->CellNumToMoveTo = CellNummToMoveTo;
+}
 void CardSix::ReadCardParameters(Grid* pGrid)
 {
 	// 1- Get a Pointer to the Input / Output Interfaces from the Grid
@@ -28,6 +33,11 @@ void CardSix::ReadCardParameters(Grid* pGrid)
 	// 3- Clear the status bar
 	pOut->ClearStatusBar();
 }
+
+Card* CardSix::GetCopy() {
+	return new CardSix(cardNumber, CellNumToMoveTo);
+}
+
 bool CardSix::CheckInputValidity()
 {
 	if (CellNumToMoveTo <= 0 || CellNumToMoveTo > 99)

@@ -13,7 +13,6 @@ protected:
 
 public:
 	Card(const CellPosition & pos); // A Constructor for card that takes the cell position of it
-
 	void SetCardNumber(int cnum);   // The setter of card number
 	int GetCardNumber();            // The getter of card number
 
@@ -27,6 +26,9 @@ public:
 	virtual void Apply(Grid* pGrid, Player* pPlayer);  // It applies the effect of the Card Type on the passed player
 	                                                   // It is a virtual function (implementation depends on Card Type)
 
+	virtual Card* GetCopy() = 0;
+
+	virtual void SetCardPosition(CellPosition& pos);
 	void Save(ofstream& outFile, ObjectType ObjType); // Saves the card type, cell and parameters (if any)
 
 	virtual void Load(ifstream& InFile); // Loads the data members of the card

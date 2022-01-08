@@ -7,12 +7,17 @@ Card::Card(const CellPosition & pos) : GameObject(pos) // sets the cell position
 
 void Card::SetCardNumber(int cnum)
 {
+	if(cnum>=1&&cnum<=12)
 	cardNumber = cnum; // needs validation
 }
 
 int Card::GetCardNumber()
 {
 	return cardNumber;
+}
+
+void Card::SetCardPosition(CellPosition& pos) {
+		
 }
 
 void Card::Draw(Output* pOut) const
@@ -22,6 +27,7 @@ void Card::Draw(Output* pOut) const
 	pOut->DrawCell(position, cardNumber);
 
 }
+
 
 void Card::ReadCardParameters(Grid * pGrid)
 {

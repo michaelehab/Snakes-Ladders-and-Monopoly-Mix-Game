@@ -9,6 +9,14 @@ CardTen::CardTen(const CellPosition& pos) : Cards_9_11(pos) // set the cell posi
 
 }
 
+
+CardTen::CardTen(int cardNumber, int cardPrice, int fees, Player* p, bool IsBought) :Cards_9_11(NULL) {
+	this->cardNumber = cardNumber;
+	this->CardPrice = CardPrice;
+	this->fees = fees;
+	this->p = p;
+	this->IsBought = IsBought;
+}
 CardTen::~CardTen(void)
 {
 }
@@ -26,6 +34,10 @@ void CardTen::SetPlayer(Player* player) {
 void CardTen::ReadCardParameters(Grid* pGrid)
 {
 	Cards_9_11::ReadCardParameters(pGrid, CardPrice, fees, p, IsBought);
+}
+
+Card* CardTen::GetCopy() {
+	return new CardTen(cardNumber, CardPrice, fees, p, IsBought);
 }
 
 void CardTen::Apply(Grid* pGrid, Player* pPlayer)

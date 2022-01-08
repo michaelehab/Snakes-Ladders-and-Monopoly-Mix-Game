@@ -8,6 +8,10 @@ CardSeven::~CardSeven(void)
 {
 }
 
+CardSeven::CardSeven(int cardNumber):Card(NULL) {
+	this->cardNumber = cardNumber;
+}
+
 void CardSeven::ReadCardParameters(Grid* pGrid)
 {
 
@@ -32,6 +36,10 @@ void CardSeven::Apply(Grid* pGrid, Player* pPlayer)
 	//restarts the game for the first player whose cell is after the current player in the grid
 		pGrid->UpdatePlayerCell(NextPlayer, CellPositionToMoveTo->GetCellPositionFromNum(1));
 
+}
+
+Card* CardSeven::GetCopy() {
+	return new CardSeven(cardNumber);
 }
 
 void CardSeven::Save(ofstream& outFile, ObjectType ObjType)

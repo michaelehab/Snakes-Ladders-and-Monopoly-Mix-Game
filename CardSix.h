@@ -5,13 +5,14 @@ class CardSix : public Card
 	int CellNumToMoveTo;
 public:
 	CardSix(const CellPosition& pos); // A Constructor takes card position
-
+	CardSix(int cardNumber, int CellNumToMoveTo);
 	virtual void ReadCardParameters(Grid* pGrid); // Reads the parameters of CardSix which is the cell to move the player to
 
 	virtual void Apply(Grid* pGrid, Player* pPlayer); // Applies the effect of CardSix on the passed Player
 													  //by instructing the player to move to a specific cell
 	virtual bool CheckInputValidity();
 
+	Card* GetCopy();
 	void Save(ofstream& outFile, ObjectType ObjType); // Overriding the Card Save member function
 
 	void Load(ifstream& InFile); // Overriding the Card Load member function

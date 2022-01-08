@@ -13,7 +13,7 @@ class CardOne :	public Card
 
 public:
 	CardOne(const CellPosition & pos); // A Constructor takes card position
-
+	CardOne(int cardNumber, int walletAmount);
 	virtual void ReadCardParameters(Grid * pGrid); // Reads the parameters of CardOne which is: walletAmount
 	
 	virtual bool CheckInputValidity();
@@ -21,6 +21,7 @@ public:
 	virtual void Apply(Grid* pGrid, Player* pPlayer); // Applies the effect of CardOne on the passed Player
 	                                                  // by decrementing the player's wallet by the walletAmount data member
 
+	Card* GetCopy();
 	void Save(ofstream& outFile, ObjectType ObjType); // Overriding the Card Save member function
 
 	void Load(ifstream& InFile); // Overriding the Card Load member function

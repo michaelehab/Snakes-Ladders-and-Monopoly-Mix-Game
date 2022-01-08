@@ -6,10 +6,17 @@ CardFour::CardFour(const CellPosition& pos) : Card(pos) // set the cell position
 	cardNumber = 4; //sets the inherited cardNumber data member with the card number
 }
 
-
+CardFour::CardFour(int cardNumber) : Card(NULL)
+{
+	this->cardNumber = cardNumber;
+}
 void CardFour::ReadCardParameters(Grid* pGrid)
 {
 	//No Parameters for CardFour
+}
+
+Card* CardFour::GetCopy() {
+	return new CardFour(cardNumber);
 }
 
 void CardFour::Apply(Grid* pGrid, Player* pPlayer)

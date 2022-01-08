@@ -8,7 +8,13 @@ CardEleven::CardEleven(const CellPosition& pos) : Cards_9_11(pos) // set the cel
 	cardNumber = 11; // set the inherited cardNumber data member with the card number (9 here)
 
 }
-
+CardEleven::CardEleven(int cardNumber,int CardPrice,int fees,Player* p,bool IsBought):Cards_9_11(NULL){
+	this->cardNumber = cardNumber;
+	this->CardPrice = CardPrice;
+	this->fees = fees;
+	this->p = p;
+	this->IsBought = IsBought;
+}
 CardEleven::~CardEleven(void)
 {
 }
@@ -26,6 +32,11 @@ void CardEleven::SetPlayer(Player* player) {
 void CardEleven::ReadCardParameters(Grid* pGrid)
 {
 	Cards_9_11::ReadCardParameters(pGrid, CardPrice, fees, p, IsBought);
+}
+
+
+Card* CardEleven::GetCopy() {
+	return new CardEleven(cardNumber, CardPrice, fees, p, IsBought);
 }
 
 void CardEleven::Apply(Grid* pGrid, Player* pPlayer)

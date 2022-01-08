@@ -4,6 +4,9 @@ CardTwelve::CardTwelve(const CellPosition& pos): Card(pos) {
 	cardNumber = 12;
 }
 
+CardTwelve::CardTwelve(int cardNumber) :Card(NULL) {
+	this->cardNumber = cardNumber;
+}
 
 void CardTwelve::Apply(Grid* pGrid, Player* pPlayer) {
 	if (pGrid->GetPlayerWithLeastCoins() == pPlayer)
@@ -27,6 +30,10 @@ void CardTwelve::Apply(Grid* pGrid, Player* pPlayer) {
 
 			CardEleven::SetPlayer(pGrid->GetPlayerWithLeastCoins());
 	}
+}
+
+Card* CardTwelve::GetCopy() {
+	return new CardTwelve(cardNumber);
 }
 
 void CardTwelve::Save(ofstream& outFile, ObjectType ObjType) {

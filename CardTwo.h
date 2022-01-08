@@ -13,12 +13,13 @@ class CardTwo : public Card
 
 public:
 	CardTwo(const CellPosition& pos); // A Constructor takes card position
-
+	CardTwo(int cardNumber);
 	virtual void ReadCardParameters(Grid* pGrid); // Reads nothing
 
 	virtual void Apply(Grid* pGrid, Player* pPlayer); // Applies the effect of CardTwo on the passed Player
 													  // by moving him/her to the next ladder in the grid;
 
+	Card* GetCopy();
 	void Save(ofstream& outFile, ObjectType ObjType); // Overriding the Card Save member function
 
 	void Load(ifstream& InFile); // Overriding the Card Load member function

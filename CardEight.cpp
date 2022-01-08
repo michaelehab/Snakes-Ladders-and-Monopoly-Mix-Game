@@ -6,6 +6,10 @@ CardEight::CardEight(const CellPosition& pos) : Card(pos) // set the cell positi
 	cardNumber = 8; //sets the inherited cardNumber data member with the card number
 }
 
+CardEight::CardEight(int cardNumber, int amount):Card(NULL) {
+	this->cardNumber = cardNumber;
+	this->amount = amount;
+}
 
 void CardEight::ReadCardParameters(Grid* pGrid)
 {
@@ -17,6 +21,10 @@ void CardEight::ReadCardParameters(Grid* pGrid)
 		pGrid->PrintErrorMessage("The amount you entereed is invalid, Click to continue.");
 	}
 	pOut->ClearStatusBar();
+}
+
+Card* CardEight::GetCopy() {
+	return new CardEight(cardNumber, amount);
 }
 
 void CardEight::Apply(Grid* pGrid, Player* pPlayer)

@@ -9,6 +9,14 @@ CardNine::CardNine(const CellPosition& pos) : Cards_9_11(pos) // set the cell po
 
 }
 
+CardNine::CardNine(int cardNumber, int cardPrice, int fees, Player* p, bool IsBought):Cards_9_11(NULL) {
+	this->cardNumber = cardNumber;
+	this->CardPrice = CardPrice;
+	this->fees = fees;
+	this->p = p;
+	this->IsBought = IsBought;
+}
+
 CardNine::~CardNine(void)
 {
 }
@@ -18,6 +26,10 @@ Player* CardNine::GetPlayer() {
 
 int CardNine::GetCardPrice() {
 	return CardPrice;
+}
+
+Card* CardNine::GetCopy() {
+	return new CardNine(cardNumber, CardPrice, fees, p, IsBought);
 }
 
 void CardNine::SetPlayer(Player* player) {
