@@ -167,24 +167,56 @@ Ladder* Grid::GetNextLadder(const CellPosition& position)
 	}
 	return NULL; // not found
 }
-Player* Grid::GetNextPlayer(Player* currentPlayer)
+void Grid::GetNextPlayer(Player* currentPlayer,Player* NextPlayers[])
 {
 	CellPosition* currentCellPosition;
 	//Gets the cell number of the current player 
 	int currentCellNum = currentCellPosition->GetCellNumFromPosition((currentPlayer->GetCell())->GetCellPosition());
-	int NextPlayerIndex = -1;
-	int MinCellNum = 1000;
-	for(int i=0;i<MaxPlayerCount;i++)
+	int NextPlayerIndex[4] = { -1,-1,-1,-1 };   //the index of the next players in front of the current player
+	int Index = 0;                              //the index of NextPlayerIndex
+	int MinCellNum = 1000;                      //the cell number of the player directly after the current player 
+	for (int i = 0; i < MaxPlayerCount; i++)
 		if (currentPlayer != PlayerList[i])
 		{
-			NextPlayerIndex = PlayerList[i]->GetNextPlayer(MinCellNum,currentCellNum,i,NextPlayerIndex);
+			NextPlayerIndex[0] = PlayerList[i]->GetNextPlayer(MinCellNum, currentCellNum, i, NextPlayerIndex[0]);
 		}
-	if (NextPlayerIndex != -1)
-		//returns a pointer to the first player whose cell is after the current player in the grid
-		return PlayerList[NextPlayerIndex];
-	else
-		return NULL;    //return NULL if there is no player in front of the current player
+	CellPosition* CellNum;
+	//Loops on the Playerlist to get all the players that are at the same cell directly after the current player`s cell 
+	for (int i = 0; i < MaxPlayerCount; i++)
+		if (CellNum->GetCellNumFromPosition((PlayerList[i]->GetCell())->GetCellPosition()) == MinCellNum && NextPlayerIndex[0] != -1)
+		{
+			Index++;
+			NextPlayerIndex[Index] = i; //sets NextPlayerIndex with the indexs of all the Players that are at the same cell directly after the current player`s cell 
+		}
+	//sets the NextPlayers pointer array with all the Players that are at the same cell directly after the current player`s cell 
+	for (int i = 0; i < MaxPlayerCount; i++)
+	{
+		if (NextPlayerIndex[i] != -1)
+	
+			NextPlayers[i]= PlayerList[NextPlayerIndex[i]];
+		else
+			NextPlayers[i] = NULL;  
+	}
+	
 }
+
+void Grid::ClearGrid() {
+	for (int i = 0; i < NumVerticalCells; ++i) {
+		for (int j = 0; j < NumHorizontalCells; ++j) {
+			RemoveObjectFromCell(CellList[i][j]->GetCellPosition());
+		}
+	}
+}
+
+void Grid::ResetGrid() {
+	// Returns to the first player
+	SetCurrentPlayer(0);
+	// Changing the clipboard back to NULL
+	SetClipboard(NULL);
+	// Changing the endgame back to false
+	SetEndGame(false);
+}
+
 Player* Grid::GetPlayerByPlayerNum(int num) {
 	return PlayerList[num];
 }
@@ -226,8 +258,8 @@ Cell* Grid::GetCellFromCellPosition(const CellPosition& position) const {
 	return NULL;
 }
 
-bool Grid::thisColumnHasLadder(const CellPosition& startPos,const CellPosition & endPos) const {
-	for (int i = startPos.VCell() ; i >endPos.VCell(); i--) {
+bool Grid::thisColumnHasLadder(const CellPosition& startPos, const CellPosition& endPos) const {
+	for (int i = startPos.VCell(); i > endPos.VCell(); i--) {
 		if (dynamic_cast<Ladder*>(CellList[i][startPos.HCell()]->GetGameObject()) != NULL)
 			return true;
 	}
@@ -236,7 +268,7 @@ bool Grid::thisColumnHasLadder(const CellPosition& startPos,const CellPosition &
 
 
 bool Grid::thisColumnHasSnake(const CellPosition& startPos, const CellPosition& endPos) const {
-	for (int i = startPos.VCell() ; i < endPos.VCell(); i++) {
+	for (int i = startPos.VCell(); i < endPos.VCell(); i++) {
 		if (dynamic_cast<Snake*>(CellList[i][startPos.HCell()]->GetGameObject()) != NULL)
 			return true;
 	}

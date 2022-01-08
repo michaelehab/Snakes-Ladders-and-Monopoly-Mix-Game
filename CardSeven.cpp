@@ -29,12 +29,14 @@ void CardSeven::Apply(Grid* pGrid, Player* pPlayer)
 
 	//Call Apply() of the base class Card to print the message that you reached this card number
 	Card::Apply(pGrid, pPlayer);
-	//Get a pointer to the first player whose cell is after the current player in the grid
-	Player* NextPlayer = pGrid->GetNextPlayer(pPlayer);   
+	//array of pointers to all the players whose cells are directly after the current player`s cell
+	Player* NextPlayers[MaxPlayerCount];
+	pGrid->GetNextPlayer(pPlayer, NextPlayers);
 	CellPosition* CellPositionToMoveTo;
-	if(NextPlayer !=NULL)
-	//restarts the game for the first player whose cell is after the current player in the grid
-		pGrid->UpdatePlayerCell(NextPlayer, CellPositionToMoveTo->GetCellPositionFromNum(1));
+	for (int i = 0; i < MaxPlayerCount; i++)
+		if (NextPlayers[i] != NULL)
+			//restarts the game for the all the players whose cells are directly after the current player`s cell
+			pGrid->UpdatePlayerCell(NextPlayers[i], CellPositionToMoveTo->GetCellPositionFromNum(1));
 
 }
 
@@ -48,7 +50,7 @@ void CardSeven::Save(ofstream& outFile, ObjectType ObjType)
 	{
 		// Calling the parent class save function that saves the type and cell to the file
 		Card::Save(outFile, ObjType);
-		
+
 	}
 }
 

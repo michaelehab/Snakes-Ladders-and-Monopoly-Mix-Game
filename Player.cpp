@@ -45,6 +45,10 @@ void Player::SetWallet(int wallet)
 
 }
 
+void Player::SetTurnCount(int count) {
+	turnCount = count;
+}
+
 void Player::PreventNextTurn(bool choice)
 {
 	prevented = choice;
@@ -197,7 +201,7 @@ void Player::Move(Grid* pGrid, int diceNumber)
 
 		if (CellPosition::GetCellNumFromPosition(pCell->GetCellPosition()) == NumHorizontalCells * NumVerticalCells) {
 			pGrid->SetEndGame(true);
-			pOut->PrintMessage("Game Over! Player : " + to_string(GetPlayerNum()) + " Won!");
+			pGrid->PrintErrorMessage("Game Over! Player : " + to_string(GetPlayerNum()) + " Won!");
 		}
 	}
 }

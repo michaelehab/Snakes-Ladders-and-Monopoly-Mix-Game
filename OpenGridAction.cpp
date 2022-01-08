@@ -46,6 +46,8 @@ void OpenGridAction::Execute()
 	Output* pOut = pGrid->GetOutput();
 	Input* pIn = pGrid->GetInput();
 
+	// Clears lists and data members before opening the new grid.
+	pGrid->ClearGrid();
 	ReadActionParameters();
 
 	ifstream InFile(FileName + ".txt");

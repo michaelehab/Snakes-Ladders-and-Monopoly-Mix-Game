@@ -51,7 +51,7 @@ void Card::Save(ofstream& outFile, ObjectType ObjType)
 {
 	if (ObjType == Cards)
 	{
-		outFile << cardNumber << "  " << position.GetCellNum() << ' ';
+		outFile << cardNumber << ' ' << position.GetCellNum() << ' ';
 	}
 }
 
