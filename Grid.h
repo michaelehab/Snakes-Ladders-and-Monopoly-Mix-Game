@@ -66,6 +66,7 @@ public:
 	bool SetCurrentPlayer(int p);
 	void GetNextPlayer(Player* currentPlayer, Player* NextPlayers[]);
 
+	void ClearGrid(); // Clears the grid
 	void ResetGrid(); // Resets the grid to its initial state
 	// ========= Other Getters =========
 	

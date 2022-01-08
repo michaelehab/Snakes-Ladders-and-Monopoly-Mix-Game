@@ -200,6 +200,14 @@ void Grid::GetNextPlayer(Player* currentPlayer,Player* NextPlayers[])
 	
 }
 
+void Grid::ClearGrid() {
+	for (int i = 0; i < NumVerticalCells; ++i) {
+		for (int j = 0; j < NumHorizontalCells; ++j) {
+			RemoveObjectFromCell(CellList[i][j]->GetCellPosition());
+		}
+	}
+}
+
 void Grid::ResetGrid() {
 	// Returns to the first player
 	SetCurrentPlayer(0);
