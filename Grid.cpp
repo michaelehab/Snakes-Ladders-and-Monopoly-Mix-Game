@@ -199,6 +199,16 @@ void Grid::GetNextPlayer(Player* currentPlayer,Player* NextPlayers[])
 	}
 	
 }
+
+void Grid::ResetGrid() {
+	// Returns to the first player
+	SetCurrentPlayer(0);
+	// Changing the clipboard back to NULL
+	SetClipboard(NULL);
+	// Changing the endgame back to false
+	SetEndGame(false);
+}
+
 Player* Grid::GetPlayerByPlayerNum(int num) {
 	return PlayerList[num];
 }

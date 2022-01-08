@@ -65,6 +65,8 @@ public:
 	///TODO: add any needed setter/getter "EXCEPT" ANY setters or getters of "CellList" or "PlayerList" (Forbidden for class Responsibilities)
 	bool SetCurrentPlayer(int p);
 	void GetNextPlayer(Player* currentPlayer, Player* NextPlayers[]);
+
+	void ResetGrid(); // Resets the grid to its initial state
 	// ========= Other Getters =========
 	
 	Player * GetCurrentPlayer() const;	// Gets a Pointer to the Current Player	                                    
