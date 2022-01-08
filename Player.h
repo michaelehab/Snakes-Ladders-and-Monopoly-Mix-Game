@@ -47,6 +47,8 @@ public:
 	int GetPlayerNum() const;       // A getter for the playerNum
 
 	int getJustRolledDiceNumber() const; //To get the justrolleddicenumber of the current player
+	int GetNextPlayer(int &MinCellNum, int currentCellNum,int i,int NextPlayerIndex);//gets the next player index and sends it back to the grid
+
 
 	void PreventNextTurn(bool choice); // Prevents the player from rolling the next turn
 	bool IsPrevented() const; // Determines if the player is prevented
