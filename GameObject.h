@@ -31,6 +31,7 @@ public:
 
 	// Decide the parameters that you should pass to each function	
 	
+
 	virtual void Save(ofstream &OutFile, ObjectType ObjType) = 0;	// Saves the GameObject parameters to the file
 	virtual void Load(ifstream &Infile) = 0;	// Loads and Reads the GameObject parameters from the file
 

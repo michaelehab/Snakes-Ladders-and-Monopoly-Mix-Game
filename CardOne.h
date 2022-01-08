@@ -13,7 +13,7 @@ class CardOne :	public Card
 
 public:
 	CardOne(const CellPosition & pos); // A Constructor takes card position
-
+	CardOne(int cardNumber, int walletAmount);
 	virtual void ReadCardParameters(Grid * pGrid); // Reads the parameters of CardOne which is: walletAmount
 	
 	virtual bool CheckInputValidity();

@@ -23,14 +23,18 @@ void CutCardAction::ReadActionParameters()
 	{
 		pGrid->PrintErrorMessage("Please click on a valid cell, Click to continue...");
 	}
+	else {
 
-}
+		pOut->PrintMessage("The clicked position is out of range. click to continue..");
+
+	}
 
 void CutCardAction::Execute()
 {
 	Grid* pGrid = pManager->GetGrid();
 	Output* pOut = pGrid->GetOutput();
 	Input* pIn = pGrid->GetInput();
+
 	ReadActionParameters();
 	pCard = pGrid->GetCardFromPosition(cardpos);
 	if (pCard == NULL)

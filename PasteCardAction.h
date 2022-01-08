@@ -16,4 +16,6 @@ public:
 
 	virtual ~PasteCardAction(); // A Virtual Destructor
 
+	virtual ~PasteCardAction();
 };
+

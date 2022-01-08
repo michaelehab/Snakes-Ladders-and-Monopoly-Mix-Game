@@ -26,13 +26,6 @@ void CardEight::ReadCardParameters(Grid* pGrid)
 	pOut->ClearStatusBar();
 }
 
-
-bool CardEight::CheckInputValidity()
-{
-	if (amount <= 0) return 0;
-	return 1;
-}
-
 void CardEight::Apply(Grid* pGrid, Player* pPlayer)
 {
 	Output* pOut = pGrid->GetOutput();

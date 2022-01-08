@@ -11,7 +11,7 @@ class CardThree : public Card
 
 public:
 	CardThree(const CellPosition&); // A Constructor takes card position
-
+	CardThree(int cardNumber);
 	virtual void ReadCardParameters(Grid*); // Reads nothing
 
 	virtual void Apply(Grid*, Player*); //Applies the effect of CardThree on passed player

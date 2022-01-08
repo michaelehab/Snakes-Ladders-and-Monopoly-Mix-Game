@@ -38,6 +38,10 @@ void CardSeven::Apply(Grid* pGrid, Player* pPlayer)
 
 }
 
+Card* CardSeven::GetCopy() {
+	return new CardSeven(cardNumber);
+}
+
 void CardSeven::Save(ofstream& outFile, ObjectType ObjType)
 {
 	if (ObjType == Cards)

@@ -5,6 +5,12 @@ CardOne::CardOne(const CellPosition& pos) : Card(pos) // set the cell position o
 	cardNumber = 1; // set the inherited cardNumber data member with the card number (1 here)
 }
 
+CardOne::CardOne(int cardNumber, int walletAmount) :Card(NULL)
+{
+	this->cardNumber = cardNumber;
+	 this->walletAmount=walletAmount;
+}
+
 CardOne::~CardOne(void)
 {
 }
@@ -54,6 +60,10 @@ bool CardOne::CheckInputValidity()
 	return 1;
 }
 
+Card* CardOne::GetCopy() {
+
+	return new CardOne(cardNumber,walletAmount);
+}
 
 void CardOne::Apply(Grid* pGrid, Player* pPlayer)
 {

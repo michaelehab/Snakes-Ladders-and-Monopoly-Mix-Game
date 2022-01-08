@@ -1,4 +1,5 @@
 #pragma once
+#include "Card.h"
 #include "Action.h"
 class CutCardAction : public Action
 {
@@ -15,3 +16,4 @@ public:
 
 	virtual ~CutCardAction(); // A Virtual Destructor
 };
+
