@@ -16,7 +16,7 @@ void CardFour::Apply(Grid* pGrid, Player* pPlayer)
 {
 	Card::Apply(pGrid, pPlayer);
 
-	// Printing a message showing the player the details of card three
+	// Printing a message showing the player the details of card four
 	pGrid->PrintErrorMessage("This card prevents player " + to_string(pPlayer->GetPlayerNum()) + " from rolling next turn. Click to continue...");
 
 	// Preventing the player from rolling next turn

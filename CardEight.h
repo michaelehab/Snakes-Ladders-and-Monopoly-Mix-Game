@@ -16,6 +16,8 @@ public:
 
 	virtual void ReadCardParameters(Grid*); // Reads the amount of coins needed to go out of the prison
 
+	virtual bool CheckInputValidity(); // Checks if the input taken is valid
+
 	virtual void Apply(Grid*, Player*); //Applies the effect of CardEight on passed player
 
 	virtual void Save(ofstream& outFile, ObjectType ObjType); // Overriding the Card Save member function 

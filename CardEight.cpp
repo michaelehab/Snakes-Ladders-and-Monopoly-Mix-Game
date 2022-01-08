@@ -4,6 +4,7 @@
 CardEight::CardEight(const CellPosition& pos) : Card(pos) // set the cell position of the card
 {
 	cardNumber = 8; //sets the inherited cardNumber data member with the card number
+	this->amount = 0;
 }
 
 
@@ -13,22 +14,34 @@ void CardEight::ReadCardParameters(Grid* pGrid)
 	Input* pIn = pGrid->GetInput();
 	pOut->PrintMessage("Enter the amount of money to get out of prison.");
 	amount = pIn->GetInteger(pOut);
-	if (amount < 0){
-		pGrid->PrintErrorMessage("The amount you entereed is invalid, Click to continue.");
+	if (amount <= 0){
+		pGrid->PrintErrorMessage("The amount you entered is invalid, Click to continue...");
 	}
 	pOut->ClearStatusBar();
+}
+
+
+bool CardEight::CheckInputValidity()
+{
+	if (amount <= 0) return 0;
+	return 1;
 }
 
 void CardEight::Apply(Grid* pGrid, Player* pPlayer)
 {
 	Output* pOut = pGrid->GetOutput();
 	Input* pIn = pGrid->GetInput();
-	Card::Apply(pGrid, pPlayer);		//printing a statement that tells the player he/she stands on card Eight
-	int Player_Num = pPlayer->GetPlayerNum();		//Getting the number of the player ( 0 to 3 )
+	Card::Apply(pGrid, pPlayer);
+
+	int Player_Num = pPlayer->GetPlayerNum();
+	// Printing a message showing the player the details of card eight
 	pGrid->PrintErrorMessage("This Card is a Prison. Click to continue...");
-	string choice;
+
+	// Asking the user if he/she prefers to pay money instead of spending three turns in prison
 	pOut->PrintMessage("Do you want to pay " + to_string(amount) + " to get out of prison? 'y' for yes and 'n' for no");
+	string choice;
 	choice = pIn->getString(pOut);
+	// If the player wants to pay money we'll check if he/she has this amount of money
 	if (choice == "y") {
 		if (pPlayer->Pay(amount)) {
 			pGrid->PrintErrorMessage("Player : " + to_string(Player_Num) + " is now out of prison. Click to continue...");
@@ -37,10 +50,12 @@ void CardEight::Apply(Grid* pGrid, Player* pPlayer)
 			pGrid->PrintErrorMessage("Player : " + to_string(Player_Num) + " does not have this amount of money, the player is now in prison. Click to continue...");
 		}
 	}
+	// If the player refuses to pay the money then he/she will spend three turns in prison
 	else if (choice == "n") {
 		pPlayer->PutInPrison();
 		pGrid->PrintErrorMessage("Player : " + to_string(Player_Num) + " is now in prison. Click to continue...");
 	}
+	// Handling invalid choice from the user
 	else {
 		pGrid->PrintErrorMessage("You entered an invalid choice, Click to continue...");
 	}
