@@ -14,18 +14,18 @@ void CardThree::ReadCardParameters(Grid* pGrid)
 
 void CardThree::Apply(Grid* pGrid, Player* pPlayer)
 {
-	Card::Apply(pGrid, pPlayer);		//printing a statement that tells the player he/she stands on card Seven
+	Card::Apply(pGrid, pPlayer);		
 
+	// Printing a message showing the player the details of card three
 	pGrid->PrintErrorMessage("This card gives you another dice roll. Click to continue...");
 
-	int Player_Num = pPlayer->GetPlayerNum();		//Getting the number of the player ( 0 to 3 )
+	//Getting the player number
+	int player_num = pPlayer->GetPlayerNum();
 
-	Player_Num += 3;								//To make to turn return to the same player when 
-													//RollDiceAction class increments the currplayernum 
+	// Advancing the player turn three times to get back to the same player
+	for (int i = 0; i < 3; i++) pGrid->AdvanceCurrentPlayer();
 
-	pGrid->SetCurrentPlayer(Player_Num);			//Setting the order of the player to roll to dice to the same player 
-
-	pGrid->PrintErrorMessage("Another dice roll for player " + to_string(Player_Num - 3));
+	pGrid->PrintErrorMessage("Player " + to_string(player_num) + " Got an extra dice roll, Click to continue...");
 }
 
 

@@ -13,7 +13,7 @@ void CardTwo::ReadCardParameters(Grid* pGrid)
 void CardTwo::Apply(Grid* pGrid, Player* pPlayer)
 {
 	Card::Apply(pGrid, pPlayer);	
-	// Printing a message showing the player the details of card three
+	// Printing a message showing the player the details of card two
 	pGrid->PrintErrorMessage("This card moves you to the start of the next ladder. Click to continue...");
 
 	Ladder* next_ladder = pGrid->GetNextLadder(this->GetPosition()); // Getting a pointer to the next ladder
