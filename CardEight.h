@@ -13,7 +13,7 @@ class CardEight : public Card
 
 public:
 	CardEight(const CellPosition&); // A Constructor takes card position
-
+	CardEight(int cardNumber, int amount);
 	virtual void ReadCardParameters(Grid*); // Reads the amount of coins needed to go out of the prison
 
 	virtual bool CheckInputValidity(); // Checks if the input taken is valid

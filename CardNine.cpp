@@ -23,6 +23,10 @@ int CardNine::GetCardPrice() {
 	return CardPrice;
 }
 
+Card* CardNine::GetCopy() {
+	return new CardNine(cardNumber, CardPrice, fees, p, IsBought);
+}
+
 void CardNine::SetPlayer(Player* player) {
 	p = player;
 }

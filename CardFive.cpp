@@ -14,6 +14,7 @@ void CardFive::Apply(Grid* pGrid, Player* pPlayer) {
 	pPlayer->Move(pGrid, -pPlayer->getJustRolledDiceNumber());
 }
 
+
 void CardFive::Save(ofstream& outFile, ObjectType ObjType) {
 	if (ObjType == Cards)
 	{

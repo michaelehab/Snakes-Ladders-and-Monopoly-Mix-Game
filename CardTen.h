@@ -8,7 +8,7 @@ class CardTen : public Cards_9_11
 	static bool IsBought;            //indicates whether this station is bought or not
 public:
 	CardTen(const CellPosition& pos); // A Constructor takes card position
-
+	CardTen(int cardNumber,int CardPrice, int fees, Player* p, bool IsBought);
 	void ReadCardParameters(Grid* pGrid); // Reads the parameters of CardTen
 
 	void Apply(Grid* pGrid, Player* pPlayer); // Applies the effect of CardTen on the passed Player
@@ -21,7 +21,7 @@ public:
 
 	void Load(ifstream& InFile); // Overriding the Card Load member function
 
-
+	Card* GetCopy();
 	static Player* GetPlayer();
 
 	static int GetCardPrice();

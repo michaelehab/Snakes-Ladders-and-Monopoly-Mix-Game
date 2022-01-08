@@ -34,6 +34,10 @@ void CardTwelve::Apply(Grid* pGrid, Player* pPlayer) {
 	}
 }
 
+Card* CardTwelve::GetCopy() {
+	return new CardTwelve(cardNumber);
+}
+
 void CardTwelve::Save(ofstream& outFile, ObjectType ObjType) {
 	if (ObjType == Cards)
 	{

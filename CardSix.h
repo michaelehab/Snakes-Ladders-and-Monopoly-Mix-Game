@@ -5,7 +5,7 @@ class CardSix : public Card
 	CellPosition CellToMoveTo;
 public:
 	CardSix(const CellPosition& pos); // A Constructor takes card position
-
+	CardSix(int cardNumber, int CellNumToMoveTo);
 	virtual void ReadCardParameters(Grid* pGrid); // Reads the parameters of CardSix which is the cell to move the player to
 
 	virtual void Apply(Grid* pGrid, Player* pPlayer); // Applies the effect of CardSix on the passed Player

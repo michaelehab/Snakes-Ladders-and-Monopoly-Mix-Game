@@ -15,6 +15,10 @@ void CardTwo::ReadCardParameters(Grid* pGrid)
 	//No Parameters for CardTwo
 }
 
+Card* CardTwo::GetCopy() {
+	return new CardTwo(cardNumber);
+}
+
 void CardTwo::Apply(Grid* pGrid, Player* pPlayer)
 {
 	Card::Apply(pGrid, pPlayer);	

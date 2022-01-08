@@ -5,6 +5,9 @@
 #include "AddLadderAction.h"
 #include "AddSnakeAction.h"
 #include "AddCardAction.h"
+#include "CopyCardAction.h"
+#include "CutCardAction.h"
+#include "PasteCardAction.h"
 #include "RollDiceAction.h"
 #include "InputDiceValueAction.h"
 #include "DeleteGameObjectAction.h"
@@ -76,6 +79,18 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case ADD_CARD:
 		// create an object of AddCardAction here
 		pAct = new AddCardAction(this);
+		break;
+
+	case COPY_CARD:
+		pAct = new CopyCardAction(this);
+		break;
+
+	case CUT_CARD:
+		pAct = new CutCardAction(this);
+		break;
+
+	case PASTE_CARD:
+		pAct = new PasteCardAction(this);
 		break;
 
 	case EXIT:

@@ -31,6 +31,11 @@ void CardEleven::ReadCardParameters(Grid* pGrid)
 	Cards_9_11::ReadCardParameters(pGrid, CardPrice, fees, p, IsBought);
 }
 
+
+Card* CardEleven::GetCopy() {
+	return new CardEleven(cardNumber, CardPrice, fees, p, IsBought);
+}
+
 void CardEleven::Apply(Grid* pGrid, Player* pPlayer)
 {
 	Cards_9_11::Apply(pGrid, pPlayer, CardPrice, fees, p, IsBought);

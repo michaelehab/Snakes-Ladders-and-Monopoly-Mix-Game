@@ -15,3 +15,4 @@ public:
 
 	virtual ~CopyCardAction(); // A Virtual Destructor
 };
+

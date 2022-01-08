@@ -23,13 +23,17 @@ void CopyCardAction::ReadActionParameters()
 		pGrid->PrintErrorMessage("Please click on a valid cell, Click to continue...");
 	}
 
-}
+	else if (pos.IsValidCell()) {
+		copiedCard = pCell->HasCard()->GetCopy();
+	}
+	else {
 
 void CopyCardAction::Execute()
 {
 	Grid* pGrid = pManager->GetGrid();
 	Output* pOut = pGrid->GetOutput();
 	Input* pIn = pGrid->GetInput();
+	
 	ReadActionParameters();
 	pCard = pGrid->GetCardFromPosition(cardpos);
 	if (pCard == NULL)
