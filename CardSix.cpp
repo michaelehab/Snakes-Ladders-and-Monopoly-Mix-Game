@@ -15,9 +15,10 @@ void CardSix::ReadCardParameters(Grid* pGrid)
 	// 2- Read an Integer from the user using the Input class and set the CellToMoveTo parameter with it
 
 	pOut->PrintMessage("New CardSix: Click on the cell to move to");
+
 	CellToMoveTo = pIn->GetCellClicked();
 	// 3- Validation to click inside the grid area
-	while (!CellToMoveTo.IsValidCell() || CellToMoveTo.GetCellNum() == this->GetPosition().GetCellNum())
+	if (!CellToMoveTo.IsValidCell() || CellToMoveTo.GetCellNum() == this->GetPosition().GetCellNum())
 	{
 		pOut->PrintMessage("Please click on a valid cell!");
 
@@ -32,26 +33,11 @@ void CardSix::Apply(Grid* pGrid, Player* pPlayer)
 {
 	Card::Apply(pGrid, pPlayer); //Call Apply() of the base class Card to print the message that you reached this card number
 
-	//sets the new position of the player as the position of the cell to move to
-	pGrid->UpdatePlayerCell(pPlayer, CellToMoveTo);
+	int newposition = CellToMoveTo.GetCellNum() - (pPlayer->GetCell()->GetCellPosition().GetCellNum());
 
+	pPlayer->Move(pGrid, newposition);
 
-	if (pPlayer->GetCell()->GetGameObject())
-	{
-		string msg;
-		msg = "Player : " + to_string(pPlayer->GetPlayerNum()) + " Will take a ";
-		if (pPlayer->GetCell()->HasLadder()) msg += "ladder";
-		else if (pPlayer->GetCell()->HasSnake()) msg += "snake";
-		else if (pPlayer->GetCell()->HasCard()) msg += "card";
-		msg += ". Click to continue...";
-		pGrid->PrintErrorMessage(msg);
-		pPlayer->GetCell()->GetGameObject()->Apply(pGrid, pPlayer);
-	}
-	else if(CellToMoveTo.GetCellNum() == NumHorizontalCells * NumVerticalCells) 
-	{
-		pGrid->SetEndGame(true);
-		pGrid->PrintErrorMessage("Game Over! Player : " + to_string(pPlayer->GetPlayerNum()) + " Won!");
-	}
+	pPlayer->SetTurnCount(pPlayer->GetTurnCount() - 1);
 }
 
 void CardSix::Save(ofstream& outFile, ObjectType ObjType)
