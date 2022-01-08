@@ -18,7 +18,7 @@ void CopyCardAction::ReadActionParameters()
 
 	pOut->PrintMessage("Please select the card you want to copy");
 	cardpos = pIn->GetCellClicked();
-	if(cardpos.HCell() == -1)
+	if(!cardpos.IsValidCell())
 	{
 		pGrid->PrintErrorMessage("Please click on a valid cell, Click to continue...");
 	}
