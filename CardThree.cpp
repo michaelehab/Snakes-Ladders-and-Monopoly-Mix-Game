@@ -36,6 +36,7 @@ void CardThree::Save(ofstream& outFile, ObjectType ObjType)
 		// Calling the parent class save function that saves the type and cell to the file
 		Card::Save(outFile, ObjType);
 		// No Card Parameters here
+		outFile << std::endl;
 	}
 }
 
