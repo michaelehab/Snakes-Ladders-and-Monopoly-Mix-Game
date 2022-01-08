@@ -13,29 +13,33 @@ void InputDiceValueAction::ReadActionParameters()
 	Grid* pGrid = pManager->GetGrid();
 	Output* pOut = pGrid->GetOutput();
 	Input* pIn = pGrid->GetInput();
-
-	pOut->PrintMessage("Please Enter a dice value between 1-6 . ");
-	int value = pIn->GetInteger(pOut);        //store the passed integer in (value)
-
-	//Verification on the input dice value
-	if (value > 0 && value < 7)
+	bool gameEnded = pGrid->GetEndGame();
+	if (!gameEnded)
 	{
-		DiceValue = value;                    //sets the dice value with the input value
+		pOut->PrintMessage("Please Enter a dice value between 1-6 . ");
+		int value = pIn->GetInteger(pOut);        //store the passed integer in (value)
+
+		//Verification on the input dice value
+		if (value > 0 && value < 7)
+		{
+
+			DiceValue = value;                    //sets the dice value with the input value
+		}
+
+		//if the dice value is out of range
+		else
+		{
+			int x, y;
+			DiceValue = -1;
+			pOut->PrintMessage("The Dice value you entered is out of range, Click to continue. ");
+			pIn->GetPointClicked(x, y);
+			pOut->ClearStatusBar();
+
+		}
 	}
-
-	//if the dice value is out of range
-	else
-	{
-		int x, y;
-		DiceValue = -1;
-		pOut->PrintMessage("The Dice value you entered is out of range, Click to continue. ");
-		pIn->GetPointClicked(x, y);
-		pOut->ClearStatusBar();
-
-	}
-
 	// clears the status bar
 	pOut->ClearStatusBar();
+
 
 }
 
@@ -53,8 +57,8 @@ void InputDiceValueAction::Execute()
 	if ((!gameEnded) && (DiceValue != -1))
 	{
 		int x, y;
-		pOut->PrintMessage("The dice value you entered is " + to_string(DiceValue)+", click to continue.");
-		pIn->GetPointClicked(x,y);
+		pOut->PrintMessage("The dice value you entered is " + to_string(DiceValue) + ", click to continue.");
+		pIn->GetPointClicked(x, y);
 		// Get the "current" player from pGrid
 		Player* currentPlayer = pGrid->GetCurrentPlayer();
 		// Move the currentPlayer using function Move of class player
