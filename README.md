@@ -1,5 +1,5 @@
 # Snakes & Ladders and Monopoly Mix Game - Fall 2021
-This is an educational Project for Programming Techinques(OOP) course taken during fall 2021 semester.
+This is an educational Project for Programming Techniques(OOP) course taken during fall 2021 semester.
 
 In this project we made a simple game application that is a mixture between the Snakes &amp; Ladders and Monopoly games.
 
