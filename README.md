@@ -1,17 +1,21 @@
-# Snakes-Ladders-and-Monopoly-Mix-Game
-A simple game application that is a mixture between the Snakes &amp; Ladders and Monopoly games.
-## There are two modes in the game:
+# Snakes & Ladders and Monopoly Mix Game - Fall 2021
+This is an educational Project for Programming Techinques(OOP) course taken during fall 2021 semester.
+
+In this project we made a simple game application that is a mixture between the Snakes &amp; Ladders and Monopoly games.
+
+## Game Description
+<ul>
+  <li>There is four players moving in a grid having snakes, ladders, and Cards. </li>
+  <li>The player goal is to get to the last cell before anyone else. </li>
+  <li>He also takes advantage of the special cells to boost his game and obstruct his opponents. </li>
+  <li>The game ends when a player reaches the last cell.</li>
+</ul>
+
+### There are two modes in the game:
 <ol>
   <li>Design mode : Where the user is able to build the playing grid.</li>
   <li>Play mode : Where he plays the game itself. </li>
 </ol>
-
-## The general idea of the game:
-There is four players moving in a grid having snakes, ladders, and Cards. 
-The player goal is to get to the last cell before anyone else. 
-He also takes advantage of the special cells to boost his game and obstruct his opponents. 
-The game ends when a player reaches the last cell.
-## Game Description
 In the Design mode, the player can add, copy, cut, paste, and delete any game object. He
 can also save a grid and load a previously saved grid.
 
@@ -25,7 +29,7 @@ Grid cells may contain:
   <li>Card making the cell a special cell</li>
 </ol>
 
-### Players
+## Players
 <ul>
   <li>The Game has four players.</li>
   <li>Each player has:
@@ -58,7 +62,7 @@ most one game object.
 A Game object is the fixed objects placed in the grid’s cells.
 You cannot place game objects in the first or last cell.
 
-### There are 3 types of Game Objects:
+## Game Objects:
 <ol>
   <li>
     Ladders:
@@ -96,7 +100,7 @@ means that a card cannot be placed at the start cell of a ladder or a snake.</li
   </li>
 </ol>
 
-### There are different types of Cards:
+## Cards:
 <ol>
   <li>Card1:
     <ul>
@@ -161,3 +165,30 @@ means that a card cannot be placed at the start cell of a ladder or a snake.</li
 </ol>
 
 #### Important Note: all the above cards are executed only if the current player stops at it (not passing on it on his way).
+
+## Special Attacks:
+<ul>
+  <li>Each player has 4 special attacks that he can use throughout the game.</li>
+  <li>A player can choose during his “recharge the wallet” turn to launch a special attack instead of recharging his wallet. (If he is not denied from rolling dice)
+    <ul>
+      <li>A message is shown, “Do you wish to launch a special attack instead of recharging? y/n”</li>
+    </ul>
+  </li>
+  <li>Each player can use two unique special attacks at most throughout the game. This means a single player cannot use the same special attack twice.</li>
+  <li>If a player chooses to launch a special attack, he is prompted to choose his special attack type.</li>
+  <li>
+  The 4 special attacks are:
+    <ul>
+      <li>Ice: Choose a player to prevent from rolling the next turn.</li>
+      <li>Fire: Choose a player to burn. Deduct 20 coins from his wallet for his next 3 turns (total 60).</li>
+      <li>Poison: Choose a player to poison. For 5 turns, deduct 1 number from his dice roll.</li>
+      <li>Lightning: Deduct 20 coins from all other players.</li>
+    </ul>
+  </li>
+</ul>
+
+## Grid Sample (Design Mode)
+![Grid Sample](https://github.com/michaelehab/Snakes-Ladders-and-Monopoly-Mix-Game/blob/Final/images/grid_sample.jpg)
+
+## Game Sample (Play Mode)
+![Game Sample](https://github.com/michaelehab/Snakes-Ladders-and-Monopoly-Mix-Game/blob/Final/images/game_sample.jpg)
