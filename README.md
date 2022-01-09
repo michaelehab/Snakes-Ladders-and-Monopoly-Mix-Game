@@ -192,3 +192,27 @@ means that a card cannot be placed at the start cell of a ladder or a snake.</li
 
 ## Game Sample (Play Mode)
 ![Game Sample](https://github.com/michaelehab/Snakes-Ladders-and-Monopoly-Mix-Game/blob/Final/images/game_sample.jpg)
+
+## The Sample grid text file :
+```
+4
+10 32
+16 71
+46 68
+75 86
+4
+34 23
+59 37
+78 56
+85 30
+9
+1 4 50
+9 13 50 10
+8 19 50
+6 28 97
+8 36 50
+4 51 
+9 54 50 10
+9 81 50 10
+1 84 50
+```
