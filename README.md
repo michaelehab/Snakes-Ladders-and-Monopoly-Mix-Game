@@ -101,7 +101,7 @@ means that a card cannot be placed at the start cell of a ladder or a snake.</li
 </ol>
 
 ## Cards:
-<ol>
+<ul>
   <li>Card1:
     <ul>
       <li>Decrements the value of the passing player’s wallet by a value specified when creating the grid.</li>
@@ -162,7 +162,7 @@ means that a card cannot be placed at the start cell of a ladder or a snake.</li
     <ul>
       <li>This card moves the ownership of the most expensive station that the current user owns from the current user to the player that has the least amount of coins in his wallet.</li>
   </li>
-</ol>
+</ul>
 
 #### Important Note: all the above cards are executed only if the current player stops at it (not passing on it on his way).
 
